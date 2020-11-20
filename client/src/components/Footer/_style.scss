@@ -1,0 +1,24 @@
+.footer {
+  bottom: -100px;
+  position: absolute;
+
+  &-message {
+    font-size: $font-size-s;
+    margin: 20px 0;
+    text-align: center;
+
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      margin: 30px 0;
+    }
+
+    a {
+      color: $color-accent;
+      font-weight: 800;
+      transition: color 0.3s;
+
+      &:hover {
+        color: $color-white;
+      }
+    }
+  }
+}

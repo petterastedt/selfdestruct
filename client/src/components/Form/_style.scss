@@ -1,0 +1,167 @@
+.form {
+  &.centerComponent {
+    margin: 0;
+    max-width: 600px;
+    width: 100%;
+
+    @media (min-width: $breakpoint-desktop-wide) {
+      max-width: $content-max-width;
+    }
+  }
+
+  &-container {
+    max-width: 100%;
+  }
+
+  &-options {
+    display: flex;
+    flex-direction: column;
+    height: 245px;
+    overflow: hidden;
+    padding: 30px 20px;
+    transition: height 0.3s, padding 0.3s;
+
+    @media (min-width: $breakpoint-tablet) {
+      flex-direction: row;
+      height: 100px;
+    }
+
+    &--isHidden {
+      height: 0;
+      padding: 0 20px;
+    }
+
+    .form-section:first-child {
+      margin-right: 50px;
+    }
+  }
+
+  &-settingsFeedback {
+    font-size: $font-size-s;
+    margin-left: 5px;
+    margin-top: 20px;
+  }
+
+  &-feedback {
+    font-size: $font-size-s;
+    margin-top: 20px;
+
+    &-success {
+      align-items: center;
+      display: flex;
+
+      a {
+        word-break: break-word;
+      }
+    }
+
+    svg {
+      height: 15px;
+      margin-right: 7px;
+      margin-top: -2px;
+      width: 15px;
+
+      path {
+        fill: $color-white;
+      }
+    }
+  }
+
+  label {
+    margin-bottom: 15px;
+    margin-left: 5px;
+  }
+
+  .input {
+    &-textContentWrapper {
+      position: relative;
+    }
+
+    &-charsleft {
+      bottom: 10px;
+      font-size: $font-size-s;
+      opacity: 0.4;
+      position: absolute;
+      right: 10px;
+    }
+
+    &-textContent {
+      display: block;
+      background-color: transparent;
+      box-shadow: 3px 3px 8px 8px rgba(0, 0, 0, .04), 0 20px 40px 0 rgba(0, 0, 0, .2);
+      font-size: $font-size-s;
+      line-height: 20px;
+      max-width: $content-max-width;
+      min-height: 60px;
+      overflow: hidden;
+      padding: 20px;
+      transition: background-color 0.3s;
+
+      &:focus,
+      &:hover {
+        background-color: $color-background-light;
+        border: 0;
+        outline: 0;
+      }
+
+      &[contenteditable]:empty::before {
+        content: "Type something..";
+        opacity: 0.2;
+      }
+    }
+
+    &-typeSelect-label,
+    &-timeSelect-label {
+      margin-left: 0;
+    }
+
+    &-timeSelect {
+      background-color: $color-background;
+      margin-bottom: 13px;
+      min-width: 80px;
+
+      @media (min-width: $breakpoint-tablet) {
+        margin-bottom: 4px;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &-section-radio {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+
+    @media (min-width: $breakpoint-tablet) {
+      margin-top: 0;
+      max-width: 420px;
+    }
+  }
+
+  &-radio {
+    &-wrapper {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        margin-bottom: 0;
+      }
+    }
+
+    &-itemWrapper {
+      display: flex;
+      margin-bottom: 12px;
+
+      @media (min-width: $breakpoint-tablet) {
+        margin-bottom: 7px;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
