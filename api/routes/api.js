@@ -73,7 +73,6 @@ const setInactiveItem = async secret => {
 
 // DELETE ITEM
 const deleteItem = async secret => {
-  console.log(secret)
   Message.findOneAndDelete({
     'secret': secret
   }, (error, item) => {
@@ -149,7 +148,7 @@ router.post("/post", exceptionHandler(async (req, res) => {
   const { startImmediately, startTimerOnFirstReq, killOnFirstReq } = req.body.options
   const secret = crypto.randomBytes(13).toString('hex')
   const timeInMillisec = helpers.convertToMillisec(aliveFor.hrs, aliveFor.min, aliveFor.sec)
-  const url = `http://localhost:3000/message/${secret}`
+  const url = `https://selfdestruct.vercel.app/message/${secret}`
   let destroyAt
 
   if (options.startImmediately) {
