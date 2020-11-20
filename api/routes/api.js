@@ -88,10 +88,7 @@ const deleteItem = async secret => {
 router.get(`/${process.env.CLEANUP_URL}`, exceptionHandler(async (req, res) => {
   cleanupExpired()
 
-  res.json({
-    message: "ok!",
-    success: true
-  })
+  res.status(200)
 }))
 
 // SHOW MESSAGE
