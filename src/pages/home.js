@@ -6,10 +6,10 @@ import './../main.css'
 const Home = () => (
   <div className="container">
     <div className="pageWrapper centerComponent centerComponentVertically">
-      <h1>selfdestructth.is</h1>
+      <h1>privtext.me</h1>
       <h4>share self-destructing messages anonymously</h4>
       <Form />
-      <Footer footerMessage={["This message was brought to you by ", <a href="/" className="link-styled">selfdestructth.is</a>]} />
+      <Footer footerMessage={[" 💻 Created by ", <a href="https://www.petterastedt.com" className="link-styled" target="_blank" rel="noreferrer noopener">Petter Åstedt.</a>, " Learn more about this project --> ", <strike>here</strike>]} />
     </div>
   </div>
 )

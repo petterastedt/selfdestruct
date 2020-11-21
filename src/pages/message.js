@@ -77,7 +77,9 @@ const Message = () => {
           <p className="feedbackMessage-text">{ messageOption === "killOnFirstReq" ? "Only you can see this message, it can't be opened again" : "" }</p>
           <p className="feedbackMessage-text">{ messageOption === "startImmediately" &&  "startTimerOnFirstReq" ? "Anyone with the link can see the message until the timer runs out" : "" }</p>
         </div>
-        <Footer footerMessage={["This message was brought to you by ", <a href="/" className="link-styled">selfdestructth.is</a>]}/>
+        <Footer
+          footerMessage={!error ? ["This message was brought to you by ", <a href="/" className="link-styled">privtext.me</a>] : ["Back to ", <a href="/" className="link-styled">selfdestructth.is</a>]}
+        />
       </div>
     </div>
   )
