@@ -341,7 +341,7 @@ const Form = () => {
               className="button-styled input-button"
               disabled={disableCreateMessage}
             >
-            Submit
+            Create message
             </button>
           </div>
 

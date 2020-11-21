@@ -4,6 +4,17 @@
 @import './components/Form/style';
 @import './components/Footer/style';
 
+@font-face {
+  font-family: "Consolas";
+  src: url("./assets/font/consolas-400.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Consolas";
+  src: url("./assets/font/consolas-700.woff2") format("woff2");
+  font-weight: bold;
+}
+
 // GLOBAL STYLES
 
 html,
@@ -46,8 +57,9 @@ h3, .h3 {
 
 h4, .h4 {
   font-size: $font-size-base;
-  font-weight: 700;
+  font-weight: 400;
   margin: 0 0 50px 0;
+  text-align: center;
 }
 
 h5, .h5 {
@@ -251,6 +263,10 @@ input[type='radio']:checked:after {
 
   @media (min-width: $breakpoint-mobile-horizontal) {
     margin: 20px auto;
+  }
+
+  @media (min-width: $breakpoint-tablet-horizontal) {
+    margin: 10px auto;
   }
 
   @media (min-width: $breakpoint-desktop + 100) {
