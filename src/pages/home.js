@@ -4,7 +4,7 @@ import Footer from './../components/Footer/Footer'
 import './../main.css'
 
 const Home = () => (
-  <div className="container">
+  <div className="container home-page">
     <div className="pageWrapper centerComponent centerComponentVertically">
       <h1>privtext.me</h1>
       <h4>share self-destructing messages anonymously</h4>

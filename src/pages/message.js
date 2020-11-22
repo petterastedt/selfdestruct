@@ -56,7 +56,7 @@ const Message = () => {
   }, [])
 
   return (
-    <div className="container">
+    <div className="container message-page">
       <div className="pageWrapper centerComponent centerComponentVertically">
         { message &&
           <MessageBox
