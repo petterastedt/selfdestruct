@@ -442,6 +442,10 @@ input[type='radio']:checked:after {
   .pageWrapper {
     margin: 100px auto; } }
 
+@media (min-width: 1024px) {
+  .message-page.pageWrapper {
+    margin: 100px auto; } }
+
 .feedbackMessage {
   font-size: 12px;
   margin-top: 20px;
