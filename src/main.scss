@@ -286,6 +286,7 @@ input[type='radio']:checked:after {
 .message-page > .pageWrapper {
   @media (min-width: $breakpoint-tablet-horizontal) {
     margin: 100px auto;
+    min-height: calc(100vh - 200px);
   }
 }
 

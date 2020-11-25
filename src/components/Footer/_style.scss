@@ -8,6 +8,10 @@
     text-align: center;
 
     @media (min-width: $breakpoint-mobile-horizontal) {
+      margin: 20px 0;
+    }
+
+    @media (min-width: $breakpoint-desktop-wide) {
       margin: 30px 0;
     }
 
