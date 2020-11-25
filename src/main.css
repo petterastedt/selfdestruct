@@ -211,12 +211,14 @@
 
 @font-face {
   font-family: "Consolas";
-  src: url("./assets/font/consolas-400.woff2") format("woff2"); }
+  src: url("./assets/font/consolas-400.woff2") format("woff2");
+  font-display: swap; }
 
 @font-face {
   font-family: "Consolas";
   src: url("./assets/font/consolas-700.woff2") format("woff2");
-  font-weight: bold; }
+  font-weight: bold;
+  font-display: swap; }
 
 html,
 body {
@@ -436,11 +438,13 @@ input[type='radio']:checked:after {
 
 @media (min-width: 1024px) {
   .pageWrapper {
-    margin: 10px auto; } }
+    margin: 10px auto;
+    min-height: calc(100vh - 120px); } }
 
 @media (min-width: 1380px) {
   .pageWrapper {
-    margin: 100px auto; } }
+    margin: 100px auto;
+    min-height: calc(100vh - 200px); } }
 
 @media (min-width: 1024px) {
   .message-page > .pageWrapper {
