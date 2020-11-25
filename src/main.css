@@ -443,7 +443,7 @@ input[type='radio']:checked:after {
     margin: 100px auto; } }
 
 @media (min-width: 1024px) {
-  .message-page.pageWrapper {
+  .message-page > .pageWrapper {
     margin: 100px auto; } }
 
 .feedbackMessage {

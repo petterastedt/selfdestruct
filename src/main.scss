@@ -272,14 +272,16 @@ input[type='radio']:checked:after {
 
   @media (min-width: $breakpoint-tablet-horizontal) {
     margin: 10px auto;
+    min-height: calc(100vh - 120px);
   }
 
   @media (min-width: $breakpoint-desktop + 100) {
     margin: 100px auto;
+    min-height: calc(100vh - 200px);
   }
 }
 
-.message-page.pageWrapper {
+.message-page > .pageWrapper {
   @media (min-width: $breakpoint-tablet-horizontal) {
     margin: 100px auto;
   }
