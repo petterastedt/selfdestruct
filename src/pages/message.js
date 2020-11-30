@@ -23,7 +23,6 @@ const Message = () => {
           })
 
           const messageJson = await message.json()
-          console.log(messageJson)
 
           if (messageJson.success) {
             const { textContent, timeLeft, options, isFirstReq } = messageJson.item
@@ -36,9 +35,6 @@ const Message = () => {
             }
 
             setIsFirstRequest(isFirstReq)
-            console.log(options)
-            console.log(isFirstRequest)
-
             setMessage(textContent)
             setMessageOption(messageOptionIs)
             setTimeLeft(timeLeft)

@@ -11,7 +11,6 @@ const Timer = ({ milliseconds, setMessageIsDestroyed }) => {
 
   useEffect(() => {
     if (secondsRemainingGlobal < 1 || secondsRemainingGlobalNegative > 1) {
-      console.log("countdown completed")
       setMessageIsDestroyed(true)
     } else {
       const timeout = setTimeout(() => {

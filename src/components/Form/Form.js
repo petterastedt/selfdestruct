@@ -39,8 +39,6 @@ const Form = () => {
 
       const response = await postMessage.json()
 
-      console.log(response)
-
       if (response.success) {
         setSuccess(`${response.message} share link: ${response.item.url}`)
         setError("")
@@ -70,7 +68,6 @@ const Form = () => {
       setError("Something went wrong when sending your message")
       setSuccess("")
       setIsSumbitting(false)
-      console.log(error)
     }
   }
 
@@ -150,7 +147,6 @@ const Form = () => {
                     })
 
                     setError("")
-                    console.log(inputData)
                     setCharsLeft(3000 - e.currentTarget.textContent.length)
                   }}
                   onInput={(e) => {
@@ -169,8 +165,6 @@ const Form = () => {
                     })
 
                     setError("")
-                    console.log(inputData)
-
                     setCharsLeft(3000 - e.currentTarget.textContent.length)
                   }}
                 >
@@ -229,8 +223,6 @@ const Form = () => {
                       startImmediately: inputData.options.startImmediately
                     }
                   })
-
-                  console.log(inputData)
                 }}
               >
                   <option value="placeholder" disabled selected hidden>Hours</option>
@@ -255,8 +247,6 @@ const Form = () => {
                       startImmediately: inputData.options.startImmediately
                     }
                   })
-
-                  console.log(inputData)
                 }}
               >
                 <option value="placeholder" disabled selected hidden>Minutes</option>
@@ -281,8 +271,6 @@ const Form = () => {
                       startImmediately: inputData.options.startImmediately
                     }
                   })
-
-                  console.log(inputData)
                 }}
               >
                 <option value="placeholder" disabled selected hidden>Seconds</option>
