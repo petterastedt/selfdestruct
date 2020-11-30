@@ -9,7 +9,7 @@ const Home = () => (
       <h1>privtext.me</h1>
       <h4>share self-destructing messages anonymously</h4>
       <Form />
-      <Footer footerMessage={[" 💻 Created by ", <a href="https://www.petterastedt.com" className="link-styled" target="_blank" rel="noreferrer noopener">Petter Åstedt.</a>, " Learn more about this project --> ", <strike>here</strike>]} />
+      <Footer footerMessage={[" 💻 Created by ", <a href="mailto:petter@privtext.me" className="link-styled" target="_blank" rel="noreferrer noopener">Petter Åstedt.</a>, " Learn more about this project --> ", <strike>here</strike>]} />
     </div>
   </div>
 )
