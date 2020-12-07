@@ -263,9 +263,9 @@ input[type='radio']:checked:after {
 }
 
 .pageWrapper {
-  margin: 80px auto;
+  margin: 0 auto;
   max-width: $content-max-width;
-  min-height: calc(100vh - 200px);
+  min-height: calc(100vh - 100px);
   position: relative;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
@@ -294,4 +294,8 @@ input[type='radio']:checked:after {
   font-size: $font-size-s;
   margin-top: 20px;
   max-width: 440px;
+
+  &-text {
+    margin: 0 10px;
+  }
 }
