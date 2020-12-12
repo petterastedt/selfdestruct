@@ -1,3 +1,21 @@
 .timer {
   margin-top: 20px;
+  width: calc(100% - 10px);
+
+  @media (min-width: $breakpoint-mobile-horizontal) {
+    width: 100%;
+  }
+
+  &-wrapper {
+    font-size: $font-size-s;
+    font-style: italic;
+
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      padding-left: 10px;
+    }
+
+    span:last-child {
+      padding-left: 5px;
+    }
+  }
 }

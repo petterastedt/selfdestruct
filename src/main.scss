@@ -289,13 +289,3 @@ input[type='radio']:checked:after {
     min-height: calc(100vh - 200px);
   }
 }
-
-.feedbackMessage {
-  font-size: $font-size-s;
-  margin-top: 20px;
-  max-width: 440px;
-
-  &-text {
-    margin: 0 10px;
-  }
-}

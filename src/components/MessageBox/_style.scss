@@ -1,9 +1,6 @@
 .messageBox {
-  max-width: 100%;
-
-  @media (min-width: $breakpoint-tablet) {
-    min-width: 300px;
-  }
+  max-width: $content-max-width;
+  width: 100%;
 
   &-container {
     border-radius: 8px;
@@ -12,13 +9,18 @@
     max-width: 100%;
     padding: 20px 25px;
     position: relative;
+  }
 
-    @media (min-width: $breakpoint-tablet) {
-      padding: 30px 40px;
-    }
+  &-textRow {
+    font-size: 12px;
+    font-style: italic;
+    margin-bottom: 15px;
+    padding-left: 10px;
   }
 
   &-content {
+    font-size: $font-size-s;
+    font-weight: bold;
     opacity: 1;
     transition: opacity 1.5s;
     word-wrap: break-word;

@@ -1,9 +1,6 @@
 .messageBox {
-  max-width: 100%; }
-
-@media (min-width: 768px) {
-  .messageBox {
-    min-width: 300px; } }
+  max-width: 680px;
+  width: 100%; }
 
 .messageBox-container {
   border-radius: 8px;
@@ -13,11 +10,15 @@
   padding: 20px 25px;
   position: relative; }
 
-@media (min-width: 768px) {
-  .messageBox-container {
-    padding: 30px 40px; } }
+.messageBox-textRow {
+  font-size: 12px;
+  font-style: italic;
+  margin-bottom: 15px;
+  padding-left: 10px; }
 
 .messageBox-content {
+  font-size: 12px;
+  font-weight: bold;
   opacity: 1;
   transition: opacity 1.5s;
   word-wrap: break-word; }
@@ -52,7 +53,23 @@
   fill: #E3E3E3; }
 
 .timer {
-  margin-top: 20px; }
+  margin-top: 20px;
+  width: calc(100% - 10px); }
+
+@media (min-width: 480px) {
+  .timer {
+    width: 100%; } }
+
+.timer-wrapper {
+  font-size: 12px;
+  font-style: italic; }
+
+@media (min-width: 480px) {
+  .timer-wrapper {
+    padding-left: 10px; } }
+
+.timer-wrapper span:last-child {
+  padding-left: 5px; }
 
 .form.centerComponent {
   margin: 0;
@@ -134,7 +151,7 @@
   max-width: 680px;
   min-height: 60px;
   overflow: hidden;
-  padding: 20px;
+  padding: 20px 20px 40px;
   transition: background-color 0.3s; }
 
 .form .input-textContent:focus, .form .input-textContent:hover {
@@ -455,11 +472,3 @@ input[type='radio']:checked:after {
   .message-page > .pageWrapper {
     margin: 100px auto;
     min-height: calc(100vh - 200px); } }
-
-.feedbackMessage {
-  font-size: 12px;
-  margin-top: 20px;
-  max-width: 440px; }
-
-.feedbackMessage-text {
-  margin: 0 10px; }
