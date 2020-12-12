@@ -141,7 +141,7 @@ router.post("/message", exceptionHandler(async (req, res) => {
 
 // CREATE MESSAGE
 router.post("/post", exceptionHandler(async (req, res) => {
-  const { textContent, aliveFor, options } = req.body
+  const { textContent, name, aliveFor, options } = req.body
   const { startImmediately, startTimerOnFirstReq, killOnFirstReq } = req.body.options
   const secret = crypto.randomBytes(13).toString('hex')
   const timeInMillisec = helpers.convertToMillisec(aliveFor.hrs, aliveFor.min, aliveFor.sec)
@@ -156,6 +156,7 @@ router.post("/post", exceptionHandler(async (req, res) => {
     isActive: true,
     isFirstReq: true,
     // password,
+    name,
     secret,
     url,
     textContent,

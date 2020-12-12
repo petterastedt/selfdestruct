@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const schema = new mongoose.Schema({
   isActive: Boolean,
   isFirstReq: Boolean,
+  name: String,
   // password: String,
   secret: String,
   textContent: String,
