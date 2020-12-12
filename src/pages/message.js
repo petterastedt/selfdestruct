@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Timer from './../components/Timer/Timer'
+import Header from './../components/Header/Header'
 import MessageBox from './../components/MessageBox/MessageBox'
 import Footer from './../components/Footer/Footer'
 

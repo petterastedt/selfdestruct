@@ -3,9 +3,7 @@ import { Anchorme } from 'react-anchorme'
 
 const MessageBox = ({ message, messageIsDestroyed, name }) => (
   <div className="messageBox">
-    { name &&
-      <div className="messageBox-textRow"><strong>{ name }</strong> shared a secret message with you:</div>
-    }
+    <div className="messageBox-textRow"><strong>{ name ? name : "Anonymous" }</strong> shared a secret message with you:</div>
     <div className="messageBox-container">
       <p className={`messageBox-content ${messageIsDestroyed ? "messageBox-content--isDestroyed" : ""}`}>
         <Anchorme target="_blank" rel="noreferrer noopener" className="link-message">

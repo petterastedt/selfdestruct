@@ -235,7 +235,7 @@
   min-height: 20px;
   max-width: 65%;
   opacity: 0;
-  padding: 6px 10px;
+  padding: 6px 10px 6px 20px;
   pointer-events: none;
   transition: opacity 0.3s; }
 
@@ -249,7 +249,8 @@
   opacity: 0.65; }
 
 .form-anonymous label {
-  margin-left: 7px; }
+  margin-left: 7px;
+  opacity: 0.9; }
 
 .form-checkboxWrapper {
   align-items: center;
@@ -311,6 +312,9 @@
 
 .footer-message a:hover {
   color: #E3E3E3; }
+
+.header h1 {
+  text-align: center; }
 
 @font-face {
   font-family: "Consolas";
