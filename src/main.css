@@ -86,19 +86,24 @@
 .form-options {
   display: flex;
   flex-direction: column;
-  height: 275px;
+  height: 270px;
   overflow: hidden;
-  padding: 30px 20px;
+  padding: 30px 10px;
   transition: height 0.3s, padding 0.3s; }
 
 @media (min-width: 768px) {
   .form-options {
     flex-direction: row;
-    height: 100px; } }
+    height: 80px;
+    padding: 30px 15px; } }
 
 .form-options--isHidden {
   height: 0;
-  padding: 0 20px; }
+  padding: 0 10px; }
+
+@media (min-width: 768px) {
+  .form-options--isHidden {
+    padding: 0 15px; } }
 
 .form-options .form-section:first-child {
   margin-right: 50px; }
@@ -129,7 +134,6 @@
   fill: #E3E3E3; }
 
 .form label {
-  margin-bottom: 15px;
   margin-left: 5px; }
 
 .form .input-textContentWrapper {
@@ -164,7 +168,12 @@
   opacity: 0.2; }
 
 .form .input-typeSelect-label, .form .input-timeSelect-label {
-  margin-left: 0; }
+  margin-left: 0;
+  margin-bottom: 10px; }
+
+@media (min-width: 480px) {
+  .form .input-typeSelect-label, .form .input-timeSelect-label {
+    margin-bottom: 5px; } }
 
 .form .input-timeSelect {
   background-color: #292929;
@@ -177,6 +186,75 @@
 
 .form .input-timeSelect:last-child {
   margin-bottom: 0; }
+
+.form-anonymous {
+  display: flex;
+  flex-direction: column;
+  height: 15px;
+  margin-top: 15px;
+  transition: height 0.3s;
+  transition-delay: 0.1s; }
+
+.form-anonymous--isExtended {
+  height: 65px; }
+
+.form-anonymous--isExtended input[type=text].form-nameField {
+  opacity: 1;
+  pointer-events: auto;
+  transition-delay: 0.35s; }
+
+.form-anonymous .form-checkbox {
+  appearance: none;
+  background-color: #E3E3E3;
+  height: 12px;
+  position: relative;
+  width: 13px; }
+
+.form-anonymous .form-checkbox:checked:after {
+  opacity: 1; }
+
+.form-anonymous .form-checkbox:after {
+  border-bottom: 2px solid #292929;
+  border-right: 2px solid #292929;
+  content: '';
+  display: inline-block;
+  height: 8px;
+  left: 4px;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  transform: rotate(45deg);
+  transition: opacity 0.3s;
+  width: 3px; }
+
+.form-anonymous input[type=text] {
+  background-color: transparent;
+  border: none;
+  box-shadow: 3px 3px 8px 8px rgba(0, 0, 0, 0.04), 0 20px 40px 0 rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+  min-height: 20px;
+  max-width: 65%;
+  opacity: 0;
+  padding: 6px 10px;
+  pointer-events: none;
+  transition: opacity 0.3s; }
+
+@media (min-width: 480px) {
+  .form-anonymous input[type=text] {
+    max-width: 50%; } }
+
+.form-anonymous input[type=text]::placeholder {
+  font-family: 'Consolas', sans-serif;
+  font-weight: bold;
+  opacity: 0.65; }
+
+.form-anonymous label {
+  margin-left: 7px; }
+
+.form-checkboxWrapper {
+  align-items: center;
+  display: flex;
+  padding-left: 5px; }
 
 .form-section-radio {
   display: flex;
@@ -205,6 +283,9 @@
 
 .form-radio-itemWrapper:last-child {
   margin-bottom: 0; }
+
+.form .messageLabel {
+  margin-bottom: 15px; }
 
 .footer {
   bottom: -100px;

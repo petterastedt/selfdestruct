@@ -41,7 +41,7 @@ const Timer = ({ milliseconds, setMessageIsDestroyed, messageOption }) => {
       <div className="timer-wrapper">
         <span className="timer-message">
           { messageOption === "killOnFirstReq" ? "This message can't be opened again." : "" }
-          { messageOption === "startImmediately" && "startTimerOnFirstReq" ? "Anyone with the link can see the message." : "" }
+          { messageOption === "startImmediately" && "startTimerOnFirstReq" ? "Anyone with the link can see this message." : "" }
         </span>
         <span>
           It will self-destruct in:<strong> {countdown.min}:{countdown.sec}</strong>

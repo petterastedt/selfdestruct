@@ -5,6 +5,7 @@ import Footer from './../components/Footer/Footer'
 
 const Message = () => {
   const [message, setMessage] = useState("")
+  const [name, setName] = useState("")
   const [messageOption, setMessageOption] = useState("")
   const [isFirstRequest, setIsFirstRequest] = useState("")
   const [messageIsDestroyed, setMessageIsDestroyed] = useState(false)
@@ -25,7 +26,7 @@ const Message = () => {
           const messageJson = await message.json()
 
           if (messageJson.success) {
-            const { textContent, timeLeft, options, isFirstReq } = messageJson.item
+            const { textContent, timeLeft, options, isFirstReq, name } = messageJson.item
             let messageOptionIs
 
             if (options.startImmediately || options.startTimerOnFirstReq) {
@@ -37,6 +38,7 @@ const Message = () => {
             setIsFirstRequest(isFirstReq)
             setMessage(textContent)
             setMessageOption(messageOptionIs)
+            setName(name)
             setTimeLeft(timeLeft)
           } else {
             setError(messageJson.message)
@@ -58,6 +60,7 @@ const Message = () => {
           <MessageBox
             message={message}
             messageIsDestroyed={messageIsDestroyed}
+            name={name}
           />
         }
 

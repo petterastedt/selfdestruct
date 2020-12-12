@@ -1,10 +1,11 @@
 import React from 'react'
 import { Anchorme } from 'react-anchorme'
 
-const MessageBox = ({ message, messageIsDestroyed }) => (
+const MessageBox = ({ message, messageIsDestroyed, name }) => (
   <div className="messageBox">
-    {/* IF A NAME IS ENTERED SHOW THIS: */}
-    {/* <div className="messageBox-textRow"><strong>Anon shared a secret message with you:</strong></div> */}
+    { name &&
+      <div className="messageBox-textRow"><strong>{ name }</strong> shared a secret message with you:</div>
+    }
     <div className="messageBox-container">
       <p className={`messageBox-content ${messageIsDestroyed ? "messageBox-content--isDestroyed" : ""}`}>
         <Anchorme target="_blank" rel="noreferrer noopener" className="link-message">

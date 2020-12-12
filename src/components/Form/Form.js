@@ -8,9 +8,11 @@ const Form = () => {
   const [isSubmitting, setIsSumbitting] = useState(false)
   const [selectedType, setSelectedType] = useState("killOnFirstReq")
   const [disableCreateMessage, setDisableCreateMessage] = useState(false)
+  const [anonMessage, setAnonMessage] = useState(true)
   const [charsLeft, setCharsLeft] = useState(3000)
   const [inputData, setInputData] = useState({
     textContent: "",
+    name: "",
     aliveFor: {
       hrs: 0,
       min: 2,
@@ -45,8 +47,11 @@ const Form = () => {
         setDisableCreateMessage(true)
 
         document.querySelector(".input-textContent").innerHTML = ""
+        let anon = anonMessage ? "" : inputData.name
+
         setInputData({
           textContent: "",
+          name: anon,
           aliveFor: {
             hrs: inputData.aliveFor.hrs,
             min: inputData.aliveFor.min,
@@ -58,6 +63,8 @@ const Form = () => {
             startImmediately: inputData.options.startImmediately
           }
         })
+
+        setAnonMessage(true)
         setCharsLeft(3000)
       } else {
         setError(response.message)
@@ -76,6 +83,7 @@ const Form = () => {
 
     setInputData({
       textContent: inputData.textContent,
+      name: inputData.name,
       aliveFor: {
         hrs: inputData.aliveFor.hrs,
         min: inputData.aliveFor.min,
@@ -118,7 +126,7 @@ const Form = () => {
             }
           }}>
           <div className="form-section">
-            <label htmlFor="input-textContent">Message:</label>
+            <label htmlFor="input-textContent" className="messageLabel">Message:</label>
             <div className="form-inputWrapper">
               <div className="input-textContentWrapper">
                 <span
@@ -134,6 +142,7 @@ const Form = () => {
 
                     setInputData({
                       textContent: e.currentTarget.textContent,
+                      name: inputData.name,
                       aliveFor: {
                         hrs: inputData.aliveFor.hrs,
                         min: inputData.aliveFor.min,
@@ -152,6 +161,7 @@ const Form = () => {
                   onInput={(e) => {
                     setInputData({
                       textContent: e.currentTarget.textContent,
+                      name: inputData.name,
                       aliveFor: {
                         hrs: inputData.aliveFor.hrs,
                         min: inputData.aliveFor.min,
@@ -193,6 +203,42 @@ const Form = () => {
             </div>
           </div>
 
+          <div className={`form-anonymous ${!anonMessage ? "form-anonymous--isExtended" : ""}`}>
+            <div className="form-checkboxWrapper">
+              <input
+                className="form-checkbox"
+                type="checkbox"
+                id="anonymous"
+                name="anonymous"
+                checked={anonMessage}
+                onChange={() => setAnonMessage(!anonMessage)}
+              />
+              <label htmlFor="anonymous">Anonymous message</label>
+            </div>
+
+            <input
+              className="form-nameField"
+              type="text"
+              placeholder="Enter a name.."
+              onChange={(e) => {
+                setInputData({
+                  textContent: inputData.textContent,
+                  name: e.target.value,
+                  aliveFor: {
+                    hrs: inputData.aliveFor.hrs,
+                    min: inputData.aliveFor.min,
+                    sec: inputData.aliveFor.sec
+                  },
+                  options: {
+                    killOnFirstReq: inputData.options.killOnFirstReq,
+                    startTimerOnFirstReq: inputData.options.startTimerOnFirstReq,
+                    startImmediately: inputData.options.startImmediately
+                  }
+                })
+              }}
+            />
+          </div>
+
           <button
             className="button-styled input-button"
             onClick={(e) => {
@@ -212,6 +258,7 @@ const Form = () => {
                 onChange={(e) => {
                   setInputData({
                     textContent: inputData.textContent,
+                    name: inputData.name,
                     aliveFor: {
                       hrs: e.target.value,
                       min: inputData.aliveFor.min,
@@ -225,7 +272,7 @@ const Form = () => {
                   })
                 }}
               >
-                  <option value="placeholder" disabled selected hidden>Hours</option>
+              <option value="placeholder" disabled selected hidden>Hours</option>
                 { [...Array(4)].map((number, i) => <option key={`hours-${i}`} value={i}>{i}</option> ) }
               </select>
 
@@ -236,6 +283,7 @@ const Form = () => {
                 onChange={(e) => {
                   setInputData({
                     textContent: inputData.textContent,
+                    name: inputData.name,
                     aliveFor: {
                       hrs: inputData.aliveFor.hrs,
                       min: e.target.value,
@@ -260,6 +308,7 @@ const Form = () => {
                 onChange={(e) => {
                   setInputData({
                     textContent: inputData.textContent,
+                    name: inputData.name,
                     aliveFor: {
                       hrs: inputData.aliveFor.hrs,
                       min: inputData.aliveFor.min,
