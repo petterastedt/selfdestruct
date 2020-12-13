@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Header = ({headerMessage}) => (
+const Header = () => (
   <div className="header centerComponent">
     <h1>privtext.me</h1>
     <h4>share self-destructing messages anonymously</h4>
