@@ -1,6 +1,6 @@
 {
-  "short_name": "Privtext",
-  "name": "privtext.me",
+  "short_name": "privtext.me",
+  "name": "Privtext.me",
   "icons": [
     {
       "src": "favicon.ico",
@@ -13,7 +13,7 @@
       "sizes": "192x192"
     }
   ],
-  "start_url": "/",
+  "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
