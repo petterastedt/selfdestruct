@@ -478,11 +478,16 @@ input[type='radio']:after {
   content: '';
   display: inline-block;
   height: 8px;
-  left: 0;
+  left: 2px;
   position: relative;
-  top: 0;
+  top: 2px;
   visibility: visible;
   width: 8px; }
+
+@media (min-width: 480px) {
+  input[type='radio']:after {
+    left: 0;
+    top: 0; } }
 
 input[type='radio']:checked:after {
   background-color: #868889;
@@ -491,11 +496,16 @@ input[type='radio']:checked:after {
   content: '';
   display: inline-block;
   height: 8px;
-  left: 0;
+  left: 2px;
   position: relative;
-  top: 0;
+  top: 2px;
   visibility: visible;
   width: 8px; }
+
+@media (min-width: 480px) {
+  input[type='radio']:checked:after {
+    left: 0;
+    top: 0; } }
 
 .centerComponentVertically {
   align-items: center;
