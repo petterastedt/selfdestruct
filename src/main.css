@@ -219,7 +219,9 @@
 
 .form-anonymous .form-checkbox {
   appearance: none;
-  background-color: #E3E3E3;
+  background-color: #2F2E2E;
+  border: 1px solid #E3E3E3;
+  box-sizing: content-box;
   height: 12px;
   position: relative;
   width: 13px; }
@@ -228,8 +230,8 @@
   opacity: 1; }
 
 .form-anonymous .form-checkbox:after {
-  border-bottom: 2px solid #292929;
-  border-right: 2px solid #292929;
+  border-bottom: 2px solid #E3E3E3;
+  border-right: 2px solid #E3E3E3;
   content: '';
   display: inline-block;
   height: 8px;

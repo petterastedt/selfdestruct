@@ -173,7 +173,9 @@
 
     .form-checkbox {
       appearance: none;
-      background-color: $color-white;
+      background-color: $color-background-light;
+      border: 1px solid $color-white;
+      box-sizing: content-box;
       height: 12px;
       position: relative;
       width: 13px;
@@ -185,8 +187,8 @@
       }
 
       &:after {
-        border-bottom: 2px solid $color-background;
-        border-right: 2px solid $color-background;
+        border-bottom: 2px solid $color-white;
+        border-right: 2px solid $color-white;
         content: '';
         display: inline-block;
         height: 8px;
