@@ -332,8 +332,22 @@
 .footer-message a:hover {
   color: #E3E3E3; }
 
-.header h1 {
-  text-align: center; }
+.header-logoWrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center; }
+
+.header-logoWrapper h1 {
+  margin-top: 0;
+  padding-left: 5px; }
+
+.header-logoWrapper img {
+  object-fit: contain;
+  width: 20px; }
+
+@media (min-width: 480px) {
+  .header-logoWrapper img {
+    width: 30px; } }
 
 @font-face {
   font-family: "Consolas";
