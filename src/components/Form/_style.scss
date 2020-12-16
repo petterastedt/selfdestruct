@@ -194,12 +194,19 @@
       min-height: 20px;
       max-width: 65%;
       opacity: 0;
-      padding: 6px 10px 6px 20px;
+      padding: 10px 10px 10px 20px;
       pointer-events: none;
       transition: opacity 0.3s;
 
       @media (min-width: $breakpoint-mobile-horizontal) {
         max-width: 50%;
+      }
+
+      &:focus,
+      &:hover {
+        background-color: $color-background-light;
+        border: 0;
+        outline: 0;
       }
 
       &::placeholder {
