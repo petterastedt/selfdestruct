@@ -3,6 +3,7 @@
   width: 100%;
 
   &-container {
+    background-color: $color-background-light;
     border-radius: 8px;
     box-shadow: 3px 3px 8px 8px rgba(0, 0, 0, .04), 10px 20px 40px 0 rgba(0, 0, 0, .2);
     opacity: 1;
