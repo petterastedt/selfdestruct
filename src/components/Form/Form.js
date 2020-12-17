@@ -48,21 +48,12 @@ const Form = () => {
         setDisableCreateMessage(true)
 
         document.querySelector(".input-textContent").innerHTML = ""
-        let anon = anonMessage ? "" : inputData.name
+        const anon = anonMessage ? "" : inputData.name
 
         setInputData({
+          ...inputData,
           textContent: "",
-          name: anon,
-          aliveFor: {
-            hrs: inputData.aliveFor.hrs,
-            min: inputData.aliveFor.min,
-            sec: inputData.aliveFor.sec
-          },
-          options: {
-            killOnFirstReq: inputData.options.killOnFirstReq,
-            startTimerOnFirstReq: inputData.options.startTimerOnFirstReq,
-            startImmediately: inputData.options.startImmediately
-          }
+          name: anon
         })
 
         setAnonMessage(true)
@@ -83,19 +74,15 @@ const Form = () => {
     setSelectedType(e.target.value)
 
     setInputData({
-      textContent: inputData.textContent,
-      name: inputData.name,
-      aliveFor: {
-        hrs: inputData.aliveFor.hrs,
-        min: inputData.aliveFor.min,
-        sec: inputData.aliveFor.sec
-      },
+      ...inputData,
       options: {
         killOnFirstReq: e.target.value === "killOnFirstReq",
         startTimerOnFirstReq: e.target.value === "startTimerOnFirstReq",
         startImmediately: e.target.value === "startImmediately"
       }
     })
+
+    console.log(inputData)
   }
 
   const checkIfEmpty = () => {
@@ -141,40 +128,12 @@ const Form = () => {
                     const text = e.clipboardData.getData("text/plain")
                     document.execCommand("insertHTML", false, text)
 
-                    setInputData({
-                      textContent: e.currentTarget.textContent,
-                      name: inputData.name,
-                      aliveFor: {
-                        hrs: inputData.aliveFor.hrs,
-                        min: inputData.aliveFor.min,
-                        sec: inputData.aliveFor.sec
-                      },
-                      options: {
-                        killOnFirstReq: inputData.options.killOnFirstReq,
-                        startTimerOnFirstReq: inputData.options.startTimerOnFirstReq,
-                        startImmediately: inputData.options.startImmediately
-                      }
-                    })
-
+                    setInputData({...inputData, textContent: e.currentTarget.textContent})
                     setError("")
                     setCharsLeft(3000 - e.currentTarget.textContent.length)
                   }}
                   onInput={(e) => {
-                    setInputData({
-                      textContent: e.currentTarget.textContent,
-                      name: inputData.name,
-                      aliveFor: {
-                        hrs: inputData.aliveFor.hrs,
-                        min: inputData.aliveFor.min,
-                        sec: inputData.aliveFor.sec
-                      },
-                      options: {
-                        killOnFirstReq: inputData.options.killOnFirstReq,
-                        startTimerOnFirstReq: inputData.options.startTimerOnFirstReq,
-                        startImmediately: inputData.options.startImmediately
-                      }
-                    })
-
+                    setInputData({...inputData, textContent: e.currentTarget.textContent})
                     setError("")
                     setCharsLeft(3000 - e.currentTarget.textContent.length)
                   }}
@@ -186,7 +145,8 @@ const Form = () => {
                 <i> The message will self-destruct after:
                   <span>&nbsp;</span>
                   <strong>
-                    { inputData.aliveFor.hrs ? `${inputData.aliveFor.hrs} hours` : "" }
+                    { inputData.aliveFor.hrs ? `${inputData.aliveFor.hrs} hours()` : "" }
+                    { inputData.aliveFor.hrs && inputData.aliveFor.min ? ", " : "" }
                     { inputData.aliveFor.min ? `${inputData.aliveFor.min} minute(s)` : "" }
                     { inputData.aliveFor.min && inputData.aliveFor.sec ? ", " : "" }
                     { inputData.aliveFor.sec ? `${inputData.aliveFor.sec} second(s)` : "" }
@@ -221,22 +181,7 @@ const Form = () => {
               className="form-nameField"
               type="text"
               placeholder="Enter a name.."
-              onChange={(e) => {
-                setInputData({
-                  textContent: inputData.textContent,
-                  name: e.target.value,
-                  aliveFor: {
-                    hrs: inputData.aliveFor.hrs,
-                    min: inputData.aliveFor.min,
-                    sec: inputData.aliveFor.sec
-                  },
-                  options: {
-                    killOnFirstReq: inputData.options.killOnFirstReq,
-                    startTimerOnFirstReq: inputData.options.startTimerOnFirstReq,
-                    startImmediately: inputData.options.startImmediately
-                  }
-                })
-              }}
+              onChange={(e) => setInputData({...inputData, name: e.target.value})}
             />
           </div>
 
@@ -255,26 +200,19 @@ const Form = () => {
                 name="input-timeSelect-hrs"
                 id="input-timeSelect"
                 className="input-timeSelect hours"
-                disabled={true}
                 onChange={(e) => {
                   setInputData({
-                    textContent: inputData.textContent,
-                    name: inputData.name,
+                    ...inputData,
                     aliveFor: {
                       hrs: e.target.value,
                       min: inputData.aliveFor.min,
                       sec: inputData.aliveFor.sec
-                    },
-                    options: {
-                      killOnFirstReq: inputData.options.killOnFirstReq,
-                      startTimerOnFirstReq: inputData.options.startTimerOnFirstReq,
-                      startImmediately: inputData.options.startImmediately
                     }
                   })
                 }}
               >
-              <option value="placeholder" disabled selected hidden>Hours</option>
-                { [...Array(4)].map((number, i) => <option key={`hours-${i}`} value={i}>{i}</option> ) }
+              <option value="placeholder" selected hidden>Hours</option>
+                { [...Array(25)].map((number, i) => <option key={`hours-${i}`} value={i}>{i}</option> ) }
               </select>
 
               <select
@@ -283,17 +221,11 @@ const Form = () => {
                 className="input-timeSelect"
                 onChange={(e) => {
                   setInputData({
-                    textContent: inputData.textContent,
-                    name: inputData.name,
+                    ...inputData,
                     aliveFor: {
                       hrs: inputData.aliveFor.hrs,
                       min: e.target.value,
                       sec: inputData.aliveFor.sec
-                    },
-                    options: {
-                      killOnFirstReq: inputData.options.killOnFirstReq,
-                      startTimerOnFirstReq: inputData.options.startTimerOnFirstReq,
-                      startImmediately: inputData.options.startImmediately
                     }
                   })
                 }}
@@ -308,17 +240,11 @@ const Form = () => {
                 className="input-timeSelect"
                 onChange={(e) => {
                   setInputData({
-                    textContent: inputData.textContent,
-                    name: inputData.name,
+                    ...inputData,
                     aliveFor: {
                       hrs: inputData.aliveFor.hrs,
                       min: inputData.aliveFor.min,
                       sec: e.target.value
-                    },
-                    options: {
-                      killOnFirstReq: inputData.options.killOnFirstReq,
-                      startTimerOnFirstReq: inputData.options.startTimerOnFirstReq,
-                      startImmediately: inputData.options.startImmediately
                     }
                   })
                 }}
@@ -382,7 +308,6 @@ const Form = () => {
             Create message
             </button>
           </div>
-
         </form>
 
         <div className="form-feedback">
