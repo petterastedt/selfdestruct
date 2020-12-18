@@ -260,7 +260,8 @@ const Form = () => {
               <div className="form-radio-wrapper">
                 <div className="form-radio-itemWrapper">
                   <input
-                    type="radio" className="form-radio"
+                    type="radio" 
+                    className="form-radio"
                     id="form-radio-secret"
                     name="secret message"
                     value="killOnFirstReq"
@@ -286,8 +287,8 @@ const Form = () => {
                 <div className="form-radio-itemWrapper">
                   <input
                     type="radio"
-                    className="form-radio-countdown"
-                    id="form-radio"
+                    className="form-radio"
+                    id="form-radio-countdown"
                     name="Start timer immediately"
                     value="startImmediately"
                     checked={selectedType === "startImmediately"}
