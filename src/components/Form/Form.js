@@ -100,7 +100,7 @@ const Form = () => {
       <div className="form-container">
 
         <form
-          aria-label="Create message form"
+          aria-label="Create message"
           onSubmit={(e) => {
             e.preventDefault()
             const isEmpty = checkIfEmpty()
@@ -261,39 +261,39 @@ const Form = () => {
                 <div className="form-radio-itemWrapper">
                   <input
                     type="radio" className="form-radio"
-                    id="form-radio"
+                    id="c"
                     name="secret message"
                     value="killOnFirstReq"
                     checked={selectedType === "killOnFirstReq"}
                     onChange={(e) => onTypeChange(e)}
                   />
-                  <label htmlFor="secret message">Secret Message (can be opened once, and only once)</label>
+                  <label htmlFor="form-radio-triggered">Secret Message (can be opened once, and only once)</label>
                 </div>
 
                 <div className="form-radio-itemWrapper">
                   <input
                     type="radio"
                     className="form-radio"
-                    id="form-radio"
+                    id="form-radio-triggered"
                     name="Triggered Message"
                     value="startTimerOnFirstReq"
                     checked={selectedType === "startTimerOnFirstReq"}
                     onChange={(e) => onTypeChange(e)}
                   />
-                  <label htmlFor="Triggered Message">Triggered Message (visible to anyone with the unique url, timer starts when the first person opens the message)</label>
+                  <label htmlFor="form-radio-triggered">Triggered Message (visible to anyone with the unique url, timer starts when the first person opens the message)</label>
                 </div>
 
                 <div className="form-radio-itemWrapper">
                   <input
                     type="radio"
-                    className="form-radio"
+                    className="form-radio-countdown"
                     id="form-radio"
                     name="Start timer immediately"
                     value="startImmediately"
                     checked={selectedType === "startImmediately"}
                     onChange={(e) => onTypeChange(e)}
                   />
-                  <label htmlFor="Start timer immediately">Countdown Message (visible to anyone with the unique url, timer starts immediately)</label>
+                  <label htmlFor="form-radio-countdown">Countdown Message (visible to anyone with the unique url, timer starts immediately)</label>
                 </div>
               </div>
             </div>
