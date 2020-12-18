@@ -261,13 +261,13 @@ const Form = () => {
                 <div className="form-radio-itemWrapper">
                   <input
                     type="radio" className="form-radio"
-                    id="c"
+                    id="form-radio-secret"
                     name="secret message"
                     value="killOnFirstReq"
                     checked={selectedType === "killOnFirstReq"}
                     onChange={(e) => onTypeChange(e)}
                   />
-                  <label htmlFor="form-radio-triggered">Secret Message (can be opened once, and only once)</label>
+                  <label htmlFor="form-radio-secret">Secret Message (can be opened once, and only once)</label>
                 </div>
 
                 <div className="form-radio-itemWrapper">
