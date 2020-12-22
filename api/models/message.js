@@ -1,10 +1,12 @@
 const mongoose = require('mongoose')
+const encrypt = require('mongoose-encryption')
+const dotenv = require('dotenv')
+dotenv.config()
 
 const schema = new mongoose.Schema({
   isActive: Boolean,
   isFirstReq: Boolean,
   name: String,
-  // password: String,
   secret: String,
   textContent: String,
   url: String,
@@ -12,9 +14,7 @@ const schema = new mongoose.Schema({
   options: {
     killOnFirstReq: Boolean,
     startTimerOnFirstReq: Boolean,
-    startImmediately: Boolean,
-    // public: Boolean,
-    // passwordProtected: Boolean
+    startImmediately: Boolean
   },
   timeOptions : {
     createAt: String,
@@ -23,11 +23,7 @@ const schema = new mongoose.Schema({
   }
 }, { timestamps: true })
 
-// UserSchema.methods.generateHash = (password: string) => bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
-
-// UserSchema.methods.validPassword = function(password: string) {
-//   return bcrypt.compareSync(password, this.password)
-// }
+schema.plugin(encrypt, { encryptionKey: process.env.ENC_KEY, signingKey: process.env.SIGN_KEY, encryptedFields: ['textContent'] })
 
 const message = new mongoose.model('Message', schema)
 

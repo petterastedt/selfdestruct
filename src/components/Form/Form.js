@@ -31,7 +31,7 @@ const Form = () => {
 
     try {
       setIsSumbitting(true)
-      const postMessage = await fetch(`/api/post`, {
+      const postMessage = await fetch(`http://localhost:5000/api/post`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -123,6 +123,7 @@ const Form = () => {
                   type="text"
                   role="textbox"
                   id="input-textContent"
+                  aria-label="Create message textbox"
                   onPaste={(e) => {
                     e.preventDefault()
                     const text = e.clipboardData.getData("text/plain")
@@ -198,7 +199,7 @@ const Form = () => {
               <label htmlFor="input-timeSelect" className="input-timeSelect-label">Self-destruct after:</label>
               <select
                 name="input-timeSelect-hrs"
-                id="input-timeSelect"
+                id="input-timeSelect-hrs"
                 className="input-timeSelect hours"
                 onChange={(e) => {
                   setInputData({
@@ -217,7 +218,7 @@ const Form = () => {
 
               <select
                 name="input-timeSelect-min"
-                id="input-timeSelect"
+                id="input-timeSelect-min"
                 className="input-timeSelect"
                 onChange={(e) => {
                   setInputData({
@@ -236,7 +237,7 @@ const Form = () => {
 
               <select
                 name="input-timeSelect-sec"
-                id="input-timeSelect"
+                id="input-timeSelect-sec"
                 className="input-timeSelect"
                 onChange={(e) => {
                   setInputData({

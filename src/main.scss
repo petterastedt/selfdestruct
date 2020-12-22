@@ -288,7 +288,12 @@ input[type='radio']:checked:after {
     min-height: calc(100vh - 120px);
   }
 
-  @media (min-width: $breakpoint-desktop + 100) {
+  @media (min-width: $breakpoint-desktop) {
+    margin: 0px auto;
+    min-height: 100vh;
+  }
+
+  @media (min-width: $breakpoint-desktop-wide) {
     margin: 100px auto;
     min-height: calc(100vh - 200px);
   }

@@ -19,7 +19,7 @@ const Message = () => {
         const messageSecret = pathName.substring(pathName.lastIndexOf('/') + 1)
 
         if (messageSecret.length > 16) {
-          const message = await fetch(`/api/message/?secret=${messageSecret}`, {
+          const message = await fetch(`http://localhost:5000/api/message/?secret=${messageSecret}`, {
             method: 'POST'
           })
 
