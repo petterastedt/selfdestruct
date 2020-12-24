@@ -413,12 +413,12 @@
 
 @font-face {
   font-family: "Consolas";
-  src: url("./assets/font/consolas-400.woff2") format("woff2");
+  src: local(Consolas), url("./assets/font/consolas-400.woff2") format("woff2");
   font-display: swap; }
 
 @font-face {
   font-family: "Consolas";
-  src: url("./assets/font/consolas-700.woff2") format("woff2");
+  src: local(Consolas-Bold), url("./assets/font/consolas-700.woff2") format("woff2");
   font-weight: bold;
   font-display: swap; }
 
