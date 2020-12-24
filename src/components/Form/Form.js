@@ -165,7 +165,7 @@ const Form = () => {
             </div>
           </div>
 
-          <div className={`form-anonymous ${!anonMessage ? "form-anonymous--isExtended" : ""}`}>
+          <div className={`form-anonymous ${!anonMessage ? "form-anonymous--isExtended" : ""}`} aria-hidden={anonMessage ? true : false}>
             <div className="form-checkboxWrapper">
               <input
                 className="form-checkbox"
@@ -194,7 +194,7 @@ const Form = () => {
             } }
           >Edit message options</button>
 
-          <div className={`form-options ${optionsAreHidden ? "form-options--isHidden" : ""}`}>
+          <div className={`form-options ${optionsAreHidden ? "form-options--isHidden" : ""}`} aria-hidden={optionsAreHidden ? true : false}>
             <div className="form-section">
               <label htmlFor="input-timeSelect" className="input-timeSelect-label">Self-destruct after:</label>
               <select
