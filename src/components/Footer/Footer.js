@@ -1,11 +1,11 @@
 import React from 'react'
 
 const Footer = ({footerMessage}) => (
-  <div className="footer centerComponent">
+  <footer className="footer centerComponent">
     <div className="footer-message">
       { footerMessage }
     </div>
-  </div>
+  </footer>
 )
 
 export default Footer
