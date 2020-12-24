@@ -64,7 +64,7 @@ const Form = () => {
       }
       setIsSumbitting(false)
     } catch (error) {
-      setError("Something went wrong when sending your message")
+      setError("Something went wrong when creating your message")
       setUrl("")
       setIsSumbitting(false)
     }
@@ -81,8 +81,6 @@ const Form = () => {
         startImmediately: e.target.value === "startImmediately"
       }
     })
-
-    console.log(inputData)
   }
 
   const checkIfEmpty = () => {

@@ -2,7 +2,7 @@ import React from 'react'
 import logo from './../../assets/img/logo.png'
 
 const Header = () => (
-  <div className="header centerComponent">
+  <header className="header centerComponent">
     <a href="/" aria-label="Back to homepage" alt="Back to homepage" title="Back to homepage">
       <div className="header-logoWrapper">
         <img
@@ -16,7 +16,7 @@ const Header = () => (
       </div>
       <h4 className="header-subtitle">share self-destructing messages anonymously</h4>
     </a>
-  </div>
+  </header>
 )
 
 export default Header
