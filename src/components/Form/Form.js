@@ -156,9 +156,9 @@ const Form = () => {
                 <i> Message type:
                   <span>&nbsp;</span>
                   <strong>
-                    { inputData.options.killOnFirstReq ? "Secret Message" : "" }
-                    { inputData.options.startTimerOnFirstReq ? "Triggered Message" : "" }
-                    { inputData.options.startImmediately ? "Countdown Message" : "" }
+                    { inputData.options.killOnFirstReq ? "Private Message" : "" }
+                    { inputData.options.startTimerOnFirstReq ? "Triggered Public Message" : "" }
+                    { inputData.options.startImmediately ? "Public Message" : "" }
                   </strong>
                 </i>
               </p>
@@ -269,7 +269,20 @@ const Form = () => {
                     checked={selectedType === "killOnFirstReq"}
                     onChange={(e) => onTypeChange(e)}
                   />
-                  <label htmlFor="form-radio-secret">Secret Message (can be opened once, and only once)</label>
+                  <label htmlFor="form-radio-secret">Private Message (can be opened once, and only once)</label>
+                </div>
+
+                <div className="form-radio-itemWrapper">
+                  <input
+                    type="radio"
+                    className="form-radio"
+                    id="form-radio-countdown"
+                    name="Public message"
+                    value="startImmediately"
+                    checked={selectedType === "startImmediately"}
+                    onChange={(e) => onTypeChange(e)}
+                  />
+                  <label htmlFor="form-radio-countdown">Public Message (visible to anyone with the unique url, timer starts immediately)</label>
                 </div>
 
                 <div className="form-radio-itemWrapper">
@@ -282,21 +295,9 @@ const Form = () => {
                     checked={selectedType === "startTimerOnFirstReq"}
                     onChange={(e) => onTypeChange(e)}
                   />
-                  <label htmlFor="form-radio-triggered">Triggered Message (visible to anyone with the unique url, timer starts when the first person opens the message)</label>
+                  <label htmlFor="form-radio-triggered">Triggered Public Message (visible to anyone with the unique url, timer starts when the first person opens the message)</label>
                 </div>
 
-                <div className="form-radio-itemWrapper">
-                  <input
-                    type="radio"
-                    className="form-radio"
-                    id="form-radio-countdown"
-                    name="Start timer immediately"
-                    value="startImmediately"
-                    checked={selectedType === "startImmediately"}
-                    onChange={(e) => onTypeChange(e)}
-                  />
-                  <label htmlFor="form-radio-countdown">Countdown Message (visible to anyone with the unique url, timer starts immediately)</label>
-                </div>
               </div>
             </div>
           </div>

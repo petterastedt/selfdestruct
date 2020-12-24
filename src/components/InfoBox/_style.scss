@@ -1,0 +1,63 @@
+.infoBox {
+  max-width: $content-max-width;
+  width: 100%;
+
+  &-container {
+    background-color: $color-background-light;
+    border-radius: 8px;
+    box-shadow: 3px 3px 8px 8px rgba(0, 0, 0, .04), 10px 20px 40px 0 rgba(0, 0, 0, .2);
+    font-size: $font-size-s;
+    max-width: 100%;
+    padding: 15px;
+    position: relative;
+
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      padding: 20px 25px;
+    }
+
+    h3 {
+      font-size: $font-size-base;
+      margin-bottom: 5px;
+    }
+
+    ul {
+      padding-left: 15px;
+
+      li {
+        margin-bottom: 15px;
+      }
+    }
+
+    a {
+      color: $color-accent;
+      font-weight: 800;
+      transition: color 0.3s;
+
+      &:hover {
+        color: $color-white;
+      }
+    }
+  }
+
+  &-about,
+  &-security {
+    margin-bottom: 15px;
+  }
+
+  &-textRow {
+    font-size: 12px;
+    font-style: italic;
+    margin-bottom: 15px;
+    padding-left: 10px;
+
+    a {
+      padding-right: 10px;
+    }
+  }
+
+  &-content {
+    font-size: $font-size-s;
+    font-weight: bold;
+    word-wrap: break-word;
+  }
+}

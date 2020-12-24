@@ -2,6 +2,10 @@
   bottom: -100px;
   position: absolute;
 
+  @media (min-width: $breakpoint-desktop-wide) {
+    bottom: -80px;
+  }
+
   &-message {
     font-size: $font-size-s;
     margin: 20px 0;
@@ -24,9 +28,5 @@
         color: $color-white;
       }
     }
-  }
-
-  &-explaination {
-    font-weight: 800;
   }
 }

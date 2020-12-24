@@ -74,7 +74,7 @@ const Message = () => {
         { error && <h2>{ error } </h2> }
         <br />
         <Footer
-          footerMessage={!error ? ["This message was brought to you by ", <a href="/" className="link-styled">privtext.me</a>] : ["Back to ", <a href="/" className="link-styled">privtext.me</a>]}
+          footerMessage={!error ? ["This message was brought to you by ", <a href="/" className="link-styled">privtext.me</a>] : ["Back to ", <a href="/" aria-label="Back to homepage" alt="Back to homepage" className="link-styled">privtext.me</a>]}
         />
       </div>
     </div>
