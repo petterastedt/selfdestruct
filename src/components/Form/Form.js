@@ -31,7 +31,7 @@ const Form = () => {
 
     try {
       setIsSumbitting(true)
-      const postMessage = await fetch(`http://localhost:5000/api/post`, {
+      const postMessage = await fetch(`/api/post`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
