@@ -7,7 +7,7 @@ const Message = () => {
   const [message, setMessage] = useState("")
   const [name, setName] = useState("")
   const [messageOption, setMessageOption] = useState("")
-  const [isFirstRequest, setIsFirstRequest] = useState("")
+  // const [isFirstRequest, setIsFirstRequest] = useState("")
   const [messageIsDestroyed, setMessageIsDestroyed] = useState(false)
   const [timeLeft, setTimeLeft] = useState("")
   const [error, setError] = useState("")
@@ -19,14 +19,14 @@ const Message = () => {
         const messageSecret = pathName.substring(pathName.lastIndexOf('/') + 1)
 
         if (messageSecret.length > 16) {
-          const message = await fetch(`/api/message/?secret=${messageSecret}`, {
+          const message = await fetch(`http://localhost:5000/api/message/?secret=${messageSecret}`, {
             method: 'POST'
           })
 
           const messageJson = await message.json()
 
           if (messageJson.success) {
-            const { textContent, timeLeft, options, isFirstReq, name } = messageJson.item
+            const { textContent, timeLeft, options, name } = messageJson.item
             let messageOptionIs
 
             if (options.startImmediately || options.startTimerOnFirstReq) {
@@ -35,7 +35,6 @@ const Message = () => {
               messageOptionIs = "killOnFirstReq"
             }
 
-            setIsFirstRequest(isFirstReq)
             setMessage(textContent)
             setMessageOption(messageOptionIs)
             setName(name)

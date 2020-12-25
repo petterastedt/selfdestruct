@@ -9,6 +9,8 @@ const Timer = ({ milliseconds, setMessageIsDestroyed, messageOption }) => {
     sec: '00'
   })
 
+  useEffect(() => setTime(new Date()), [])
+
   useEffect(() => {
     if (secondsRemainingGlobal < 1 || secondsRemainingGlobalNegative > 1) {
       setMessageIsDestroyed(true)
@@ -40,8 +42,7 @@ const Timer = ({ milliseconds, setMessageIsDestroyed, messageOption }) => {
     <div className="timer">
       <div className="timer-wrapper">
         <span className="timer-message">
-          { messageOption === "killOnFirstReq" ? "This message can't be opened again." : "" }
-          { messageOption === "startImmediately" && "startTimerOnFirstReq" ? "Anyone with the link can see this message." : "" }
+          { messageOption === "killOnFirstReq" ? "This message can't be opened again." : "Anyone with the link can see this message." }
         </span>
         <span>
           It will self-destruct in:<strong> {countdown.min}:{countdown.sec}</strong>
