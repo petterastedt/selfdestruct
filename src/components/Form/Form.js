@@ -26,6 +26,8 @@ const Form = () => {
     }
   })
 
+  console.log(process.env.NODE_ENV)
+
   const handleOnSubmit = async e => {
     e.preventDefault()
 
