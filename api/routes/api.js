@@ -102,7 +102,7 @@ router.post("/message", exceptionHandler(async (req, res) => {
       const { options, timeOptions, isFirstReq } = item[0]
 
       // START IMMEDIATELY OR START ON FIRST REQUEST, NOT FIRST REQUEST
-      if (options.startImmediately || options.startTimerOnFirstReq && !isFirstReq) {
+      if (options.startImmediately || (options.startTimerOnFirstReq && !isFirstReq)) {
         const timeLeft = helpers.getTimeLeft(item[0].timeOptions.destroyAt)
         item[0].timeLeft = timeLeft
 
