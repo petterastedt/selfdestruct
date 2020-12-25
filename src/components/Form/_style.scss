@@ -69,7 +69,8 @@
         word-break: break-word;
 
         @media (min-width: $breakpoint-mobile-horizontal) {
-          padding-top: 0;
+          padding-left: 22px;
+          padding-top: 5px;
         }
       }
     }

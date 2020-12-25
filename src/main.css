@@ -140,7 +140,8 @@
 
 @media (min-width: 480px) {
   .form-feedback-success-bottom {
-    padding-top: 0; } }
+    padding-left: 22px;
+    padding-top: 5px; } }
 
 .form-feedback svg {
   height: 15px;
