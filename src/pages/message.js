@@ -19,7 +19,8 @@ const Message = () => {
         const messageSecret = pathName.substring(pathName.lastIndexOf('/') + 1)
 
         if (messageSecret.length > 16) {
-          const message = await fetch(`/api/message/?secret=${messageSecret}`, {
+          const url = process.env.NODE_ENV === 'production' ? '/api/message' : 'http://localhost:5000/api/message'
+          const message = await fetch(`${url}/?secret=${messageSecret}`, {
             method: 'POST'
           })
 

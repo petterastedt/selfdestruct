@@ -26,14 +26,13 @@ const Form = () => {
     }
   })
 
-  console.log(process.env.NODE_ENV)
-
   const handleOnSubmit = async e => {
     e.preventDefault()
 
     try {
       setIsSumbitting(true)
-      const postMessage = await fetch(`/api/post`, {
+      const url = process.env.NODE_ENV === 'production' ? '/api/post' : 'http://localhost:5000/api/post'
+      const postMessage = await fetch(url, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
