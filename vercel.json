@@ -9,8 +9,8 @@
     { "src": "/api/.*", "dest": "/api/server.js" },
     { "src": "^/static/(.*)", "dest": "/static/$1"},
     { "src": "/(.+json)", "dest": "/$1", "headers": { "Content-Type": "application/json" }},
+    { "src": "/(.+png)", "dest": "/$1", "headers": { "Content-Type": "image/png" }},
+    { "src": "/(.+ico)", "dest": "/$1", "headers": { "Content-Type": "image/x-icon" }},
     { "src": "/.*", "dest": "/index.html" }
   ]
 }
-
-
