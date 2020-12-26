@@ -8,7 +8,7 @@ const About = () => (
     <div className="pageWrapper centerComponent centerComponentVertically">
       <Header />
       <InfoBox />
-      <Footer footerMessage={["Back to ", <a href="/" aria-label="Back to homepage" alt="Back to homepage" className="link-styled">privtext.me</a>]} />
+      <Footer footerMessage={["Back to ", <span>&nbsp;</span>, <a href="/" aria-label="Back to homepage" alt="Back to homepage" className="link-styled">privtext.me</a>]} />
     </div>
   </div>
 )
