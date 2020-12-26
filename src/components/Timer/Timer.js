@@ -14,6 +14,10 @@ const Timer = ({ milliseconds, setMessageIsDestroyed, messageOption }) => {
   useEffect(() => {
     if (secondsRemainingGlobal < 1 || secondsRemainingGlobalNegative > 1) {
       setMessageIsDestroyed(true)
+      setCountdown({
+        sec: '00',
+        min: '00'
+      })
     } else {
       const timeout = setTimeout(() => {
         const elapsedTime = (Date.now() - time) - milliseconds
@@ -22,8 +26,8 @@ const Timer = ({ milliseconds, setMessageIsDestroyed, messageOption }) => {
 
         let minutes = Math.floor(secondsRemaining / 60)
         let seconds = secondsRemaining - minutes * 60
-        minutes = minutes < 10 ? "0" + minutes : minutes
-        seconds = seconds < 10 ? "0" + seconds : seconds
+        minutes = minutes < 10 ? '0' + minutes : minutes
+        seconds = seconds < 10 ? '0' + seconds : seconds
 
         setSecondsRemainingGlobal(secondsRemaining)
         setSecondsRemainingGlobalNegative(secondsRemainingNegative)

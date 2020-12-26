@@ -28,16 +28,14 @@ const Message = () => {
 
           if (messageJson.success) {
             const { textContent, timeLeft, options, name } = messageJson.item
-            let messageOptionIs
 
             if (options.startImmediately || options.startTimerOnFirstReq) {
-              messageOptionIs = "startImmediately"
+              setMessageOption('startImmediately')
             } else if (options.killOnFirstReq) {
-              messageOptionIs = "killOnFirstReq"
+              setMessageOption('killOnFirstReq')
             }
 
             setMessage(textContent)
-            setMessageOption(messageOptionIs)
             setName(name)
             setTimeLeft(timeLeft)
           } else {
@@ -63,7 +61,6 @@ const Message = () => {
             name={name}
           />
         }
-
         { timeLeft &&
           <Timer
             messageOption={messageOption}
@@ -71,10 +68,10 @@ const Message = () => {
             setMessageIsDestroyed={setMessageIsDestroyed}
           />
         }
-        { error && <h2>{ error } </h2> }
+        { error && <h2>{ error }</h2> }
         <br />
         <Footer
-          footerMessage={!error ? ["This message was brought to you by ", <a href="/" className="link-styled">privtext.me</a>] : ["Back to ", <a href="/" aria-label="Back to homepage" alt="Back to homepage" className="link-styled">privtext.me</a>]}
+          footerMessage={!error ? ["This message was brought to you by", <span>&nbsp;</span>, <a href="/" className="link-styled">privtext.me</a>] : ["Back to ", <span>&nbsp;</span>, <a href="/" aria-label="Back to homepage" alt="Back to homepage" className="link-styled">privtext.me</a>]}
         />
       </div>
     </div>

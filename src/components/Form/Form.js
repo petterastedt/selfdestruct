@@ -9,7 +9,7 @@ const Form = () => {
   const [isSubmitting, setIsSumbitting] = useState(false)
   const [selectedType, setSelectedType] = useState("killOnFirstReq")
   const [disableCreateMessage, setDisableCreateMessage] = useState(false)
-  const [anonMessage, setAnonMessage] = useState(true)
+  const [isAnonMessage, setIsAnonMessage] = useState(true)
   const [charsLeft, setCharsLeft] = useState(3000)
   const [inputData, setInputData] = useState({
     textContent: "",
@@ -47,18 +47,7 @@ const Form = () => {
         setUrl(response.item.url)
         setError("")
         setDisableCreateMessage(true)
-
-        document.querySelector(".input-textContent").innerHTML = ""
-        const anon = anonMessage ? "" : inputData.name
-
-        setInputData({
-          ...inputData,
-          textContent: "",
-          name: anon
-        })
-
-        setAnonMessage(true)
-        setCharsLeft(3000)
+        resetForm()
       } else {
         setError(response.message)
         setUrl("")
@@ -84,13 +73,34 @@ const Form = () => {
     })
   }
 
-  const checkIfEmpty = () => {
-    if (inputData.textContent.length !== 0) {
-      setError("")
-      return false
-    } else {
+  const resetForm = () => {
+    document.querySelector(".input-textContent").innerHTML = ""
+
+    setInputData({
+      ...inputData,
+      textContent: "",
+    })
+
+    setIsAnonMessage(true)
+    setCharsLeft(3000)
+  }
+
+  const isEmpty = () => {
+    if (charsLeft === 3000) {
       setError("Text field can't be empty!")
       return true
+    } else {
+      setError("")
+      return false
+    }
+  }
+
+  const isTooLong = () => {
+    if (charsLeft < 0) {
+      setError("Your message is too long!")
+      return true
+    } else {
+      return false
     }
   }
 
@@ -102,13 +112,8 @@ const Form = () => {
           aria-label="Create message"
           onSubmit={(e) => {
             e.preventDefault()
-            const isEmpty = checkIfEmpty()
 
-            if (charsLeft < 0) {
-              setError("Your message is too long!")
-            }
-
-            if (!isEmpty && charsLeft >= 0) {
+            if (!isEmpty() && !isTooLong()) {
               handleOnSubmit(e)
             }
           }}>
@@ -164,19 +169,18 @@ const Form = () => {
             </div>
           </div>
 
-          <div className={`form-anonymous ${!anonMessage ? "form-anonymous--isExtended" : ""}`} aria-hidden={anonMessage ? true : false}>
+          <div className={`form-anonymous ${!isAnonMessage ? "form-anonymous--isExtended" : ""}`} aria-hidden={isAnonMessage ? true : false}>
             <div className="form-checkboxWrapper">
               <input
                 className="form-checkbox"
                 type="checkbox"
                 id="anonymous"
                 name="anonymous"
-                checked={anonMessage}
-                onChange={() => setAnonMessage(!anonMessage)}
+                checked={isAnonMessage}
+                onChange={() => setIsAnonMessage(!isAnonMessage)}
               />
               <label htmlFor="anonymous">Anonymous message</label>
             </div>
-
             <input
               className="form-nameField"
               type="text"
@@ -296,7 +300,6 @@ const Form = () => {
                   />
                   <label htmlFor="form-radio-triggered">Triggered Public Message (visible to anyone with the unique url, timer starts when the first person opens the message)</label>
                 </div>
-
               </div>
             </div>
           </div>
