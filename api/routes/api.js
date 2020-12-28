@@ -45,6 +45,7 @@ const responseHandler = (res, error, item, errorMsg, successMsg, notFound) => {
 
 // DELETE EXPIRED AND INACTIVE MESSAGES
 const cleanupExpired = async () => {
+  console.log('server date time', new Date())
   Message.deleteMany({
     "timeOptions.destroyAt": {$lte: new Date()}
   }, {new: true}, (error, items) => {
@@ -87,7 +88,6 @@ const deleteItem = async secret => {
 // CLEANUP ROUTE
 router.get(`/${process.env.CLEANUP_URL}`, exceptionHandler(async (req, res) => {
   cleanupExpired()
-
   res.sendStatus(200)
 }))
 
