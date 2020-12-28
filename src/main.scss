@@ -64,10 +64,14 @@ h3, .h3 {
 }
 
 h4, .h4 {
-  font-size: $font-size-base;
+  font-size: 13px;
   font-weight: 400;
   margin: 0 0 50px 0;
   text-align: center;
+
+  @media (min-width: $breakpoint-mobile-horizontal) {
+    font-size: $font-size-base;
+  }
 }
 
 h5, .h5 {

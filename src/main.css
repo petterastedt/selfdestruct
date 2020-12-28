@@ -205,7 +205,7 @@
   transition-delay: 0.1s; }
 
 .form-anonymous--isExtended {
-  height: 65px; }
+  height: 75px; }
 
 .form-anonymous--isExtended input[type=text].form-nameField {
   opacity: 1;
@@ -344,6 +344,9 @@
 .footer-message a:hover {
   color: #E3E3E3; }
 
+.header.centerComponent {
+  padding: 0; }
+
 .header-logoWrapper {
   align-items: center;
   display: flex;
@@ -456,10 +459,14 @@ h3, .h3 {
   margin: 0; }
 
 h4, .h4 {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 400;
   margin: 0 0 50px 0;
   text-align: center; }
+
+@media (min-width: 480px) {
+  h4, .h4 {
+    font-size: 14px; } }
 
 h5, .h5 {
   font-size: 12px;

@@ -1,4 +1,8 @@
 .header {
+  &.centerComponent {
+    padding: 0;
+  }
+
   &-logoWrapper {
     align-items: center;
     display: flex;

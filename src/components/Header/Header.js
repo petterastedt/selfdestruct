@@ -14,7 +14,7 @@ const Header = () => (
         />
         <h1>privtext.me</h1>
       </div>
-      <h4 className="header-subtitle">share self-destructing messages anonymously</h4>
+      <h2 className="header-subtitle h4">share self-destructing messages anonymously</h2>
     </a>
   </header>
 )
