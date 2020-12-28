@@ -11,19 +11,11 @@ const schema = new mongoose.Schema({
   textContent: String,
   url: String,
   timeLeft: Number,
-  options: {
-    killOnFirstReq: Boolean,
-    startTimerOnFirstReq: Boolean,
-    startImmediately: Boolean
-  },
-  timeOptions : {
-    createAt: String,
-    destroyAt: Object,
-    aliveFor: Number,
-  }
+  options: Object,
+  timeOptions : Object
 }, { timestamps: true })
 
-schema.plugin(encrypt, { encryptionKey: process.env.ENC_KEY, signingKey: process.env.SIGN_KEY, encryptedFields: ['textContent'] })
+schema.plugin(encrypt, { encryptionKey: process.env.ENC_KEY, signingKey: process.env.SIGN_KEY, excludeFromEncryption: ['secret', 'timeOptions'] })
 
 const message = new mongoose.model('Message', schema)
 
