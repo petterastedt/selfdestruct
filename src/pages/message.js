@@ -4,13 +4,10 @@ import MessageBox from './../components/MessageBox/MessageBox'
 import Footer from './../components/Footer/Footer'
 
 const Message = () => {
-  const [message, setMessage] = useState("")
-  const [name, setName] = useState("")
-  const [isPrivateMessage, setIsPrivateMessage] = useState(false)
   // const [isFirstRequest, setIsFirstRequest] = useState("")
   const [messageIsDestroyed, setMessageIsDestroyed] = useState(false)
-  const [timeLeft, setTimeLeft] = useState("")
   const [error, setError] = useState("")
+  const [messageData, setMessageData] = useState({})
 
   useEffect(() => {
     (async () => {
@@ -29,13 +26,14 @@ const Message = () => {
           if (messageJson.success) {
             const { textContent, timeLeft, options, name } = messageJson.item
 
-            if (options.killOnFirstReq) {
-              setIsPrivateMessage(true)
+            const data = {
+              name,
+              message: textContent,
+              timeLeft,
+              isPrivateMessage: options.killOnFirstReq
             }
 
-            setMessage(textContent)
-            setName(name)
-            setTimeLeft(timeLeft)
+            setMessageData(data)
           } else {
             setError(messageJson.message)
           }
@@ -52,17 +50,17 @@ const Message = () => {
   return (
     <div className="container message-page">
       <div className="pageWrapper centerComponent centerComponentVertically">
-        { message &&
+        { messageData.message &&
           <MessageBox
-            message={message}
+            message={messageData.message}
             messageIsDestroyed={messageIsDestroyed}
-            name={name}
+            name={messageData.name}
           />
         }
-        { timeLeft &&
+        { messageData.timeLeft &&
           <Timer
-            isPrivateMessage={isPrivateMessage}
-            milliseconds={timeLeft}
+            isPrivateMessage={messageData.isPrivateMessage}
+            milliseconds={messageData.timeLeft}
             setMessageIsDestroyed={setMessageIsDestroyed}
           />
         }
