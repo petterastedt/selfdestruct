@@ -145,7 +145,7 @@ router.post("/post", exceptionHandler(async (req, res) => {
   const { startImmediately, startTimerOnFirstReq, killOnFirstReq } = req.body.options
   const secret = crypto.randomBytes(13).toString('hex')
   const timeInMillisec = helpers.convertToMillisec(aliveFor.hrs, aliveFor.min, aliveFor.sec)
-  const url = `https://privtext.me/message/${secret}`
+  const url = `${req.get('origin')}/message/${secret}`
   let destroyAt
 
   if (options.startImmediately) {
