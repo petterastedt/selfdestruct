@@ -105,7 +105,7 @@ const Form = () => {
   }
 
   return (
-    <div className="form centerComponent">
+    <div className="form">
       <div className="form-container">
 
         <form

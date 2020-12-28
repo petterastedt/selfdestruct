@@ -62,6 +62,8 @@ const Message = () => {
             isPrivateMessage={messageData.isPrivateMessage}
             milliseconds={messageData.timeLeft}
             setMessageIsDestroyed={setMessageIsDestroyed}
+            messageData={messageData}
+            messageIsDestroyed={messageIsDestroyed}
           />
         }
         { error && <h2>{ error }</h2> }

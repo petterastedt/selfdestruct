@@ -45,7 +45,6 @@ const responseHandler = (res, error, item, errorMsg, successMsg, notFound) => {
 
 // DELETE EXPIRED AND INACTIVE MESSAGES
 const cleanupExpired = async () => {
-  console.log('server date time', new Date())
   Message.deleteMany({
     "timeOptions.destroyAt": {$lte: new Date()}
   }, {new: true}, (error, items) => {

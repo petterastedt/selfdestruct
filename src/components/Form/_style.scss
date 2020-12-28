@@ -1,16 +1,6 @@
 .form {
-  &.centerComponent {
-    margin: 0;
-    max-width: 600px;
-    width: 100%;
-
-    @media (min-width: $breakpoint-desktop-wide) {
-      max-width: $content-max-width;
-    }
-  }
-
   &-container {
-    max-width: 100%;
+    max-width: $content-max-width;
   }
 
   &-options {

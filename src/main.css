@@ -1,5 +1,5 @@
 .messageBox {
-  max-width: 680px;
+  max-width: 600px;
   width: 100%; }
 
 .messageBox-container {
@@ -12,13 +12,13 @@
 
 @media (min-width: 480px) {
   .messageBox-container {
-    padding: 20px 25px; } }
+    padding: 20px; } }
 
 .messageBox-textRow {
   font-size: 12px;
   font-style: italic;
   margin-bottom: 15px;
-  padding-left: 10px; }
+  padding-left: 5px; }
 
 .messageBox-content {
   font-size: 12px;
@@ -70,22 +70,13 @@
 
 @media (min-width: 480px) {
   .timer-wrapper {
-    padding-left: 10px; } }
+    padding-left: 5px; } }
 
 .timer-wrapper span:last-child {
   padding-left: 5px; }
 
-.form.centerComponent {
-  margin: 0;
-  max-width: 600px;
-  width: 100%; }
-
-@media (min-width: 1440px) {
-  .form.centerComponent {
-    max-width: 680px; } }
-
 .form-container {
-  max-width: 100%; }
+  max-width: 600px; }
 
 .form-options {
   display: flex;
@@ -170,7 +161,7 @@
   box-shadow: 3px 3px 8px 8px rgba(0, 0, 0, 0.04), 0 20px 40px 0 rgba(0, 0, 0, 0.2);
   font-size: 12px;
   line-height: 20px;
-  max-width: 680px;
+  max-width: 600px;
   min-height: 60px;
   overflow: hidden;
   padding: 20px 20px 40px;
@@ -371,7 +362,7 @@
     width: 30px; } }
 
 .infoBox {
-  max-width: 680px;
+  max-width: 600px;
   width: 100%; }
 
 .infoBox-container {
@@ -645,6 +636,6 @@ input[type='radio']:checked:after {
 
 .pageWrapper {
   padding-top: 50px;
-  max-width: 680px;
+  max-width: 600px;
   min-height: calc(100vh - 150px);
   position: relative; }
