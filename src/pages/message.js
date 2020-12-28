@@ -6,7 +6,7 @@ import Footer from './../components/Footer/Footer'
 const Message = () => {
   const [message, setMessage] = useState("")
   const [name, setName] = useState("")
-  const [messageOption, setMessageOption] = useState("")
+  const [isPrivateMessage, setIsPrivateMessage] = useState(false)
   // const [isFirstRequest, setIsFirstRequest] = useState("")
   const [messageIsDestroyed, setMessageIsDestroyed] = useState(false)
   const [timeLeft, setTimeLeft] = useState("")
@@ -29,10 +29,8 @@ const Message = () => {
           if (messageJson.success) {
             const { textContent, timeLeft, options, name } = messageJson.item
 
-            if (options.startImmediately || options.startTimerOnFirstReq) {
-              setMessageOption('startImmediately')
-            } else if (options.killOnFirstReq) {
-              setMessageOption('killOnFirstReq')
+            if (options.killOnFirstReq) {
+              setIsPrivateMessage(true)
             }
 
             setMessage(textContent)
@@ -63,7 +61,7 @@ const Message = () => {
         }
         { timeLeft &&
           <Timer
-            messageOption={messageOption}
+            isPrivateMessage={isPrivateMessage}
             milliseconds={timeLeft}
             setMessageIsDestroyed={setMessageIsDestroyed}
           />
@@ -71,7 +69,7 @@ const Message = () => {
         { error && <h2>{ error }</h2> }
         <br />
         <Footer
-          footerMessage={!error ? ["This message was brought to you by", <span>&nbsp;</span>, <a href="/" className="link-styled">privtext.me</a>] : ["Back to ", <span>&nbsp;</span>, <a href="/" aria-label="Back to homepage" alt="Back to homepage" className="link-styled">privtext.me</a>]}
+          footerMessage={!error ? ["This message was brought to you by", <span>&nbsp;</span>, <a href="/" aria-label="Back to homepage" className="link-styled">privtext.me</a>] : ["Back to ", <span>&nbsp;</span>, <a href="/" aria-label="Back to homepage" className="link-styled">privtext.me</a>]}
         />
       </div>
     </div>

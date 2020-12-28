@@ -169,6 +169,10 @@
         opacity: 1;
         pointer-events: auto;
         transition-delay: 0.35s;
+
+        &::placeholder {
+          font-weight: 400;
+        }
       }
     }
 

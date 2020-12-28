@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const Timer = ({ milliseconds, setMessageIsDestroyed, messageOption }) => {
+const Timer = ({ milliseconds, setMessageIsDestroyed, isPrivateMessage }) => {
   const [secondsRemainingGlobal, setSecondsRemainingGlobal] = useState(milliseconds / 1000)
   const [secondsRemainingGlobalNegative, setSecondsRemainingGlobalNegative] = useState(-1)
   const [time, setTime] = useState(new Date())
@@ -46,7 +46,7 @@ const Timer = ({ milliseconds, setMessageIsDestroyed, messageOption }) => {
     <div className="timer">
       <div className="timer-wrapper">
         <span className="timer-message">
-          { messageOption === "killOnFirstReq" ? "This message can't be opened again." : "Anyone with the link can see this message." }
+          { isPrivateMessage ? "This message can't be opened again." : "Anyone with the link can see this message." }
         </span>
         <span>
           It will self-destruct in:<strong> {countdown.min}:{countdown.sec}</strong>

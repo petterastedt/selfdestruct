@@ -222,6 +222,9 @@
   pointer-events: auto;
   transition-delay: 0.35s; }
 
+.form-anonymous--isExtended input[type=text].form-nameField::placeholder {
+  font-weight: 400; }
+
 .form-anonymous .form-checkbox {
   appearance: none;
   background-color: #2F2E2E;
@@ -314,6 +317,13 @@
 .form .messageLabel {
   margin-bottom: 15px; }
 
+.home-page .footer-message {
+  flex-direction: column; }
+
+@media (min-width: 768px) {
+  .home-page .footer-message {
+    flex-direction: row; } }
+
 .footer {
   bottom: -100px;
   position: absolute; }
@@ -324,7 +334,6 @@
 
 .footer-message {
   display: flex;
-  flex-direction: column;
   font-size: 12px;
   margin: 20px 0;
   text-align: center; }
@@ -332,10 +341,6 @@
 @media (min-width: 480px) {
   .footer-message {
     margin: 20px 0; } }
-
-@media (min-width: 768px) {
-  .footer-message {
-    flex-direction: row; } }
 
 @media (min-width: 1440px) {
   .footer-message {
