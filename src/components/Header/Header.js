@@ -6,11 +6,12 @@ const Header = () => (
     <a href="/" aria-label="Back to homepage" alt="Back to homepage" title="Back to homepage">
       <div className="header-logoWrapper">
         <img
-          src={logo}
           alt="privtext logo"
           aria-label="privtext logo"
           className="header-logo"
+          decoding="async"
           loading="lazy"
+          src={logo}
         />
         <h1>privtext.me</h1>
       </div>

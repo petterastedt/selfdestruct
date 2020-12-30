@@ -15,7 +15,7 @@ const schema = new mongoose.Schema({
   timeOptions : Object
 }, { timestamps: true })
 
-schema.plugin(encrypt, { encryptionKey: process.env.ENC_KEY, signingKey: process.env.SIGN_KEY, excludeFromEncryption: ['secret', 'timeOptions'] })
+schema.plugin(encrypt, { encryptionKey: process.env.ENC_KEY, signingKey: process.env.SIGN_KEY, encryptedFields: ['textContent', 'name'] })
 
 const message = new mongoose.model('Message', schema)
 

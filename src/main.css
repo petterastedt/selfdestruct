@@ -370,7 +370,6 @@
 
 .infoBox-container {
   background-color: #2F2E2E;
-  border-radius: 8px;
   box-shadow: 3px 3px 8px 8px rgba(0, 0, 0, 0.04), 10px 20px 40px 0 rgba(0, 0, 0, 0.2);
   font-size: 12px;
   max-width: 100%;
@@ -379,7 +378,7 @@
 
 @media (min-width: 480px) {
   .infoBox-container {
-    padding: 20px 25px; } }
+    padding: 20px; } }
 
 .infoBox-container h3 {
   font-size: 14px;
