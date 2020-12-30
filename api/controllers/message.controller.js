@@ -1,29 +1,32 @@
 const Message = require('./../models/message.js')
-const helpers = require('./../helpers/time.js')
 
-// const responseHandler = (res, error, item, errorMsg, successMsg, notFound) => {
-//   const errorString = errorMsg ? errorMsg : "Database Error!"
-//   const successString = successMsg ? successMsg : "Success!"
-//   const notFoundString = notFound ? notFound : "Message not found!"
+// HANDLE RESPONSES
+const responseHandler = (res, error, item, errorMsg, successMsg, notFound) => {
+  const errorString = errorMsg ? errorMsg : "Database Error!"
+  const successString = successMsg ? successMsg : "Success!"
+  const notFoundString = notFound ? notFound : "Message not found!"
 
-//   if (error) {
-//     res.json({
-//       message: errorString,
-//       success: false
-//     })
-//   } else if (!item || item.length === 0 || !item.isActive) {
-//     res.json({
-//       message: notFoundString,
-//       success: false
-//     })
-//   } else {
-//     res.json({
-//       item,
-//       message: successString,
-//       success: true
-//     })
-//   }
-// }
+  if (error) {
+    res.json({
+      message: errorString,
+      success: false
+    })
+    console.log('error: ', error)
+  } else if (!item || item.length === 0 || !item.isActive) {
+    res.json({
+      message: notFoundString,
+      success: false
+    })
+    console.log('not found')
+  } else {
+    res.json({
+      item,
+      message: successString,
+      success: true
+    })
+    console.log('success')
+  }
+}
 
 // DELETE EXPIRED AND INACTIVE MESSAGES
 const cleanupExpired = async () => {
@@ -39,50 +42,43 @@ const cleanupExpired = async () => {
 }
 
 // SET TO INACTIVE
-const setInactiveItem = async secret => {
+const setInactiveItem = async (secret, res) => {
   Message.findOneAndUpdate({
     'secret': secret
   }, {$set: {
     isActive: false,
-  }}, {new: true}, (error, item) => {
-    if (!error && item) {
-      console.log("Item is now Inactive", item)
-    } else {
-      console.log("Inactive failed :(((", error)
+  }}, (error, item) => {
+    if (error) {
+      console.log('error', error)
     }
   })
 }
 
 // DELETE ITEM
-const deleteItem = async secret => {
+const deleteItem = async (secret, res) => {
   Message.findOneAndDelete({
     'secret': secret
-  }, (error, item) => {
-    if (!error && item) {
-      console.log("item deleted", item)
-    } else {
-      console.log("delete failed :(((", error)
-    }
-  })
+  }, (error, item) => responseHandler(res, error, item))
 }
 
-// SET IS NOT FIRST REQUEST
-const updateItem = async (secret, destroyAt, aliveFor) => {
+// UPDATE FIRST REQUEST
+const updateItem = async (secret, destroyAt, aliveFor, res) => {
   Message.findOneAndUpdate({
     'secret': secret
   }, {$set: {
     isFirstReq: false,
-    timeLeft: timeOptions.aliveFor,
+    timeLeft: aliveFor,
     timeOptions : {
-      destroyAt: destroyAt,
-      aliveFor: timeOptions.aliveFor
+      destroyAt,
+      aliveFor
     }
   }}, {new: true}, (error, item) => responseHandler(res, error, item, "Something went wrong! The message timer was not triggered, try again later."))
 }
 
 module.exports = {
-  deleteItem,
+  cleanupExpired,
   setInactiveItem,
+  deleteItem,
   updateItem,
-  cleanupExpired
-};
+  responseHandler
+}
