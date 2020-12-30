@@ -11,20 +11,17 @@ const responseHandler = (res, error, item, errorMsg, successMsg, notFound) => {
       message: errorString,
       success: false
     })
-    console.log('error: ', error)
   } else if (!item || item.length === 0 || !item.isActive) {
     res.json({
       message: notFoundString,
       success: false
     })
-    console.log('not found')
   } else {
     res.json({
       item,
       message: successString,
       success: true
     })
-    console.log('success')
   }
 }
 
