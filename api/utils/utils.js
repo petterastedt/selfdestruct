@@ -22,7 +22,6 @@ const getTimeLeft = timeAlive => {
 const convertToMillisec = (hours, minutes, seconds) => (hours * 60 * 60 + minutes * 60 + seconds) * 1000
 
 // CREATE MESSAGE OBJECT
-
 const createMessageObject = req => {
   const { textContent, name, aliveFor, options } = req.body
   const { startImmediately, startTimerOnFirstReq, killOnFirstReq } = options

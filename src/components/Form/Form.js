@@ -209,7 +209,7 @@ const Form = () => {
                   setInputData({
                     ...inputData,
                     aliveFor: {
-                      hrs: e.target.value,
+                      hrs: Number(e.target.value),
                       min: inputData.aliveFor.min,
                       sec: inputData.aliveFor.sec
                     }
@@ -229,7 +229,7 @@ const Form = () => {
                     ...inputData,
                     aliveFor: {
                       hrs: inputData.aliveFor.hrs,
-                      min: e.target.value,
+                      min: Number(e.target.value),
                       sec: inputData.aliveFor.sec
                     }
                   })
@@ -249,7 +249,7 @@ const Form = () => {
                     aliveFor: {
                       hrs: inputData.aliveFor.hrs,
                       min: inputData.aliveFor.min,
-                      sec: e.target.value
+                      sec: Number(e.target.value)
                     }
                   })
                 }}
