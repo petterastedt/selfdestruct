@@ -2,8 +2,7 @@ const express = require('express')
 const router = express.Router()
 const messageController = require('./../controllers/message.controller')
 const utils = require('../utils/utils')
-const dotenv = require('dotenv')
-dotenv.config()
+require('dotenv').config()
 
 // HANDLE ERRORS
 const exceptionHandler = fn => (req, res, next) => {
@@ -30,8 +29,8 @@ router.post("/post", exceptionHandler(async (req, res) => {
 }))
 
 // SHOW MESSAGE
-router.post("/message", exceptionHandler(async (req, res) => {
-  const { secret } = req.query
+router.get("/message/:secret", exceptionHandler(async (req, res) => {
+  const { secret } = req.params
   messageController.showMessage(secret, res)
 }))
 

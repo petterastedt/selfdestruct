@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const encrypt = require('mongoose-encryption')
-const dotenv = require('dotenv')
-dotenv.config()
+require('dotenv').config()
 
 const schema = new mongoose.Schema({
   isActive: Boolean,

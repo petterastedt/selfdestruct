@@ -17,10 +17,7 @@ const Message = () => {
 
         if (messageSecret.length > 16) {
           const url = process.env.NODE_ENV === 'production' ? '/api/message' : 'http://localhost:5000/api/message'
-          const message = await fetch(`${url}/?secret=${messageSecret}`, {
-            method: 'POST'
-          })
-
+          const message = await fetch(`${url}/${messageSecret}`)
           const messageJson = await message.json()
 
           if (messageJson.success) {
