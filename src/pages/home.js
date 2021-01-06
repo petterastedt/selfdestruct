@@ -9,7 +9,7 @@ const Home = () => (
     <div className="pageWrapper centerComponent centerComponentVertically">
       <Header />
       <Form />
-      <Footer footerMessage={[<div>💻 Created by <a href="https://www.petterastedt.com" className="link-styled" aria-label="Petter Åstedt portfolio website" target="_blank" rel="noreferrer noopener">Petter Åstedt</a><span>&nbsp;</span></div>, <div><span className="footer-explaination"> - How does this work? Find out --> <a href="/about" aria-label="Find out more about this project">here</a></span></div> ]} />
+      <Footer footerMessage={[<div><span className="footer-explaination">How does this work? Find out --> <a href="/about" aria-label="Find out more about this project">here</a></span></div> ]} />
     </div>
   </div>
 )

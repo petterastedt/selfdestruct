@@ -7,17 +7,15 @@ const InfoBox = () => (
     </div>
     <div className="infoBox-container">
       <div className="infoBox-about">
-        <u><h3>About</h3></u>
         <p>
-          The idea for this project was born in November 2020. I spent a weekend writing the first version of the API and the frontend. Since then new features, security improvement and code refactoring has made the project into what you see in front of you.
-          <strong> This is a side project where the main goal is for me to learn, I'm not a security expert in any way and can't leave any guarantees regarding the functionality of this website.</strong>
+          <strong>This is a side project where the main goal is for me to learn and have fun doing so. I'm not a security expert in any way and can't leave any guarantees regarding the functionality of this website.</strong>
           <br />
           <br />
           Written in: React, Node.js, Express, MongoDb, SCSS
         </p>
       </div>
       <div className="infoBox-security">
-        <u><h3>Security</h3></u>
+        <strong>Message types:</strong>
         <p>All messages are temporarily stored in a remote database using <strong>AES-256 encryption</strong>. This means that <strong>for anyone trying to access the database the messages are unreadable, a message can only be decrypted using the unique url</strong>. Below is a more detailed explaination of how the different message types work:</p>
         <ul>
           <li>
@@ -37,7 +35,7 @@ const InfoBox = () => (
           The encryption is done with <a className="link-styled" href="https://www.npmjs.com/package/mongoose-encryption" aria-label="Mongoose Encryption NPM package" alt="Mongoose Encryption NPM package" target="_blank" rel="noopener noreferrer">mongoose-encryption</a>.
           <br />
           <br />
-          If you have any feedback (please, go easy one me 😊), feel free to reach out to: <a className="link-styled" href="mailto:info@privtext.me" aria-label="email info@privtext.me">info@privtext.me</a>
+          If you want to get in touch feel free to send an email to <a className="link-styled" href="mailto:info@privtext.me" aria-label="email info@privtext.me">info@privtext.me</a> or visit my website at <a href="https://www.petterastedt.com" className="link-styled" aria-label="Petter Åstedt portfolio website" target="_blank" rel="noreferrer noopener">https://www.petterastedt.com</a>.
         </p>
         <br />
         <i>/ Petter</i>
