@@ -22,4 +22,10 @@
       }
     }
   }
+
+  h2 {
+    @media (max-width: $breakpoint-mobile-horizontal) {
+      max-width: 250px;
+    }
+  }
 }

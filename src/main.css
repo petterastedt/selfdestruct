@@ -364,6 +364,10 @@
   .header-logoWrapper img {
     width: 30px; } }
 
+@media (max-width: 480px) {
+  .header h2 {
+    max-width: 250px; } }
+
 .infoBox {
   max-width: 600px;
   width: 100%; }
