@@ -18,6 +18,7 @@ const exceptionHandler = fn => (req, res, next) => {
 
 // CLEANUP ROUTE
 router.get(`/${process.env.CLEANUP_URL}`, exceptionHandler(async (req, res) => {
+  console.log('test')
   messageController.cleanupExpired()
   res.sendStatus(200)
 }))
