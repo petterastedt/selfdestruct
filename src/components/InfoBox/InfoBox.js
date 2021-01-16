@@ -35,7 +35,8 @@ const InfoBox = () => (
           The encryption is done with <a className="link-styled" href="https://www.npmjs.com/package/mongoose-encryption" aria-label="Mongoose Encryption NPM package" alt="Mongoose Encryption NPM package" target="_blank" rel="noopener noreferrer">mongoose-encryption</a>.
           <br />
           <br />
-          If you want to get in touch feel free to send an email to <a className="link-styled" href="mailto:info@privtext.me" aria-label="email info@privtext.me">info@privtext.me</a> or visit my website at <a href="https://www.petterastedt.com" className="link-styled" aria-label="Petter Åstedt portfolio website" target="_blank" rel="noreferrer noopener">https://www.petterastedt.com</a>.
+          If you want to get in touch feel free to send an email to <a className="link-styled" href="mailto:info@privtext.me" aria-label="email info@privtext.me">info@privtext.me</a>.
+           {/* or visit my website at <a href="https://www.petterastedt.com" className="link-styled" aria-label="Petter Åstedt portfolio website" target="_blank" rel="noreferrer noopener">https://www.petterastedt.com</a>. */}
         </p>
         <br />
         <i>/ Petter</i>
