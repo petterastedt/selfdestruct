@@ -1,11 +1,9 @@
-import React from 'react'
+import React from "react";
 
-const Footer = ({footerMessage}) => (
+const Footer = ({ footerMessage }) => (
   <footer className="footer centerComponent">
-    <div className="footer-message">
-      { footerMessage }
-    </div>
+    <div className="footer-message">{footerMessage}</div>
   </footer>
-)
+);
 
-export default Footer
+export default Footer;

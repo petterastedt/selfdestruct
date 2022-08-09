@@ -2,7 +2,7 @@ name: Cleanup
 
 on:
   schedule:
-    - cron:  '0 8 * * *'
+    - cron: '0 8 * * *'
 
 jobs:
   request:
@@ -13,4 +13,3 @@ jobs:
         with:
           url: https://selfdestruct.vercel.app/api/3nnvNGjT0HAidu3yiZKshCLHXECdJCOCP2Wsw5anByvESo01byjh0SOMlePUGtnl
           method: GET
-

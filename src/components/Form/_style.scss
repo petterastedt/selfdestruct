@@ -97,7 +97,8 @@
     &-textContent {
       display: block;
       background-color: transparent;
-      box-shadow: 3px 3px 8px 8px rgba(0, 0, 0, .04), 0 20px 40px 0 rgba(0, 0, 0, .2);
+      box-shadow: 3px 3px 8px 8px rgba(0, 0, 0, 0.04),
+        0 20px 40px 0 rgba(0, 0, 0, 0.2);
       font-size: $font-size-s;
       line-height: 20px;
       max-width: $content-max-width;
@@ -155,7 +156,7 @@
     &--isExtended {
       height: 75px;
 
-      input[type=text].form-nameField {
+      input[type="text"].form-nameField {
         opacity: 1;
         pointer-events: auto;
         transition-delay: 0.35s;
@@ -184,7 +185,7 @@
       &:after {
         border-bottom: 2px solid $color-white;
         border-right: 2px solid $color-white;
-        content: '';
+        content: "";
         display: inline-block;
         height: 8px;
         left: 4px;
@@ -197,10 +198,11 @@
       }
     }
 
-    input[type=text] {
+    input[type="text"] {
       background-color: transparent;
       border: none;
-      box-shadow: 3px 3px 8px 8px rgba(0, 0, 0, .04), 0 20px 40px 0 rgba(0, 0, 0, .2);
+      box-shadow: 3px 3px 8px 8px rgba(0, 0, 0, 0.04),
+        0 20px 40px 0 rgba(0, 0, 0, 0.2);
       margin-top: 20px;
       min-height: 20px;
       max-width: 65%;
@@ -221,7 +223,7 @@
       }
 
       &::placeholder {
-        font-family: 'Consolas', sans-serif;
+        font-family: "Consolas", sans-serif;
         font-weight: bold;
         opacity: 0.65;
       }

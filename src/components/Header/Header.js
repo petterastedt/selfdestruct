@@ -1,9 +1,14 @@
-import React from 'react'
-import logo from './../../assets/img/logo.png'
+import React from "react";
+import logo from "./../../assets/img/logo.png";
 
 const Header = () => (
   <header className="header centerComponent">
-    <a href="/" aria-label="Back to homepage" alt="Back to homepage" title="Back to homepage">
+    <a
+      href="/"
+      aria-label="Back to homepage"
+      alt="Back to homepage"
+      title="Back to homepage"
+    >
       <div className="header-logoWrapper">
         <img
           alt="privtext logo"
@@ -15,9 +20,11 @@ const Header = () => (
         />
         <h1>privtext.me</h1>
       </div>
-      <h2 className="header-subtitle h4">share self-destructing messages anonymously</h2>
+      <h2 className="header-subtitle h4">
+        share self-destructing messages anonymously
+      </h2>
     </a>
   </header>
-)
+);
 
-export default Header
+export default Header;

@@ -3,9 +3,9 @@ const utils = require('../utils/utils')
 
 // HANDLE RESPONSES
 const responseHandler = (res, error, item, errorMsg, successMsg, notFound) => {
-  const errorString = errorMsg ? errorMsg : "Database Error!"
-  const successString = successMsg ? successMsg : "Success!"
-  const notFoundString = notFound ? notFound : "Message not found!"
+  const errorString = errorMsg ? errorMsg : 'Database Error!'
+  const successString = successMsg ? successMsg : 'Success!'
+  const notFoundString = notFound ? notFound : 'Message not found!'
 
   if (error) {
     res.json({
@@ -28,38 +28,51 @@ const responseHandler = (res, error, item, errorMsg, successMsg, notFound) => {
 
 // DELETE EXPIRED AND INACTIVE MESSAGES
 const cleanupExpired = () => {
-  Message.deleteMany({
-    "timeOptions.destroyAt": {$lte: new Date()}
-  }, {new: true}, (error, items) => {
-    if (!error) {
-      console.log("Cleanup successful!", items)
-    } else {
-      console.log("Cleanup failed", error)
+  Message.deleteMany(
+    {
+      'timeOptions.destroyAt': { $lte: new Date() }
+    },
+    { new: true },
+    (error, items) => {
+      if (!error) {
+        console.log('Cleanup successful!', items)
+      } else {
+        console.log('Cleanup failed', error)
+      }
     }
-  })
+  )
 }
 
 // SET TO INACTIVE
-const setInactiveItem = secret => {
-  Message.findOneAndUpdate({
-    'secret': secret
-  }, {$set: {
-    isActive: false,
-  }}, (error, item) => {
-    if (error) {
-      console.log('error', error)
+const setInactiveItem = (secret) => {
+  Message.findOneAndUpdate(
+    {
+      secret: secret
+    },
+    {
+      $set: {
+        isActive: false
+      }
+    },
+    (error, item) => {
+      if (error) {
+        console.log('error', error)
+      }
     }
-  })
+  )
 }
 
 // SHOW MESSAGE
 const showMessage = (secret, res) => {
-  Message.find({ 'secret': secret }, (error, item) => {
+  Message.find({ secret: secret }, (error, item) => {
     if (!error && item.length && item[0].isActive) {
       const { options, timeOptions, isFirstReq } = item[0]
 
       // START IMMEDIATELY OR START ON FIRST REQUEST, NOT FIRST REQUEST
-      if (options.startImmediately || (options.startTimerOnFirstReq && !isFirstReq)) {
+      if (
+        options.startImmediately ||
+        (options.startTimerOnFirstReq && !isFirstReq)
+      ) {
         const timeLeft = utils.getTimeLeft(timeOptions.destroyAt)
         item[0].timeLeft = timeLeft
 
@@ -70,12 +83,12 @@ const showMessage = (secret, res) => {
 
         responseHandler(res, error, item[0])
 
-      // START ON FIRST REQUEST, IS FIRST REQUEST
+        // START ON FIRST REQUEST, IS FIRST REQUEST
       } else if (options.startTimerOnFirstReq && isFirstReq) {
         const destroyAt = utils.getDestroyTime(timeOptions.aliveFor)
         updateItem(secret, destroyAt, timeOptions.aliveFor, res)
 
-      // KILL ON FIRST REQUEST (SECRET MESSAGE)
+        // KILL ON FIRST REQUEST (SECRET MESSAGE)
       } else if (options.killOnFirstReq) {
         deleteItem(secret, res)
       }
@@ -86,23 +99,40 @@ const showMessage = (secret, res) => {
 }
 
 // CREATE MESSAGE
-const createMessage = async (message, res) => Message.create(message, (error, item) => responseHandler(res, error, item))
+const createMessage = async (message, res) =>
+  Message.create(message, (error, item) => responseHandler(res, error, item))
 
 // DELETE ITEM
-const deleteItem = (secret, res) => Message.findOneAndDelete({ 'secret': secret }, (error, item) => responseHandler(res, error, item))
+const deleteItem = (secret, res) =>
+  Message.findOneAndDelete({ secret: secret }, (error, item) =>
+    responseHandler(res, error, item)
+  )
 
 // UPDATE FIRST REQUEST
 const updateItem = (secret, destroyAt, aliveFor, res) => {
-  Message.findOneAndUpdate({
-    'secret': secret
-  }, {$set: {
-    isFirstReq: false,
-    timeLeft: aliveFor,
-    timeOptions : {
-      destroyAt,
-      aliveFor
-    }
-  }}, {new: true}, (error, item) => responseHandler(res, error, item, "Something went wrong! The message timer was not triggered, try again later."))
+  Message.findOneAndUpdate(
+    {
+      secret: secret
+    },
+    {
+      $set: {
+        isFirstReq: false,
+        timeLeft: aliveFor,
+        timeOptions: {
+          destroyAt,
+          aliveFor
+        }
+      }
+    },
+    { new: true },
+    (error, item) =>
+      responseHandler(
+        res,
+        error,
+        item,
+        'Something went wrong! The message timer was not triggered, try again later.'
+      )
+  )
 }
 
 module.exports = {

@@ -1,23 +1,20 @@
-@import './assets/styles/variables';
-@import './components/MessageBox/style';
-@import './components/Timer/style';
-@import './components/Form/style';
-@import './components/Footer/style';
-@import './components/Header/style';
-@import './components/InfoBox/style';
+@import "./assets/styles/variables";
+@import "./components/MessageBox/style";
+@import "./components/Timer/style";
+@import "./components/Form/style";
+@import "./components/Footer/style";
+@import "./components/Header/style";
+@import "./components/InfoBox/style";
 
 @font-face {
   font-family: "Consolas";
-  src:
-    local(Consolas),
-    url("./assets/font/consolas-400.woff2") format("woff2");
+  src: local(Consolas), url("./assets/font/consolas-400.woff2") format("woff2");
   font-display: swap;
 }
 
 @font-face {
   font-family: "Consolas";
-  src:
-    local(Consolas-Bold),
+  src: local(Consolas-Bold),
     url("./assets/font/consolas-700.woff2") format("woff2");
   font-weight: bold;
   font-display: swap;
@@ -27,7 +24,7 @@
 
 html,
 body {
-  font-family: 'Consolas', sans-serif;
+  font-family: "Consolas", sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -40,7 +37,8 @@ body {
 
 // TEXT STYLES
 
-h1, .h1 {
+h1,
+.h1 {
   color: $color-accent;
   font-size: $font-size-xl;
   font-weight: 700;
@@ -52,18 +50,21 @@ h1, .h1 {
   }
 }
 
-h2, .h2 {
+h2,
+.h2 {
   font-size: $font-size-xl;
   margin: 0;
 }
 
-h3, .h3 {
+h3,
+.h3 {
   font-size: $font-size-m;
   font-weight: 700;
   margin: 0;
 }
 
-h4, .h4 {
+h4,
+.h4 {
   font-size: 13px;
   font-weight: 400;
   margin: 0 0 50px 0;
@@ -74,7 +75,8 @@ h4, .h4 {
   }
 }
 
-h5, .h5 {
+h5,
+.h5 {
   font-size: $font-size-s;
   font-weight: 700;
   margin: 0;
@@ -95,12 +97,13 @@ a {
   background-color: transparent;
   border: 0;
   border-radius: 4px;
-  box-shadow: 0 3px 6px 6px rgba(0, 0, 0, .04), 0 20px 40px 0 rgba(0, 0, 0, .2);
+  box-shadow: 0 3px 6px 6px rgba(0, 0, 0, 0.04),
+    0 20px 40px 0 rgba(0, 0, 0, 0.2);
   border: 2px solid $color-background-light;
   color: $color-white;
   cursor: pointer;
   display: block;
-  font-family: 'Consolas', sans-serif;
+  font-family: "Consolas", sans-serif;
   font-size: $font-size-s;
   font-weight: 600;
   margin-top: 30px;
@@ -134,14 +137,13 @@ a {
 input,
 label,
 select,
-textarea
-{
+textarea {
   background-color: transparent;
   border: 0;
   color: $color-white;
   display: block;
   font-size: $font-size-s;
-  font-family: 'Consolas', sans-serif;
+  font-family: "Consolas", sans-serif;
   line-height: 1.2;
   margin: 0;
   padding: 0;
@@ -149,10 +151,10 @@ textarea
 }
 
 input:focus {
-  outline:0;
+  outline: 0;
 }
 
-input[type=text] {
+input[type="text"] {
   background-color: $color-background;
   border: 1px solid $color-white;
   border-radius: 4px;
@@ -161,11 +163,11 @@ input[type=text] {
   width: 100%;
 }
 
-input[type='radio']:after {
+input[type="radio"]:after {
   background-color: $color-white;
   border: 2px solid $color-white;
   border-radius: 8px;
-  content: '';
+  content: "";
   display: inline-block;
   height: 8px;
   left: 2px;
@@ -180,11 +182,11 @@ input[type='radio']:after {
   }
 }
 
-input[type='radio']:checked:after {
+input[type="radio"]:checked:after {
   background-color: $color-accent;
   border: 2px solid white;
   border-radius: 8px;
-  content: '';
+  content: "";
   display: inline-block;
   height: 8px;
   left: 2px;
@@ -193,7 +195,7 @@ input[type='radio']:checked:after {
   visibility: visible;
   width: 8px;
 
-  @media (min-width: $breakpoint-mobile-horizontal ) {
+  @media (min-width: $breakpoint-mobile-horizontal) {
     left: 0;
     top: 0;
   }
@@ -226,7 +228,7 @@ input[type='radio']:checked:after {
   margin: $component-spacing-mobile 0;
 
   @media (min-width: $breakpoint-tablet-horizontal) {
-     margin: $component-spacing auto;
+    margin: $component-spacing auto;
   }
 }
 
@@ -264,7 +266,7 @@ input[type='radio']:checked:after {
   &:after {
     background-color: $color-white;
     bottom: -2px;
-    content: '';
+    content: "";
     height: 1px;
     left: 0;
     opacity: 0;

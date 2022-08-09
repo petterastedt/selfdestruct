@@ -4,7 +4,8 @@
 
   &-container {
     background-color: $color-background-light;
-    box-shadow: 3px 3px 8px 8px rgba(0, 0, 0, .04), 10px 20px 40px 0 rgba(0, 0, 0, .2);
+    box-shadow: 3px 3px 8px 8px rgba(0, 0, 0, 0.04),
+      10px 20px 40px 0 rgba(0, 0, 0, 0.2);
     font-size: $font-size-s;
     max-width: 100%;
     padding: 15px;
