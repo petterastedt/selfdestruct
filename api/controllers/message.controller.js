@@ -54,7 +54,7 @@ const setInactiveItem = (secret) => {
         isActive: false
       }
     },
-    (error, item) => {
+    (error) => {
       if (error) {
         console.log('error', error)
       }
