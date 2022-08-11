@@ -100,7 +100,16 @@ const showMessage = (secret, res) => {
 
 // CREATE MESSAGE
 const createMessage = async (message, res) =>
-  Message.create(message, (error, item) => responseHandler(res, error, item))
+  Message.create(message, (error, item) => {
+    const { isActive, url } = item
+
+    const responseData = {
+      isActive,
+      url
+    }
+
+    responseHandler(res, error, responseData)
+  })
 
 // DELETE ITEM
 const deleteItem = (secret, res) =>
