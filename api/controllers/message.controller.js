@@ -66,7 +66,8 @@ const setInactiveItem = (secret) => {
 const showMessage = (secret, res) => {
   Message.findOne({ secret: secret }, (error, item) => {
     if (!error && item?.isActive) {
-      const { options, timeOptions, isFirstReq } = item
+      let { isActive, isFirstReq, name, options, textContent, timeOptions } =
+        item
 
       // START IMMEDIATELY OR START ON FIRST REQUEST, NOT FIRST REQUEST
       if (
@@ -74,14 +75,21 @@ const showMessage = (secret, res) => {
         (options.startTimerOnFirstReq && !isFirstReq)
       ) {
         const timeLeft = utils.getTimeLeft(timeOptions.destroyAt)
-        item.timeLeft = timeLeft
 
         if (timeLeft < 1) {
-          messageController.setInactiveItem(secret)
-          item.isActive = false
+          setInactiveItem(secret)
+          isActive = false
         }
 
-        responseHandler(res, error, item)
+        const responseData = {
+          isActive,
+          name,
+          options,
+          textContent,
+          timeLeft
+        }
+
+        responseHandler(res, error, responseData)
 
         // START ON FIRST REQUEST, IS FIRST REQUEST
       } else if (options.startTimerOnFirstReq && isFirstReq) {
@@ -134,13 +142,24 @@ const updateItem = (secret, destroyAt, aliveFor, res) => {
       }
     },
     { new: true },
-    (error, item) =>
+    (error, item) => {
+      const { isActive, name, options, textContent, timeLeft } = item
+
+      const responseData = {
+        isActive,
+        name,
+        options,
+        textContent,
+        timeLeft
+      }
+
       responseHandler(
         res,
         error,
-        item,
+        responseData,
         'Something went wrong! The message timer was not triggered, try again later.'
       )
+    }
   )
 }
 
