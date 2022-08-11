@@ -3,10 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "node-sass": "^7.0.1",
     "react": "^17.0.1",
     "react-anchorme": "^2.2.1",
     "react-copy-to-clipboard": "^5.1.0",
@@ -14,6 +10,14 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
     "web-vitals": "^0.2.4"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^8.17.1",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "12.1.5",
+    "@testing-library/user-event": "^14.4.3",
+    "msw": "^0.44.2",
+    "node-sass": "^7.0.1"
   },
   "scripts": {
     "start": "react-scripts start & node-sass --watch src -o src && fg",

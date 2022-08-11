@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const InfoBox = () => (
   <div className="infoBox">
@@ -21,8 +21,8 @@ const InfoBox = () => (
       <div className="infoBox-security">
         <strong>Message types:</strong>
         <p>
-          All messages are temporarily stored in a remote database using{" "}
-          <strong>AES-256 encryption</strong>. This means that{" "}
+          All messages are temporarily stored in a remote database using{' '}
+          <strong>AES-256 encryption</strong>. This means that{' '}
           <strong>
             for anyone trying to access the database the messages are
             unreadable, a message can only be decrypted using the unique url
@@ -62,7 +62,7 @@ const InfoBox = () => (
           </li>
         </ul>
         <p>
-          The encryption is done with{" "}
+          The encryption is done with{' '}
           <a
             className="link-styled"
             href="https://www.npmjs.com/package/mongoose-encryption"
@@ -76,7 +76,7 @@ const InfoBox = () => (
           .
           <br />
           <br />
-          If you want to get in touch feel free to send an email to{" "}
+          If you want to get in touch feel free to send an email to{' '}
           <a
             className="link-styled"
             href="mailto:info@privtext.me"
@@ -101,6 +101,6 @@ const InfoBox = () => (
       </div>
     </div>
   </div>
-);
+)
 
-export default InfoBox;
+export default InfoBox

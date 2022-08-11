@@ -1,51 +1,51 @@
-import React, { useState, useEffect } from "react";
-import Timer from "./../components/Timer/Timer";
-import MessageBox from "./../components/MessageBox/MessageBox";
-import Footer from "./../components/Footer/Footer";
+import React, { useState, useEffect } from 'react'
+import Timer from './../components/Timer/Timer'
+import MessageBox from './../components/MessageBox/MessageBox'
+import Footer from './../components/Footer/Footer'
 
 const Message = () => {
   // const [isFirstRequest, setIsFirstRequest] = useState("")
-  const [messageIsDestroyed, setMessageIsDestroyed] = useState(false);
-  const [error, setError] = useState("");
-  const [messageData, setMessageData] = useState({});
+  const [messageIsDestroyed, setMessageIsDestroyed] = useState(false)
+  const [error, setError] = useState('')
+  const [messageData, setMessageData] = useState({})
 
   useEffect(() => {
-    (async () => {
+    ;(async () => {
       try {
-        const pathName = window.location.pathname;
-        const messageSecret = pathName.substring(pathName.lastIndexOf("/") + 1);
+        const pathName = window.location.pathname
+        const messageSecret = pathName.substring(pathName.lastIndexOf('/') + 1)
 
         if (messageSecret.length > 16) {
           const url =
-            process.env.NODE_ENV === "production"
-              ? "/api/message"
-              : "http://localhost:5000/api/message";
-          const message = await fetch(`${url}/${messageSecret}`);
-          const messageJson = await message.json();
+            process.env.NODE_ENV === 'production'
+              ? '/api/message'
+              : 'http://localhost:5000/api/message'
+          const message = await fetch(`${url}/${messageSecret}`)
+          const messageJson = await message.json()
 
           if (messageJson.success) {
-            const { textContent, timeLeft, options, name } = messageJson.item;
+            const { textContent, timeLeft, options, name } = messageJson.item
 
             const data = {
               name,
               message: textContent,
               timeLeft,
-              isPrivateMessage: options.killOnFirstReq,
-            };
+              isPrivateMessage: options.killOnFirstReq
+            }
 
-            setMessageData(data);
+            setMessageData(data)
           } else {
-            setError(messageJson.message);
+            setError(messageJson.message)
           }
         } else {
-          setError("Invalid secret");
+          setError('Invalid secret')
         }
       } catch (e) {
-        setError("Critical error");
-        console.log(e);
+        setError('Critical error')
+        console.log(e)
       }
-    })();
-  }, []);
+    })()
+  }, [])
 
   return (
     <div className="container message-page">
@@ -72,7 +72,7 @@ const Message = () => {
           footerMessage={
             !error
               ? [
-                  "This message is brought to you by",
+                  'This message is brought to you by',
                   <span>&nbsp;</span>,
                   <a
                     href="/"
@@ -80,10 +80,10 @@ const Message = () => {
                     className="link-styled"
                   >
                     privtext.me
-                  </a>,
+                  </a>
                 ]
               : [
-                  "Back to ",
+                  'Back to ',
                   <span>&nbsp;</span>,
                   <a
                     href="/"
@@ -91,13 +91,13 @@ const Message = () => {
                     className="link-styled"
                   >
                     privtext.me
-                  </a>,
+                  </a>
                 ]
           }
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Message;
+export default Message
