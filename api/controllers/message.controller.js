@@ -122,7 +122,7 @@ const createMessage = async (message, res) =>
 // DELETE ITEM
 const deleteItem = (secret, res) =>
   Message.findOneAndDelete({ secret: secret }, (error, item) =>
-    responseHandler(res, error, item)
+    responseHandler(res, error, utils.stripItem(item))
   )
 
 // UPDATE FIRST REQUEST
@@ -143,20 +143,10 @@ const updateItem = (secret, destroyAt, aliveFor, res) => {
     },
     { new: true },
     (error, item) => {
-      const { isActive, name, options, textContent, timeLeft } = item
-
-      const responseData = {
-        isActive,
-        name,
-        options,
-        textContent,
-        timeLeft
-      }
-
       responseHandler(
         res,
         error,
-        responseData,
+        utils.stripItem(item),
         'Something went wrong! The message timer was not triggered, try again later.'
       )
     }
