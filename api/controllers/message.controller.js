@@ -64,9 +64,9 @@ const setInactiveItem = (secret) => {
 
 // SHOW MESSAGE
 const showMessage = (secret, res) => {
-  Message.find({ secret: secret }, (error, item) => {
-    if (!error && item.length && item[0].isActive) {
-      const { options, timeOptions, isFirstReq } = item[0]
+  Message.findOne({ secret: secret }, (error, item) => {
+    if (!error && item?.isActive) {
+      const { options, timeOptions, isFirstReq } = item
 
       // START IMMEDIATELY OR START ON FIRST REQUEST, NOT FIRST REQUEST
       if (
@@ -74,14 +74,14 @@ const showMessage = (secret, res) => {
         (options.startTimerOnFirstReq && !isFirstReq)
       ) {
         const timeLeft = utils.getTimeLeft(timeOptions.destroyAt)
-        item[0].timeLeft = timeLeft
+        item.timeLeft = timeLeft
 
         if (timeLeft < 1) {
           messageController.setInactiveItem(secret)
-          item[0].isActive = false
+          item.isActive = false
         }
 
-        responseHandler(res, error, item[0])
+        responseHandler(res, error, item)
 
         // START ON FIRST REQUEST, IS FIRST REQUEST
       } else if (options.startTimerOnFirstReq && isFirstReq) {
