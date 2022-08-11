@@ -64,9 +64,10 @@ const setInactiveItem = (secret) => {
 
 // SHOW MESSAGE
 const showMessage = (secret, res) => {
-  Message.find({ secret: secret }, (error, item) => {
-    if (!error && item.length && item[0].isActive) {
-      const { options, timeOptions, isFirstReq } = item[0]
+  Message.findOne({ secret: secret }, (error, item) => {
+    if (!error && item?.isActive) {
+      let { isActive, isFirstReq, name, options, textContent, timeOptions } =
+        item
 
       // START IMMEDIATELY OR START ON FIRST REQUEST, NOT FIRST REQUEST
       if (
@@ -74,14 +75,21 @@ const showMessage = (secret, res) => {
         (options.startTimerOnFirstReq && !isFirstReq)
       ) {
         const timeLeft = utils.getTimeLeft(timeOptions.destroyAt)
-        item[0].timeLeft = timeLeft
 
         if (timeLeft < 1) {
-          messageController.setInactiveItem(secret)
-          item[0].isActive = false
+          setInactiveItem(secret)
+          isActive = false
         }
 
-        responseHandler(res, error, item[0])
+        const responseData = {
+          isActive,
+          name,
+          options,
+          textContent,
+          timeLeft
+        }
+
+        responseHandler(res, error, responseData)
 
         // START ON FIRST REQUEST, IS FIRST REQUEST
       } else if (options.startTimerOnFirstReq && isFirstReq) {
@@ -100,12 +108,21 @@ const showMessage = (secret, res) => {
 
 // CREATE MESSAGE
 const createMessage = async (message, res) =>
-  Message.create(message, (error, item) => responseHandler(res, error, item))
+  Message.create(message, (error, item) => {
+    const { isActive, url } = item
+
+    const responseData = {
+      isActive,
+      url
+    }
+
+    responseHandler(res, error, responseData)
+  })
 
 // DELETE ITEM
 const deleteItem = (secret, res) =>
   Message.findOneAndDelete({ secret: secret }, (error, item) =>
-    responseHandler(res, error, item)
+    responseHandler(res, error, utils.stripItem(item))
   )
 
 // UPDATE FIRST REQUEST
@@ -125,13 +142,14 @@ const updateItem = (secret, destroyAt, aliveFor, res) => {
       }
     },
     { new: true },
-    (error, item) =>
+    (error, item) => {
       responseHandler(
         res,
         error,
-        item,
+        utils.stripItem(item),
         'Something went wrong! The message timer was not triggered, try again later.'
       )
+    }
   )
 }
 
