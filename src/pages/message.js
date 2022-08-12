@@ -3,10 +3,12 @@ import { useParams } from 'react-router-dom'
 import Timer from './../components/Timer/Timer'
 import MessageBox from './../components/MessageBox/MessageBox'
 import Footer from './../components/Footer/Footer'
+import Loader from './../components/Loader/Loader'
 
 const Message = () => {
   const [messageIsDestroyed, setMessageIsDestroyed] = useState(false)
   const [error, setError] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
   const [messageData, setMessageData] = useState({})
   const { secret } = useParams()
 
@@ -14,6 +16,8 @@ const Message = () => {
     ;(async () => {
       try {
         if (secret.length > 16) {
+          setIsLoading(true)
+
           const url =
             process.env.NODE_ENV === 'production'
               ? '/api/message'
@@ -32,15 +36,22 @@ const Message = () => {
               isPrivateMessage: options.killOnFirstReq
             }
 
-            setMessageData(data)
+            setTimeout(() => {
+              setMessageData(data)
+              setIsLoading(false)
+            }, 2000)
           } else {
-            setError(messageJson.message)
+            setTimeout(() => {
+              setError(messageJson.message)
+              setIsLoading(false)
+            }, 2000)
           }
         } else {
           setError('Invalid secret')
         }
       } catch (e) {
         setError('Critical error')
+        setIsLoading(false)
         console.log(e)
       }
     })()
@@ -49,6 +60,7 @@ const Message = () => {
   return (
     <div className="container message-page">
       <div className="pageWrapper centerComponent centerComponentVertically">
+        {isLoading && <Loader />}
         {messageData.message && (
           <MessageBox
             message={messageData.message}
@@ -65,11 +77,11 @@ const Message = () => {
             messageIsDestroyed={messageIsDestroyed}
           />
         )}
-        {error && <h2>{error}</h2>}
+        {error && <h3>{error}</h3>}
         <br />
         <Footer
           footerMessage={
-            !error
+            !error && !isLoading
               ? [
                   'This message is brought to you by',
                   <span>&nbsp;</span>,
