@@ -1,17 +1,18 @@
-import React from "react";
-import { Anchorme } from "react-anchorme";
+import React from 'react'
+import { Anchorme } from 'react-anchorme'
 
 const MessageBox = ({ message, messageIsDestroyed, name }) => (
   <div className="messageBox">
     <div className="messageBox-textRow">
-      <strong>{name ? name : "Anonymous"}</strong> shared a secret message with
-      you:
+      <strong data-testid="senderName">{name ? name : 'Anonymous'}</strong>{' '}
+      shared a secret message with you:
     </div>
     <div className="messageBox-container">
       <p
         className={`messageBox-content ${
-          messageIsDestroyed ? "messageBox-content--isDestroyed" : ""
+          messageIsDestroyed ? 'messageBox-content--isDestroyed' : ''
         }`}
+        data-testid="messageBox"
       >
         <Anchorme
           target="_blank"
@@ -23,7 +24,7 @@ const MessageBox = ({ message, messageIsDestroyed, name }) => (
       </p>
       <div
         className={`messageBox-messageDestroyed ${
-          messageIsDestroyed ? "messageBox-messageDestroyed--isDestroyed" : ""
+          messageIsDestroyed ? 'messageBox-messageDestroyed--isDestroyed' : ''
         }`}
       >
         <div className="messageBox-messageDestroyed-wrapper">
@@ -40,6 +41,6 @@ const MessageBox = ({ message, messageIsDestroyed, name }) => (
       </div>
     </div>
   </div>
-);
+)
 
-export default MessageBox;
+export default MessageBox

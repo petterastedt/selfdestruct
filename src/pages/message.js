@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import Timer from './../components/Timer/Timer'
 import MessageBox from './../components/MessageBox/MessageBox'
 import Footer from './../components/Footer/Footer'
@@ -10,10 +10,12 @@ const Message = () => {
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [messageData, setMessageData] = useState({})
-  const { secret } = useParams()
+  const pathname = useLocation().pathname
 
   useEffect(() => {
     ;(async () => {
+      const secret = pathname.split('/').pop()
+
       try {
         if (secret.length > 16) {
           setIsLoading(true)
@@ -55,7 +57,7 @@ const Message = () => {
         console.log(e)
       }
     })()
-  }, [secret])
+  }, [pathname])
 
   return (
     <div className="container message-page">
@@ -83,26 +85,30 @@ const Message = () => {
           footerMessage={
             !error && !isLoading
               ? [
-                  'This message is brought to you by',
-                  <span>&nbsp;</span>,
-                  <a
-                    href="/"
-                    aria-label="Back to homepage"
-                    className="link-styled"
-                  >
-                    privtext.me
-                  </a>
+                  <div key="footer content">
+                    'This message is brought to you by',
+                    <span>&nbsp;</span>,
+                    <a
+                      href="/"
+                      aria-label="Back to homepage"
+                      className="link-styled"
+                    >
+                      privtext.me
+                    </a>
+                  </div>
                 ]
               : [
-                  'Back to ',
-                  <span>&nbsp;</span>,
-                  <a
-                    href="/"
-                    aria-label="Back to homepage"
-                    className="link-styled"
-                  >
-                    privtext.me
-                  </a>
+                  <div key="footer content">
+                    'Back to ',
+                    <span>&nbsp;</span>,
+                    <a
+                      href="/"
+                      aria-label="Back to homepage"
+                      className="link-styled"
+                    >
+                      privtext.me
+                    </a>
+                  </div>
                 ]
           }
         />
