@@ -167,24 +167,21 @@
   padding: 20px 20px 40px;
   transition: background-color 0.3s; }
 
-.form .input-textContent:focus,
-.form .input-textContent:hover {
+.form .input-textContent:focus, .form .input-textContent:hover {
   background-color: #2f2e2e;
   border: 0;
   outline: 0; }
 
 .form .input-textContent[contenteditable]:empty::before {
-  content: 'Type something..';
+  content: "Type something..";
   opacity: 0.2; }
 
-.form .input-typeSelect-label,
-.form .input-timeSelect-label {
+.form .input-typeSelect-label, .form .input-timeSelect-label {
   margin-left: 0;
   margin-bottom: 10px; }
 
 @media (min-width: 480px) {
-  .form .input-typeSelect-label,
-  .form .input-timeSelect-label {
+  .form .input-typeSelect-label, .form .input-timeSelect-label {
     margin-bottom: 5px; } }
 
 .form .input-timeSelect {
@@ -210,12 +207,12 @@
 .form-anonymous--isExtended {
   height: 75px; }
 
-.form-anonymous--isExtended input[type='text'].form-nameField {
+.form-anonymous--isExtended input[type="text"].form-nameField {
   opacity: 1;
   pointer-events: auto;
   transition-delay: 0.35s; }
 
-.form-anonymous--isExtended input[type='text'].form-nameField::placeholder {
+.form-anonymous--isExtended input[type="text"].form-nameField::placeholder {
   font-weight: 400; }
 
 .form-anonymous .form-checkbox {
@@ -233,7 +230,7 @@
 .form-anonymous .form-checkbox:after {
   border-bottom: 2px solid #e3e3e3;
   border-right: 2px solid #e3e3e3;
-  content: '';
+  content: "";
   display: inline-block;
   height: 8px;
   left: 4px;
@@ -244,7 +241,7 @@
   transition: opacity 0.3s;
   width: 3px; }
 
-.form-anonymous input[type='text'] {
+.form-anonymous input[type="text"] {
   background-color: transparent;
   border: none;
   box-shadow: 3px 3px 8px 8px rgba(0, 0, 0, 0.04), 0 20px 40px 0 rgba(0, 0, 0, 0.2);
@@ -257,17 +254,16 @@
   transition: opacity 0.3s; }
 
 @media (min-width: 480px) {
-  .form-anonymous input[type='text'] {
+  .form-anonymous input[type="text"] {
     max-width: 50%; } }
 
-.form-anonymous input[type='text']:focus,
-.form-anonymous input[type='text']:hover {
+.form-anonymous input[type="text"]:focus, .form-anonymous input[type="text"]:hover {
   background-color: #2f2e2e;
   border: 0;
   outline: 0; }
 
-.form-anonymous input[type='text']::placeholder {
-  font-family: 'Consolas', sans-serif;
+.form-anonymous input[type="text"]::placeholder {
+  font-family: "Consolas", sans-serif;
   font-weight: bold;
   opacity: 0.65; }
 
@@ -406,8 +402,7 @@
 .infoBox-container a:hover {
   color: #e3e3e3; }
 
-.infoBox-about,
-.infoBox-security {
+.infoBox-about, .infoBox-security {
   margin-bottom: 15px; }
 
 .infoBox-textRow {
@@ -423,6 +418,49 @@
   font-size: 12px;
   font-weight: bold;
   word-wrap: break-word; }
+
+.loader {
+  align-items: center;
+  animation: fadeIn 0.5s forwards;
+  display: flex;
+  flex-direction: column;
+  opacity: 0; }
+
+.loader-logo {
+  object-fit: contain;
+  width: 40px; }
+
+@media (min-width: 480px) {
+  .loader-logo {
+    width: 60px; } }
+
+.loader-text {
+  font-size: 14px;
+  margin-top: 7px; }
+
+.loader-text:after {
+  content: '.';
+  animation: dots 1.5s steps(5, end) infinite; }
+
+@keyframes dots {
+  0%,
+  20% {
+    color: rgba(0, 0, 0, 0);
+    text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0); }
+  40% {
+    color: #fff;
+    text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0); }
+  60% {
+    text-shadow: 0.25em 0 0 #fff, 0.5em 0 0 rgba(0, 0, 0, 0); }
+  80%,
+  100% {
+    text-shadow: 0.25em 0 0 #fff, 0.5em 0 0 #fff; } }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
 
 @font-face {
   font-family: 'Consolas';
