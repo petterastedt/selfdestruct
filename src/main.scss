@@ -1,21 +1,22 @@
-@import "./assets/styles/variables";
-@import "./components/MessageBox/style";
-@import "./components/Timer/style";
-@import "./components/Form/style";
-@import "./components/Footer/style";
-@import "./components/Header/style";
-@import "./components/InfoBox/style";
+@import './assets/styles/variables';
+@import './components/MessageBox/style';
+@import './components/Timer/style';
+@import './components/Form/style';
+@import './components/Footer/style';
+@import './components/Header/style';
+@import './components/InfoBox/style';
+@import './components/Loader/style';
 
 @font-face {
-  font-family: "Consolas";
-  src: local(Consolas), url("./assets/font/consolas-400.woff2") format("woff2");
+  font-family: 'Consolas';
+  src: local(Consolas), url('./assets/font/consolas-400.woff2') format('woff2');
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Consolas";
+  font-family: 'Consolas';
   src: local(Consolas-Bold),
-    url("./assets/font/consolas-700.woff2") format("woff2");
+    url('./assets/font/consolas-700.woff2') format('woff2');
   font-weight: bold;
   font-display: swap;
 }
@@ -24,7 +25,7 @@
 
 html,
 body {
-  font-family: "Consolas", sans-serif;
+  font-family: 'Consolas', sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -103,7 +104,7 @@ a {
   color: $color-white;
   cursor: pointer;
   display: block;
-  font-family: "Consolas", sans-serif;
+  font-family: 'Consolas', sans-serif;
   font-size: $font-size-s;
   font-weight: 600;
   margin-top: 30px;
@@ -143,7 +144,7 @@ textarea {
   color: $color-white;
   display: block;
   font-size: $font-size-s;
-  font-family: "Consolas", sans-serif;
+  font-family: 'Consolas', sans-serif;
   line-height: 1.2;
   margin: 0;
   padding: 0;
@@ -154,7 +155,7 @@ input:focus {
   outline: 0;
 }
 
-input[type="text"] {
+input[type='text'] {
   background-color: $color-background;
   border: 1px solid $color-white;
   border-radius: 4px;
@@ -163,11 +164,11 @@ input[type="text"] {
   width: 100%;
 }
 
-input[type="radio"]:after {
+input[type='radio']:after {
   background-color: $color-white;
   border: 2px solid $color-white;
   border-radius: 8px;
-  content: "";
+  content: '';
   display: inline-block;
   height: 8px;
   left: 2px;
@@ -182,11 +183,11 @@ input[type="radio"]:after {
   }
 }
 
-input[type="radio"]:checked:after {
+input[type='radio']:checked:after {
   background-color: $color-accent;
   border: 2px solid white;
   border-radius: 8px;
-  content: "";
+  content: '';
   display: inline-block;
   height: 8px;
   left: 2px;
@@ -266,7 +267,7 @@ input[type="radio"]:checked:after {
   &:after {
     background-color: $color-white;
     bottom: -2px;
-    content: "";
+    content: '';
     height: 1px;
     left: 0;
     opacity: 0;
