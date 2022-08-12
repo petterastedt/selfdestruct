@@ -1,26 +1,25 @@
 import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import Timer from './../components/Timer/Timer'
 import MessageBox from './../components/MessageBox/MessageBox'
 import Footer from './../components/Footer/Footer'
 
 const Message = () => {
-  // const [isFirstRequest, setIsFirstRequest] = useState("")
   const [messageIsDestroyed, setMessageIsDestroyed] = useState(false)
   const [error, setError] = useState('')
   const [messageData, setMessageData] = useState({})
+  const { secret } = useParams()
 
   useEffect(() => {
     ;(async () => {
       try {
-        const pathName = window.location.pathname
-        const messageSecret = pathName.substring(pathName.lastIndexOf('/') + 1)
-
-        if (messageSecret.length > 16) {
+        if (secret.length > 16) {
           const url =
             process.env.NODE_ENV === 'production'
               ? '/api/message'
               : 'http://localhost:5000/api/message'
-          const message = await fetch(`${url}/${messageSecret}`)
+
+          const message = await fetch(`${url}/${secret}`)
           const messageJson = await message.json()
 
           if (messageJson.success) {
@@ -45,7 +44,7 @@ const Message = () => {
         console.log(e)
       }
     })()
-  }, [])
+  }, [secret])
 
   return (
     <div className="container message-page">
