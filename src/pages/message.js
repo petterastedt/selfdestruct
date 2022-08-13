@@ -86,8 +86,7 @@ const Message = () => {
             !error && !isLoading
               ? [
                   <div key="footer content">
-                    'This message is brought to you by',
-                    <span>&nbsp;</span>,
+                    This message is brought to you by&nbsp;
                     <a
                       href="/"
                       aria-label="Back to homepage"
@@ -99,8 +98,7 @@ const Message = () => {
                 ]
               : [
                   <div key="footer content">
-                    'Back to ',
-                    <span>&nbsp;</span>,
+                    Back to&nbsp;
                     <a
                       href="/"
                       aria-label="Back to homepage"

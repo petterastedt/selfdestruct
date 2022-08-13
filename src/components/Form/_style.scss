@@ -6,10 +6,14 @@
   &-options {
     display: flex;
     flex-direction: column;
-    height: 270px;
+    height: 205px;
     overflow: hidden;
     padding: 30px 10px;
     transition: height 0.3s, padding 0.3s;
+
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      height: 240px;
+    }
 
     @media (min-width: $breakpoint-tablet) {
       flex-direction: row;
@@ -27,7 +31,9 @@
     }
 
     .form-section:first-child {
-      margin-right: 50px;
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        margin-right: 50px;
+      }
     }
   }
 
@@ -115,7 +121,7 @@
       }
 
       &[contenteditable]:empty::before {
-        content: "Type something..";
+        content: 'Type something..';
         opacity: 0.2;
       }
     }
@@ -124,23 +130,36 @@
     &-timeSelect-label {
       margin-left: 0;
       margin-bottom: 10px;
-
-      @media (min-width: $breakpoint-mobile-horizontal) {
-        margin-bottom: 5px;
-      }
     }
 
     &-timeSelect {
       background-color: $color-background;
+      border: 1px solid $color-white;
+      box-shadow: 3px 3px 8px 8px rgba(0, 0, 0, 0.04),
+        0 20px 40px 0 rgba(0, 0, 0, 0.2);
       margin-bottom: 13px;
       min-width: 80px;
 
-      @media (min-width: $breakpoint-tablet) {
-        margin-bottom: 4px;
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        border: 0;
+        box-shadow: none;
+        margin-bottom: 9px;
       }
 
       &:last-child {
-        margin-bottom: 0;
+        @media (min-width: $breakpoint-tablet) {
+          margin-bottom: 0;
+        }
+      }
+
+      &-wrapper {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+
+        @media (min-width: $breakpoint-mobile-horizontal) {
+          display: block;
+        }
       }
     }
   }
@@ -156,7 +175,7 @@
     &--isExtended {
       height: 75px;
 
-      input[type="text"].form-nameField {
+      input[type='text'].form-nameField {
         opacity: 1;
         pointer-events: auto;
         transition-delay: 0.35s;
@@ -185,7 +204,7 @@
       &:after {
         border-bottom: 2px solid $color-white;
         border-right: 2px solid $color-white;
-        content: "";
+        content: '';
         display: inline-block;
         height: 8px;
         left: 4px;
@@ -198,7 +217,7 @@
       }
     }
 
-    input[type="text"] {
+    input[type='text'] {
       background-color: transparent;
       border: none;
       box-shadow: 3px 3px 8px 8px rgba(0, 0, 0, 0.04),
@@ -223,7 +242,7 @@
       }
 
       &::placeholder {
-        font-family: "Consolas", sans-serif;
+        font-family: 'Consolas', sans-serif;
         font-weight: bold;
         opacity: 0.65;
       }
@@ -253,6 +272,9 @@
   }
 
   &-radio {
+    cursor: pointer;
+    max-height: 8px;
+
     &-wrapper {
       display: flex;
       flex-direction: column;
