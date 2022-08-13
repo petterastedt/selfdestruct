@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
-const encrypt = require("mongoose-encryption");
-require("dotenv").config();
+const mongoose = require('mongoose')
+const encrypt = require('mongoose-encryption')
+require('dotenv').config()
 
 const schema = new mongoose.Schema(
   {
@@ -12,11 +12,20 @@ const schema = new mongoose.Schema(
     url: String,
     timeLeft: Number,
     options: Object,
-    timeOptions: Object,
+    timeOptions: Object
   },
   { timestamps: true }
-);
+)
 
-const poll = new mongoose.model("Message", schema);
+const encKey = process.env.ENC_KEY
+const signKey = process.env.SIGN_KEY
 
-module.exports = poll;
+schema.plugin(encrypt, {
+  encryptionKey: encKey,
+  signingKey: signKey,
+  encryptedFields: ['textContent', 'name', 'url']
+})
+
+const Message = new mongoose.model('Message', schema)
+
+module.exports = Message
