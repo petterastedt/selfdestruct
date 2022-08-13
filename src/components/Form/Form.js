@@ -236,7 +236,7 @@ const Form = () => {
             className={`form-options ${
               optionsAreHidden ? 'form-options--isHidden' : ''
             }`}
-            aria-hidden={optionsAreHidden ? true : false}
+            aria-hidden={optionsAreHidden}
           >
             <div className="form-section">
               <label
@@ -245,74 +245,76 @@ const Form = () => {
               >
                 Self-destruct after:
               </label>
-              <select
-                name="input-timeSelect-hrs"
-                id="input-timeSelect-hrs"
-                className="input-timeSelect hours"
-                defaultValue={inputData.aliveFor.hrs}
-                onChange={(e) => {
-                  setInputData({
-                    ...inputData,
-                    aliveFor: {
-                      hrs: Number(e.target.value),
-                      min: inputData.aliveFor.min,
-                      sec: inputData.aliveFor.sec
-                    }
-                  })
-                }}
-              >
-                {[...Array(25)].map((number, i) => (
-                  <option key={`hours-${i}`} value={i}>
-                    {i} hours
-                  </option>
-                ))}
-              </select>
+              <div className="input-timeSelect-wrapper">
+                <select
+                  name="input-timeSelect-hrs"
+                  id="input-timeSelect-hrs"
+                  className="input-timeSelect hours"
+                  defaultValue={inputData.aliveFor.hrs}
+                  onChange={(e) => {
+                    setInputData({
+                      ...inputData,
+                      aliveFor: {
+                        hrs: Number(e.target.value),
+                        min: inputData.aliveFor.min,
+                        sec: inputData.aliveFor.sec
+                      }
+                    })
+                  }}
+                >
+                  {[...Array(25)].map((number, i) => (
+                    <option key={`hours-${i}`} value={i}>
+                      {i} hours
+                    </option>
+                  ))}
+                </select>
 
-              <select
-                name="input-timeSelect-min"
-                id="input-timeSelect-min"
-                className="input-timeSelect"
-                defaultValue={inputData.aliveFor.min}
-                onChange={(e) => {
-                  setInputData({
-                    ...inputData,
-                    aliveFor: {
-                      hrs: inputData.aliveFor.hrs,
-                      min: Number(e.target.value),
-                      sec: inputData.aliveFor.sec
-                    }
-                  })
-                }}
-              >
-                {[...Array(60)].map((number, i) => (
-                  <option key={`minutes-${i}`} value={i}>
-                    {i} min
-                  </option>
-                ))}
-              </select>
+                <select
+                  name="input-timeSelect-min"
+                  id="input-timeSelect-min"
+                  className="input-timeSelect"
+                  defaultValue={inputData.aliveFor.min}
+                  onChange={(e) => {
+                    setInputData({
+                      ...inputData,
+                      aliveFor: {
+                        hrs: inputData.aliveFor.hrs,
+                        min: Number(e.target.value),
+                        sec: inputData.aliveFor.sec
+                      }
+                    })
+                  }}
+                >
+                  {[...Array(60)].map((number, i) => (
+                    <option key={`minutes-${i}`} value={i}>
+                      {i} min
+                    </option>
+                  ))}
+                </select>
 
-              <select
-                name="input-timeSelect-sec"
-                id="input-timeSelect-sec"
-                className="input-timeSelect"
-                defaultValue={inputData.aliveFor.sec}
-                onChange={(e) => {
-                  setInputData({
-                    ...inputData,
-                    aliveFor: {
-                      hrs: inputData.aliveFor.hrs,
-                      min: inputData.aliveFor.min,
-                      sec: Number(e.target.value)
-                    }
-                  })
-                }}
-              >
-                {[...Array(60)].map((number, i) => (
-                  <option key={`seconds-${i}`} value={i}>
-                    {i} sec
-                  </option>
-                ))}
-              </select>
+                <select
+                  name="input-timeSelect-sec"
+                  id="input-timeSelect-sec"
+                  className="input-timeSelect"
+                  defaultValue={inputData.aliveFor.sec}
+                  onChange={(e) => {
+                    setInputData({
+                      ...inputData,
+                      aliveFor: {
+                        hrs: inputData.aliveFor.hrs,
+                        min: inputData.aliveFor.min,
+                        sec: Number(e.target.value)
+                      }
+                    })
+                  }}
+                >
+                  {[...Array(60)].map((number, i) => (
+                    <option key={`seconds-${i}`} value={i}>
+                      {i} sec
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
 
             <div className="form-section form-section-radio">

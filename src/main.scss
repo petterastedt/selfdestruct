@@ -164,42 +164,23 @@ input[type='text'] {
   width: 100%;
 }
 
-input[type='radio']:after {
+input[type='radio']:after,
+input[type='radio']:checked:after {
   background-color: $color-white;
   border: 2px solid $color-white;
   border-radius: 8px;
   content: '';
   display: inline-block;
   height: 8px;
-  left: 2px;
+  left: 0px;
   position: relative;
-  top: 2px;
+  top: 0px;
   visibility: visible;
   width: 8px;
-
-  @media (min-width: $breakpoint-mobile-horizontal) {
-    left: 0;
-    top: 0;
-  }
 }
 
 input[type='radio']:checked:after {
   background-color: $color-accent;
-  border: 2px solid white;
-  border-radius: 8px;
-  content: '';
-  display: inline-block;
-  height: 8px;
-  left: 2px;
-  position: relative;
-  top: 2px;
-  visibility: visible;
-  width: 8px;
-
-  @media (min-width: $breakpoint-mobile-horizontal) {
-    left: 0;
-    top: 0;
-  }
 }
 
 // HELPER CLASSES
