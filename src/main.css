@@ -588,6 +588,11 @@ a {
   background-color: transparent;
   color: #868889; }
 
+button:disabled,
+button[disabled] {
+  color: #808080;
+  opacity: 0.8; }
+
 input,
 label,
 select,
