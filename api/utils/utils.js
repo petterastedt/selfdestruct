@@ -24,6 +24,7 @@ const convertToMillisec = (hours, minutes, seconds) =>
   (hours * 60 * 60 + minutes * 60 + seconds) * 1000
 
 // ENCRYPT SECRET STRING
+// REFERENCE: https://codewithtravel.medium.com/how-to-encrypt-and-decrypt-in-node-js-using-crypto-5db4c18787da
 const encryptSecret = (secret) => {
   const secret_key = process.env.ENC_KEY
   const secret_iv = process.env.SIGN_KEY
