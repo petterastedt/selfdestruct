@@ -64,10 +64,19 @@ const setInactiveItem = (secret) => {
 
 // SHOW MESSAGE
 const showMessage = (secret, res) => {
-  Message.findOne({ secret: secret }, (error, item) => {
+  const secretEncrypted = utils.encryptSecret(secret)
+
+  Message.findOne({ secret: secretEncrypted }, (error, item) => {
     if (!error && item?.isActive) {
-      let { isActive, isFirstReq, name, options, textContent, timeOptions } =
-        item
+      let {
+        isActive,
+        isFirstReq,
+        name,
+        options,
+        textContent,
+        timeOptions,
+        secret
+      } = item
 
       // START IMMEDIATELY OR START ON FIRST REQUEST, NOT FIRST REQUEST
       if (
