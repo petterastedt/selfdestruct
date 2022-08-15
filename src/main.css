@@ -376,12 +376,13 @@
   padding-left: 5px; }
 
 .header-logoWrapper img {
+  margin-bottom: 5px;
   object-fit: contain;
-  width: 20px; }
+  width: 30px; }
 
 @media (min-width: 480px) {
   .header-logoWrapper img {
-    width: 30px; } }
+    margin-bottom: 0; } }
 
 @media (max-width: 480px) {
   .header h2 {

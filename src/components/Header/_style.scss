@@ -14,11 +14,12 @@
     }
 
     img {
+      margin-bottom: 5px;
       object-fit: contain;
-      width: 20px;
+      width: 30px;
 
       @media (min-width: $breakpoint-mobile-horizontal) {
-        width: 30px;
+        margin-bottom: 0;
       }
     }
   }
