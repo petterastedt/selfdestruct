@@ -9,6 +9,7 @@
   &-wrapper {
     font-size: $font-size-s;
     font-style: italic;
+    line-height: 1.35;
 
     @media (min-width: $breakpoint-mobile-horizontal) {
       padding-left: 5px;

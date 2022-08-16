@@ -4,22 +4,38 @@
 
   &-container {
     background-color: $color-background-light;
+    border-radius: 10px;
     box-shadow: 3px 3px 8px 8px rgba(0, 0, 0, 0.04),
       10px 20px 40px 0 rgba(0, 0, 0, 0.2);
     opacity: 1;
     max-width: 100%;
+    min-width: 210px;
     padding: 15px;
     position: relative;
+    width: fit-content;
 
     @media (min-width: $breakpoint-mobile-horizontal) {
       padding: 20px;
+    }
+
+    &::before {
+      border: 0.75rem solid transparent;
+      border-bottom-color: $color-background-light;
+      border-top: none;
+      bottom: 100%;
+      content: '';
+      filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, 0.1));
+      height: 0;
+      left: 1.5em; // offset should move with padding of parent
+      position: absolute;
+      width: 0;
     }
   }
 
   &-textRow {
     font-size: 12px;
     font-style: italic;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     padding-left: 5px;
   }
 
@@ -38,6 +54,10 @@
   &-messageDestroyed-wrapper {
     align-items: center;
     display: flex;
+
+    .message {
+      width: 100%;
+    }
   }
 
   &-messageDestroyed {
