@@ -35,6 +35,7 @@ const Form = () => {
         process.env.NODE_ENV === 'production'
           ? '/api/post'
           : 'http://localhost:5000/api/post'
+
       const postMessage = await fetch(url, {
         method: 'POST',
         headers: {
@@ -92,19 +93,19 @@ const Form = () => {
     if (charsLeft === 3000) {
       setError("Text field can't be empty!")
       return true
-    } else {
-      setError('')
-      return false
     }
+
+    setError('')
+    return false
   }
 
   const isTooLong = () => {
     if (charsLeft < 0) {
       setError('Your message is too long!')
       return true
-    } else {
-      return false
     }
+
+    return false
   }
 
   return (
@@ -262,7 +263,7 @@ const Form = () => {
                     })
                   }}
                 >
-                  {[...Array(25)].map((number, i) => (
+                  {[...Array(24)].map((number, i) => (
                     <option key={`hours-${i}`} value={i}>
                       {i} hours
                     </option>
