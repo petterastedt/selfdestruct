@@ -93,7 +93,9 @@ const Form = () => {
     if (charsLeft === 3000) {
       setError("Text field can't be empty!")
       return false
-    } else if (charsLeft < 0) {
+    }
+
+    if (charsLeft < 0) {
       setError('Your message is too long!')
       return false
     }
