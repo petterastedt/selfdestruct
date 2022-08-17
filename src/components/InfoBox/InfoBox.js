@@ -15,17 +15,17 @@ const InfoBox = () => (
           </strong>
           <br />
           <br />
-          Written in: React, Node.js, Express, MongoDb, SCSS
+          Written in: React, Node.js, Express, MongoDb
         </p>
       </div>
       <div className="infoBox-security">
         <strong>Message types:</strong>
         <p>
-          All messages are temporarily stored in a remote database using{' '}
+          All messages are temporarily stored in a database using{' '}
           <strong>AES-256 encryption</strong>. This means that{' '}
           <strong>
-            for anyone trying to access the database the messages are
-            unreadable, a message can only be decrypted using the unique url
+            no one, not even someone with database access, can read your
+            messages, a message can only be decrypted using the unique url
           </strong>
           . Below is a more detailed explaination of how the different message
           types work:
@@ -53,16 +53,13 @@ const InfoBox = () => (
           <li>
             <strong>Triggered public message</strong>
             <p>
-              Anyone with the url can see the message until the timer runs out.
-              The timer starts when the first person opens the message. The
-              message is only visible for receivers until the timer runs out and
-              can't be opened after that. It will remain in the database for a
-              maximum of 24h after the timer has run out.
+              Same as public message but the timer starts when the first person
+              opens the message.
             </p>
           </li>
         </ul>
         <p>
-          The encryption is done with{' '}
+          The database encryption is done with{' '}
           <a
             className="link-styled"
             href="https://www.npmjs.com/package/mongoose-encryption"
