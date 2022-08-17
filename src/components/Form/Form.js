@@ -89,23 +89,16 @@ const Form = () => {
     setCharsLeft(3000)
   }
 
-  const isEmpty = () => {
+  const textFieldIsValid = () => {
     if (charsLeft === 3000) {
       setError("Text field can't be empty!")
-      return true
-    }
-
-    setError('')
-    return false
-  }
-
-  const isTooLong = () => {
-    if (charsLeft < 0) {
+      return false
+    } else if (charsLeft < 0) {
       setError('Your message is too long!')
-      return true
+      return false
     }
 
-    return false
+    return true
   }
 
   return (
@@ -116,7 +109,7 @@ const Form = () => {
           onSubmit={(e) => {
             e.preventDefault()
 
-            if (!isEmpty() && !isTooLong()) {
+            if (textFieldIsValid()) {
               handleOnSubmit(e)
             }
           }}
