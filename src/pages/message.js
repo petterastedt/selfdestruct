@@ -10,7 +10,7 @@ const Message = () => {
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [messageData, setMessageData] = useState({})
-  const pathname = useLocation().pathname
+  const { pathname } = useLocation()
 
   useEffect(() => {
     ;(async () => {
