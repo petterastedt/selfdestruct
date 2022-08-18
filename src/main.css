@@ -502,6 +502,11 @@
   100% {
     opacity: 1; } }
 
+.customLink-image {
+  display: block;
+  max-height: 300px;
+  max-width: 100%; }
+
 @font-face {
   font-family: 'Consolas';
   src: local(Consolas), url("./assets/font/consolas-400.woff2") format("woff2");

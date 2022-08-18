@@ -1,5 +1,6 @@
 import React from 'react'
 import { Anchorme } from 'react-anchorme'
+import CustomLink from './../CustomLink/CustomLink'
 
 const MessageBox = ({ message, messageIsDestroyed, name }) => (
   <div className="messageBox">
@@ -15,6 +16,7 @@ const MessageBox = ({ message, messageIsDestroyed, name }) => (
         data-testid="messageBox"
       >
         <Anchorme
+          linkComponent={CustomLink}
           target="_blank"
           rel="noreferrer noopener"
           className="link-message"
