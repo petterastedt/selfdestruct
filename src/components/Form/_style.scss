@@ -78,15 +78,11 @@
       }
     }
 
-    svg {
+    &-checkmark {
       height: 15px;
       margin-right: 7px;
       margin-top: -2px;
       width: 15px;
-
-      path {
-        fill: $color-white;
-      }
     }
   }
 

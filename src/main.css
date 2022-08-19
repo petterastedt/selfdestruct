@@ -32,8 +32,21 @@
 .messageBox-textRow {
   font-size: 12px;
   font-style: italic;
+  line-height: 1.5;
   margin-bottom: 25px;
   padding-left: 5px; }
+
+.messageBox-avatar {
+  border: 1px solid #868889;
+  border-radius: 50%;
+  height: 10px;
+  margin-bottom: -5px;
+  margin-right: 5px;
+  padding: 3px;
+  width: 10px; }
+
+.messageBox-avatar svg {
+  fill: #868889; }
 
 .messageBox-content {
   font-size: 12px;
@@ -65,14 +78,11 @@
 .messageBox-messageDestroyed--isDestroyed {
   opacity: 1; }
 
-.messageBox-messageDestroyed svg {
+.messageBox-messageDestroyed-checkmark {
   height: 15px;
   margin-right: 7px;
   margin-top: -2px;
   width: 15px; }
-
-.messageBox-messageDestroyed svg path {
-  fill: #e3e3e3; }
 
 .timer {
   margin-top: 20px;
@@ -165,14 +175,11 @@
     padding-left: 22px;
     padding-top: 3px; } }
 
-.form-feedback svg {
+.form-feedback-checkmark {
   height: 15px;
   margin-right: 7px;
   margin-top: -2px;
   width: 15px; }
-
-.form-feedback svg path {
-  fill: #e3e3e3; }
 
 .form label {
   margin-left: 5px; }
