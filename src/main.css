@@ -94,6 +94,9 @@
 .timer-wrapper span:last-child {
   padding-left: 5px; }
 
+.form {
+  max-width: 100%; }
+
 .form-container {
   max-width: 600px; }
 
