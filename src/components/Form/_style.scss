@@ -48,6 +48,11 @@
   &-feedback {
     font-size: $font-size-s;
     margin-top: 20px;
+    min-height: 50px;
+
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      min-height: 32px;
+    }
 
     &-success {
       display: flex;

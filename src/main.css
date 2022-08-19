@@ -137,7 +137,12 @@
 
 .form-feedback {
   font-size: 12px;
-  margin-top: 20px; }
+  margin-top: 20px;
+  min-height: 50px; }
+
+@media (min-width: 480px) {
+  .form-feedback {
+    min-height: 32px; } }
 
 .form-feedback-success {
   display: flex;
