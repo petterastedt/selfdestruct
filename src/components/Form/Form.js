@@ -409,7 +409,7 @@ const Form = () => {
                     Message created! <strong>(click to copy share link)</strong>
                   </span>
                 ) : (
-                  <span>Link copied!</span>
+                  <span className="blink">Link copied!</span>
                 )}
               </div>
               <CopyToClipboard text={url} onCopy={() => setUrlCopied(true)}>

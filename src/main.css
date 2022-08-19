@@ -348,6 +348,21 @@
 .form .messageLabel {
   margin-bottom: 15px; }
 
+.form .blink {
+  animation: blinkingText 0.75s forwards; }
+
+@keyframes blinkingText {
+  0% {
+    color: transparent; }
+  49% {
+    color: #e3e3e3; }
+  60% {
+    color: transparent; }
+  99% {
+    color: #e3e3e3; }
+  100% {
+    color: #e3e3e3; } }
+
 .home-page .footer-message {
   flex-direction: column; }
 
@@ -619,7 +634,8 @@ a {
   color: #868889; }
 
 button:disabled,
-button[disabled] {
+button[disabled],
+button[disabled]:hover {
   color: #808080;
   opacity: 0.8; }
 
