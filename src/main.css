@@ -378,17 +378,13 @@
 .home-page .footer-message {
   flex-direction: column; }
 
-@media (min-width: 768px) {
-  .home-page .footer-message {
-    flex-direction: row; } }
-
 .footer {
+  max-width: 600px;
   bottom: -100px;
-  position: absolute; }
-
-@media (min-width: 1440px) {
-  .footer {
-    bottom: -80px; } }
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+  width: 100%; }
 
 .footer-message {
   display: flex;
@@ -411,6 +407,16 @@
 
 .footer-message a:hover {
   color: #e3e3e3; }
+
+.footer-message * {
+  width: 100%; }
+
+.header {
+  margin: 10px auto; }
+
+@media (min-width: 480px) {
+  .header {
+    margin: 50px auto; } }
 
 .header.centerComponent {
   padding: 0; }
@@ -494,6 +500,8 @@
   animation: fadeIn 0.5s forwards;
   display: flex;
   flex-direction: column;
+  height: calc(100vh - 170px);
+  justify-content: center;
   opacity: 0; }
 
 .loader-logo {
@@ -695,9 +703,7 @@ input[type='radio']:checked:after {
   background-color: #868889; }
 
 .centerComponentVertically {
-  align-items: center;
   display: flex;
-  justify-content: center;
   flex-direction: column; }
 
 .centerComponent {
@@ -756,6 +762,9 @@ input[type='radio']:checked:after {
   position: absolute;
   transition: opacity 0.3s;
   width: 100%; }
+
+.error {
+  text-align: center; }
 
 .pageWrapper {
   padding-top: 50px;

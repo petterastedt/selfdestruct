@@ -1,18 +1,14 @@
 .home-page .footer-message {
   flex-direction: column;
-
-  @media (min-width: $breakpoint-tablet) {
-    flex-direction: row;
-  }
 }
 
 .footer {
+  max-width: 600px;
   bottom: -100px;
+  left: 50%;
   position: absolute;
-
-  @media (min-width: $breakpoint-desktop-wide) {
-    bottom: -80px;
-  }
+  transform: translateX(-50%);
+  width: 100%;
 
   &-message {
     display: flex;
@@ -36,6 +32,10 @@
       &:hover {
         color: $color-white;
       }
+    }
+
+    * {
+      width: 100%;
     }
   }
 }

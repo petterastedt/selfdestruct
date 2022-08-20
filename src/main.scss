@@ -195,9 +195,7 @@ input[type='radio']:checked:after {
 // HELPER CLASSES
 
 .centerComponentVertically {
-  align-items: center;
   display: flex;
-  justify-content: center;
   flex-direction: column;
 }
 
@@ -265,6 +263,10 @@ input[type='radio']:checked:after {
     transition: opacity 0.3s;
     width: 100%;
   }
+}
+
+.error {
+  text-align: center;
 }
 
 .pageWrapper {
