@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import Timer from './../components/Timer/Timer'
 import MessageBox from './../components/MessageBox/MessageBox'
+import Header from './../components/Header/Header'
 import Footer from './../components/Footer/Footer'
 import Loader from './../components/Loader/Loader'
 
@@ -62,7 +63,7 @@ const Message = () => {
   return (
     <div className="container message-page">
       <div className="pageWrapper centerComponent centerComponentVertically">
-        {isLoading && <Loader />}
+        {isLoading ? <Loader /> : <Header />}
         {messageData.message && (
           <MessageBox
             message={messageData.message}
@@ -79,7 +80,7 @@ const Message = () => {
             messageIsDestroyed={messageIsDestroyed}
           />
         )}
-        {error && <h3>{error}</h3>}
+        {error && <h3 className="error">{error}</h3>}
         <br />
         <Footer
           footerMessage={

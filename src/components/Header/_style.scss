@@ -1,4 +1,10 @@
 .header {
+  margin: 10px auto;
+
+  @media (min-width: $breakpoint-mobile-horizontal) {
+    margin: 50px auto;
+  }
+
   &.centerComponent {
     padding: 0;
   }

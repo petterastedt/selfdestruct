@@ -1,8 +1,8 @@
-import React from "react";
-import logo from "./../../assets/img/logo.png";
+import React from 'react'
+import logo from './../../assets/img/logo.png'
 
 const Header = () => (
-  <header className="header centerComponent">
+  <header className="header">
     <a
       href="/"
       aria-label="Back to homepage"
@@ -25,6 +25,6 @@ const Header = () => (
       </h2>
     </a>
   </header>
-);
+)
 
-export default Header;
+export default Header

@@ -3,6 +3,8 @@
   animation: fadeIn 0.5s forwards;
   display: flex;
   flex-direction: column;
+  height: calc(100vh - 170px);
+  justify-content: center;
   opacity: 0;
 
   &-logo {
