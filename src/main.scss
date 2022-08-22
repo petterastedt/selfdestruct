@@ -23,7 +23,6 @@
 }
 
 // GLOBAL STYLES
-
 html,
 body {
   font-family: 'Consolas', sans-serif;
@@ -270,8 +269,13 @@ input[type='radio']:checked:after {
 }
 
 .pageWrapper {
-  padding-top: $component-spacing;
   max-width: $content-max-width;
-  min-height: calc(100vh - 150px);
+  min-height: calc(100vh - 200px);
+  padding-top: $component-spacing-mobile;
   position: relative;
+
+  @media (min-width: $breakpoint-mobile-horizontal) {
+    min-height: calc(100vh - 150px);
+    padding-top: $component-spacing;
+  }
 }
