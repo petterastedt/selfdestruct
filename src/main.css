@@ -412,7 +412,7 @@
   width: 100%; }
 
 .header {
-  margin: 10px auto; }
+  margin: 0 auto; }
 
 @media (min-width: 480px) {
   .header {
@@ -767,7 +767,12 @@ input[type='radio']:checked:after {
   text-align: center; }
 
 .pageWrapper {
-  padding-top: 50px;
   max-width: 600px;
-  min-height: calc(100vh - 150px);
+  min-height: calc(100vh - 200px);
+  padding-top: 40px;
   position: relative; }
+
+@media (min-width: 480px) {
+  .pageWrapper {
+    min-height: calc(100vh - 150px);
+    padding-top: 50px; } }
