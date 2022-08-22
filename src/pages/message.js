@@ -5,20 +5,25 @@ import MessageBox from './../components/MessageBox/MessageBox'
 import Header from './../components/Header/Header'
 import Footer from './../components/Footer/Footer'
 import Loader from './../components/Loader/Loader'
+import crypto from './../crypto'
 
 const Message = () => {
   const [messageIsDestroyed, setMessageIsDestroyed] = useState(false)
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [messageData, setMessageData] = useState({})
-  const { pathname } = useLocation()
+  const location = useLocation()
 
   useEffect(() => {
     ;(async () => {
-      const secret = pathname.split('/').pop()
+      const secret = location.pathname.split('/').pop()
+      const key = location.hash.slice(1)
+
+      setMessageData({})
+      setError(false)
 
       try {
-        if (secret.length > 16) {
+        if (secret.length === 6 && key.length === 16) {
           setIsLoading(true)
 
           const url =
@@ -31,10 +36,24 @@ const Message = () => {
 
           if (messageJson.success) {
             const { textContent, timeLeft, options, name } = messageJson.item
+            const decryptedTextContent = crypto.decrypt(textContent, key)
+
+            if (!decryptedTextContent) {
+              const errorMessage = options.killOnFirstReq
+                ? 'Invalid decryption key, the message has been deleted :('
+                : 'Invalid decryption key'
+
+              setTimeout(() => {
+                setError(errorMessage)
+                setIsLoading(false)
+              }, 2000)
+
+              return
+            }
 
             const data = {
               name,
-              message: textContent,
+              message: decryptedTextContent,
               timeLeft,
               isPrivateMessage: options.killOnFirstReq
             }
@@ -50,15 +69,15 @@ const Message = () => {
             }, 2000)
           }
         } else {
-          setError('Invalid secret')
+          setError('Invalid link')
         }
       } catch (e) {
         setError('Critical error')
         setIsLoading(false)
-        console.log(e)
+        console.error(e)
       }
     })()
-  }, [pathname])
+  }, [location])
 
   return (
     <div className="container message-page">

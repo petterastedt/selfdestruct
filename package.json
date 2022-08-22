@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "crypto-js": "^4.1.1",
     "react": "^17.0.1",
     "react-anchorme": "^2.2.1",
     "react-copy-to-clipboard": "^5.1.0",
