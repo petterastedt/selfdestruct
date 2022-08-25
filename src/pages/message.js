@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom'
 import Timer from './../components/Timer/Timer'
 import MessageBox from './../components/MessageBox/MessageBox'
 import Header from './../components/Header/Header'
+import FormValidateKey from './../components/FormValidateKey/FormValidateKey'
 import Footer from './../components/Footer/Footer'
 import Loader from './../components/Loader/Loader'
 import crypto from './../crypto'
@@ -11,15 +12,15 @@ const Message = () => {
   const [messageIsDestroyed, setMessageIsDestroyed] = useState(false)
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
-  const [messageData, setMessageData] = useState({})
-  const location = useLocation()
+  const [messageData, setMessageData] = useState(null)
+  const { pathname, hash } = useLocation()
 
   useEffect(() => {
     ;(async () => {
-      const secret = location.pathname.split('/').pop()
-      const key = location.hash.slice(1)
+      const secret = pathname.split('/').pop()
+      const key = hash.slice(1)
 
-      setMessageData({})
+      setMessageData(null)
       setError(false)
 
       try {
@@ -38,28 +39,22 @@ const Message = () => {
             const { textContent, timeLeft, options, name } = messageJson.item
             const decryptedTextContent = crypto.decrypt(textContent, key)
 
-            if (!decryptedTextContent) {
-              const errorMessage = options.killOnFirstReq
-                ? 'Invalid decryption key, the message has been deleted :('
-                : 'Invalid decryption key'
-
-              setTimeout(() => {
-                setError(errorMessage)
-                setIsLoading(false)
-              }, 2000)
-
-              return
-            }
-
             const data = {
               name,
-              message: decryptedTextContent,
+              message: decryptedTextContent
+                ? decryptedTextContent
+                : textContent,
               timeLeft,
               isPrivateMessage: options.killOnFirstReq
             }
 
             setTimeout(() => {
               setMessageData(data)
+
+              if (!decryptedTextContent) {
+                setError('Invalid decryption key')
+              }
+
               setIsLoading(false)
             }, 2000)
           } else {
@@ -77,20 +72,25 @@ const Message = () => {
         console.error(e)
       }
     })()
-  }, [location])
+  }, [hash, pathname])
+
+  const setTextContent = (decrytedMessage) => {
+    setMessageData({ ...messageData, message: decrytedMessage })
+    setError(false)
+  }
 
   return (
     <div className="container message-page">
       <div className="pageWrapper centerComponent centerComponentVertically">
         {isLoading ? <Loader /> : <Header />}
-        {messageData.message && (
+        {!error && messageData && (
           <MessageBox
             message={messageData.message}
             messageIsDestroyed={messageIsDestroyed}
             name={messageData.name}
           />
         )}
-        {messageData.timeLeft && (
+        {!error && messageData && (
           <Timer
             isPrivateMessage={messageData.isPrivateMessage}
             milliseconds={messageData.timeLeft}
@@ -100,6 +100,12 @@ const Message = () => {
           />
         )}
         {error && <h3 className="error">{error}</h3>}
+        {error === 'Invalid decryption key' && (
+          <FormValidateKey
+            setTextContent={setTextContent}
+            encryptedTextContent={messageData.message}
+          />
+        )}
         <br />
         <Footer
           footerMessage={
