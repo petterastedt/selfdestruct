@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "crypto-js": "^4.1.1",
     "react": "^17.0.1",
     "react-anchorme": "^2.2.1",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "4.0.3",
+    "string-crypto": "^2.0.2",
     "web-vitals": "^0.2.4"
   },
   "devDependencies": {

@@ -269,6 +269,28 @@ input[type='radio']:checked:after {
   text-align: center;
 }
 
+.blink {
+  animation: blinkingText 0.75s forwards;
+}
+
+@keyframes blinkingText {
+  0% {
+    color: transparent;
+  }
+  49% {
+    color: $color-white;
+  }
+  60% {
+    color: transparent;
+  }
+  99% {
+    color: $color-white;
+  }
+  100% {
+    color: $color-white;
+  }
+}
+
 .pageWrapper {
   max-width: $content-max-width;
   min-height: calc(100vh - 200px);

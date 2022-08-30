@@ -1,4 +1,6 @@
-import CryptoJS from 'crypto-js'
+import StringCrypto from 'string-crypto'
+
+const regExAlgo = /([\x00-\x1F\x7F])*/g
 
 const generateKey = (n) => {
   const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
@@ -10,10 +12,11 @@ const generateKey = (n) => {
   return key
 }
 
-// Encrypt
 const encrypt = (message) => {
   const key = generateKey(16)
-  const encryptedMessage = CryptoJS.AES.encrypt(message, key).toString()
+  const { encryptString } = new StringCrypto()
+
+  const encryptedMessage = encryptString(message.replace(regExAlgo, ''), key)
 
   return {
     message: encryptedMessage,
@@ -21,9 +24,25 @@ const encrypt = (message) => {
   }
 }
 
-// Decrypt
-const decrypt = (message, key) =>
-  CryptoJS.AES.decrypt(message, key).toString(CryptoJS.enc.Utf8)
+const decrypt = (message, key) => {
+  const { decryptString } = new StringCrypto()
+
+  const encryptedString = decryptString(message, key)
+
+  let invalidCharacters = []
+
+  for (let i = 0; i < encryptedString.length; i++) {
+    if (encryptedString[i] === encryptedString[i].match(regExAlgo)[0]) {
+      invalidCharacters.push(encryptedString[i])
+    }
+  }
+
+  if (invalidCharacters.length) {
+    return false
+  }
+
+  return encryptedString
+}
 
 const exports = { encrypt, decrypt }
 

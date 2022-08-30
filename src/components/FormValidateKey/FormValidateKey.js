@@ -10,7 +10,9 @@ const FormValidateKey = ({ setTextContent, encryptedTextContent }) => {
     const decryptedTextContent = crypto.decrypt(encryptedTextContent, key)
 
     if (!decryptedTextContent) {
-      setError('Invalid link')
+      setError('Invalid link!')
+
+      setTimeout(() => setError(''), 2000)
       return
     }
 
@@ -31,13 +33,10 @@ const FormValidateKey = ({ setTextContent, encryptedTextContent }) => {
       </p>
       <form
         aria-label="Validate key"
-        // onSubmit={(e) => {
-        //   e.preventDefault()
-
-        //   if (textFieldIsValid()) {
-        //     handleOnSubmit(e)
-        //   }
-        // }}
+        onSubmit={(e) => {
+          e.preventDefault()
+          validateKey()
+        }}
       >
         <label htmlFor="form-validate-key-inputField">Confirm url:</label>
         <div className="form-validate-key-inputWrapper">
@@ -49,17 +48,9 @@ const FormValidateKey = ({ setTextContent, encryptedTextContent }) => {
             placeholder="Validate url"
             onChange={(e) => setUrl(e.target.value)}
           />
-          {error}
-          <button
-            className="button-styled input-button"
-            onClick={(e) => {
-              e.preventDefault()
-              validateKey()
-            }}
-          >
-            Validate
-          </button>
+          <button className="button-styled input-button">Validate</button>
         </div>
+        {error && <p className="error blink">{error}</p>}
       </form>
     </div>
   )

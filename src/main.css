@@ -360,21 +360,6 @@
 .form .messageLabel {
   margin-bottom: 15px; }
 
-.form .blink {
-  animation: blinkingText 0.75s forwards; }
-
-@keyframes blinkingText {
-  0% {
-    color: transparent; }
-  49% {
-    color: #e3e3e3; }
-  60% {
-    color: transparent; }
-  99% {
-    color: #e3e3e3; }
-  100% {
-    color: #e3e3e3; } }
-
 .home-page .footer-message {
   flex-direction: column; }
 
@@ -546,6 +531,7 @@
 
 .customLink-image {
   display: block;
+  margin-top: 5px;
   max-height: 300px;
   max-width: 100%; }
 
@@ -587,6 +573,9 @@
 @media (min-width: 480px) {
   .form-validate-key button {
     margin: 0 0 0 20px; } }
+
+.form-validate-key .error {
+  margin-top: 20px; }
 
 @font-face {
   font-family: 'Consolas';
@@ -808,6 +797,21 @@ input[type='radio']:checked:after {
 
 .error {
   text-align: center; }
+
+.blink {
+  animation: blinkingText 0.75s forwards; }
+
+@keyframes blinkingText {
+  0% {
+    color: transparent; }
+  49% {
+    color: #e3e3e3; }
+  60% {
+    color: transparent; }
+  99% {
+    color: #e3e3e3; }
+  100% {
+    color: #e3e3e3; } }
 
 .pageWrapper {
   max-width: 600px;
