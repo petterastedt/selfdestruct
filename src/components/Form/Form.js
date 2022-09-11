@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import checkMark from './../../assets/img/check-mark.svg'
+import refresh from './../../assets/img/refresh.svg'
+
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import crypto from './../../crypto'
 

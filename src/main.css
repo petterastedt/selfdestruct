@@ -266,9 +266,9 @@
 @media (min-width: 480px) {
   .form .input-buttonWrapper .refresh {
     animation: none;
-    height: 15px;
+    height: 14px;
     margin: 25px 15px 0;
-    width: 15px; } }
+    width: 14px; } }
 
 .form-anonymous {
   display: flex;
