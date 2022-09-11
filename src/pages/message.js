@@ -73,8 +73,6 @@ const Message = () => {
         )}
         {messageData.timeLeft && (
           <Timer
-            isPrivateMessage={messageData.isPrivateMessage}
-            milliseconds={messageData.timeLeft}
             setMessageIsDestroyed={setMessageIsDestroyed}
             messageData={messageData}
             messageIsDestroyed={messageIsDestroyed}
