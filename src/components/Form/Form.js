@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import checkMark from './../../assets/img/check-mark.svg'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
+import refresh from './../../assets/img/refresh.svg'
 
 const Form = () => {
   const [error, setError] = useState('')
@@ -225,6 +226,7 @@ const Form = () => {
               e.preventDefault()
               setOptionsAreHidden(!optionsAreHidden)
             }}
+            disabled={isSubmitting || disableCreateMessage}
           >
             Edit message options
           </button>
@@ -377,10 +379,20 @@ const Form = () => {
             <button
               type="submit"
               className="button-styled input-button"
-              disabled={disableCreateMessage}
+              disabled={isSubmitting || disableCreateMessage}
             >
               Create message
             </button>
+            {disableCreateMessage && (
+              <img
+                alt="refresh"
+                aria-label="refresh"
+                className="refresh"
+                decoding="async"
+                src={refresh}
+                onClick={() => window.location.reload()}
+              />
+            )}
           </div>
         </form>
 

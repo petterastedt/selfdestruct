@@ -245,6 +245,31 @@
   .form .input-timeSelect-wrapper {
     display: block; } }
 
+.form .input-buttonWrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column; }
+
+@media (min-width: 480px) {
+  .form .input-buttonWrapper {
+    flex-direction: row; } }
+
+.form .input-buttonWrapper .refresh {
+  animation: expandHeight 1s forwards;
+  cursor: pointer;
+  height: 20px;
+  margin-top: 25px;
+  transition: height 2s;
+  transition-delay: 0.1s;
+  width: 20px; }
+
+@media (min-width: 480px) {
+  .form .input-buttonWrapper .refresh {
+    animation: none;
+    height: 15px;
+    margin: 25px 15px 0;
+    width: 15px; } }
+
 .form-anonymous {
   display: flex;
   flex-direction: column;
@@ -374,6 +399,14 @@
     color: #e3e3e3; }
   100% {
     color: #e3e3e3; } }
+
+@keyframes expandHeight {
+  0% {
+    height: 0; }
+  50% {
+    height: 0; }
+  100% {
+    height: 20px; } }
 
 .home-page .footer-message {
   flex-direction: column; }
