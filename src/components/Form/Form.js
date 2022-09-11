@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import checkMark from './../../assets/img/check-mark.svg'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
-import refresh from './../../assets/img/refresh.svg'
+import crypto from './../../crypto'
 
 const Form = () => {
   const [error, setError] = useState('')
@@ -33,6 +33,8 @@ const Form = () => {
 
     try {
       setIsSumbitting(true)
+      const encrypted = crypto.encrypt(inputData.textContent)
+
       const url =
         process.env.NODE_ENV === 'production'
           ? '/api/post'
@@ -44,13 +46,16 @@ const Form = () => {
           Accept: 'application/json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(inputData)
+        body: JSON.stringify({
+          ...inputData,
+          textContent: encrypted.message
+        })
       })
 
       const response = await postMessage.json()
 
       if (response.success) {
-        setUrl(response.item.url)
+        setUrl(`${response.item.url}#${encrypted.key}`)
         setError('')
         setDisableCreateMessage(true)
         resetForm()
@@ -63,6 +68,7 @@ const Form = () => {
       setError('Something went wrong when creating your message')
       setUrl('')
       setIsSumbitting(false)
+      console.error(error)
     }
   }
 

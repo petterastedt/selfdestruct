@@ -7,6 +7,7 @@
 @import './components/InfoBox/style';
 @import './components/Loader/style';
 @import './components/CustomLink/style';
+@import './components/FormValidateKey/style';
 
 @font-face {
   font-family: 'Consolas';
@@ -59,7 +60,7 @@ h2,
 
 h3,
 .h3 {
-  font-size: $font-size-m;
+  font-size: 18px;
   font-weight: 700;
   margin: 0;
 }
@@ -266,6 +267,28 @@ input[type='radio']:checked:after {
 
 .error {
   text-align: center;
+}
+
+.blink {
+  animation: blinkingText 0.75s forwards;
+}
+
+@keyframes blinkingText {
+  0% {
+    color: transparent;
+  }
+  49% {
+    color: $color-white;
+  }
+  60% {
+    color: transparent;
+  }
+  99% {
+    color: $color-white;
+  }
+  100% {
+    color: $color-white;
+  }
 }
 
 .pageWrapper {

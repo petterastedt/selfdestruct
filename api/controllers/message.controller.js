@@ -64,9 +64,7 @@ const setInactiveItem = (secret) => {
 
 // SHOW MESSAGE
 const showMessage = (secret, res) => {
-  const secretEncrypted = utils.encryptSecret(secret)
-
-  Message.findOne({ secret: secretEncrypted }, (error, item) => {
+  Message.findOne({ secret: secret }, (error, item) => {
     if (!error && item?.isActive) {
       let {
         isActive,
