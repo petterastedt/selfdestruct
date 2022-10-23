@@ -258,7 +258,7 @@ const Form = () => {
                   id="input-timeSelect-hrs"
                   className="input-timeSelect hours"
                   defaultValue={inputData.aliveFor.hrs}
-                  onChange={(e) => {
+                  onChange={(e) =>
                     setInputData({
                       ...inputData,
                       aliveFor: {
@@ -267,9 +267,9 @@ const Form = () => {
                         sec: inputData.aliveFor.sec
                       }
                     })
-                  }}
+                  }
                 >
-                  {[...Array(24)].map((number, i) => (
+                  {[...Array(24)].map((_, i) => (
                     <option key={`hours-${i}`} value={i}>
                       {i} hours
                     </option>
@@ -281,7 +281,7 @@ const Form = () => {
                   id="input-timeSelect-min"
                   className="input-timeSelect"
                   defaultValue={inputData.aliveFor.min}
-                  onChange={(e) => {
+                  onChange={(e) =>
                     setInputData({
                       ...inputData,
                       aliveFor: {
@@ -290,9 +290,9 @@ const Form = () => {
                         sec: inputData.aliveFor.sec
                       }
                     })
-                  }}
+                  }
                 >
-                  {[...Array(60)].map((number, i) => (
+                  {[...Array(60)].map((_, i) => (
                     <option key={`minutes-${i}`} value={i}>
                       {i} min
                     </option>
@@ -304,7 +304,7 @@ const Form = () => {
                   id="input-timeSelect-sec"
                   className="input-timeSelect"
                   defaultValue={inputData.aliveFor.sec}
-                  onChange={(e) => {
+                  onChange={(e) =>
                     setInputData({
                       ...inputData,
                       aliveFor: {
@@ -313,9 +313,9 @@ const Form = () => {
                         sec: Number(e.target.value)
                       }
                     })
-                  }}
+                  }
                 >
-                  {[...Array(60)].map((number, i) => (
+                  {[...Array(60)].map((_, i) => (
                     <option key={`seconds-${i}`} value={i}>
                       {i} sec
                     </option>
@@ -399,6 +399,7 @@ const Form = () => {
                 decoding="async"
                 src={refresh}
                 onClick={() => window.location.reload()}
+                title="Refresh"
               />
             )}
           </div>

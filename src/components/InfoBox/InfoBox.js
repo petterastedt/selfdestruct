@@ -8,28 +8,24 @@ const InfoBox = () => (
     <div className="infoBox-container">
       <div className="infoBox-about">
         <p>
+          This is a side project where the main goal is for me to learn and have
+          fun doing so. I'm not a security expert in any way and can't leave any
+          guarantees regarding the functionality of this website.
+          <br />
+          <br />
+          Privtext offers full end-to-end encryption using{' '}
+          <strong>AES-256</strong>. The decryption key is only visible in the
+          unique url so the user is always in control
           <strong>
-            This is a side project where the main goal is for me to learn and
-            have fun doing so. I'm not a security expert in any way and can't
-            leave any guarantees regarding the functionality of this website.
+            . No one, not even someone with database access, can read your
+            messages. A message can only be decrypted using the unique url
           </strong>
+          .
           <br />
-          <br />
-          Written in: React, Node.js, Express, MongoDb
         </p>
       </div>
       <div className="infoBox-security">
         <strong>Message types:</strong>
-        <p>
-          All messages are temporarily stored in a database using{' '}
-          <strong>AES-256 encryption</strong>. This means that{' '}
-          <strong>
-            no one, not even someone with database access, can read your
-            messages, a message can only be decrypted using the unique url
-          </strong>
-          . Below is a more detailed explaination of how the different message
-          types work:
-        </p>
         <ul>
           <li>
             <strong>Private message</strong>
@@ -58,17 +54,23 @@ const InfoBox = () => (
             </p>
           </li>
         </ul>
+        <strong>Technical stuff:</strong>
+        <br />
+        <br />
         <p>
-          The database encryption is done with{' '}
+          Written in React, Node.js, Express, MongoDb
+          <br />
+          <br />
+          The encryption/decryption is done with{' '}
           <a
             className="link-styled"
-            href="https://www.npmjs.com/package/mongoose-encryption"
-            aria-label="Mongoose Encryption NPM package"
-            alt="Mongoose Encryption NPM package"
+            href="https://www.npmjs.com/package/string-crypto"
+            aria-label="String crypto NPM package"
+            alt="String crypto NPM package"
             target="_blank"
             rel="noopener noreferrer"
           >
-            mongoose-encryption
+            string-crypto
           </a>
           .
           <br />
@@ -80,10 +82,15 @@ const InfoBox = () => (
             aria-label="email info@privtext.me"
           >
             info@privtext.me
-          </a>
-          .
+          </a>{' '}
+          {/* and if you like this project, please consider{' '}
+          <a className="link-styled" href="/" aria-label="donate">
+            buying me a coffee
+          </a>{' '}
+          ☕ */}
           {/* or visit my website at <a href="https://www.petterastedt.com" className="link-styled" aria-label="Petter Åstedt portfolio website" target="_blank" rel="noreferrer noopener">https://www.petterastedt.com</a>. */}
         </p>
+        <br />
         <br />
         <i>/ Petter</i>
       </div>

@@ -23,48 +23,47 @@ const Message = () => {
       setMessageData(null)
       setError(false)
 
+      if (secret.length !== 6 || key.length !== 16) {
+        setError('Invalid link')
+        return
+      }
+
+      setIsLoading(true)
+
       try {
-        if (secret.length === 6 && key.length === 16) {
-          setIsLoading(true)
+        const url =
+          process.env.NODE_ENV === 'production'
+            ? '/api/message'
+            : 'http://localhost:5000/api/message'
 
-          const url =
-            process.env.NODE_ENV === 'production'
-              ? '/api/message'
-              : 'http://localhost:5000/api/message'
+        const message = await fetch(`${url}/${secret}`)
+        const messageJson = await message.json()
 
-          const message = await fetch(`${url}/${secret}`)
-          const messageJson = await message.json()
+        if (messageJson.success) {
+          const { textContent, timeLeft, options, name } = messageJson.item
+          const decryptedTextContent = crypto.decrypt(textContent, key)
 
-          if (messageJson.success) {
-            const { textContent, timeLeft, options, name } = messageJson.item
-            const decryptedTextContent = crypto.decrypt(textContent, key)
+          const data = {
+            name,
+            message: decryptedTextContent ? decryptedTextContent : textContent,
+            timeLeft,
+            isPrivateMessage: options.killOnFirstReq
+          }
 
-            const data = {
-              name,
-              message: decryptedTextContent
-                ? decryptedTextContent
-                : textContent,
-              timeLeft,
-              isPrivateMessage: options.killOnFirstReq
+          setTimeout(() => {
+            setMessageData(data)
+
+            if (!decryptedTextContent) {
+              setError('Invalid decryption key')
             }
 
-            setTimeout(() => {
-              setMessageData(data)
-
-              if (!decryptedTextContent) {
-                setError('Invalid decryption key')
-              }
-
-              setIsLoading(false)
-            }, 2000)
-          } else {
-            setTimeout(() => {
-              setError(messageJson.message)
-              setIsLoading(false)
-            }, 2000)
-          }
+            setIsLoading(false)
+          }, 2000)
         } else {
-          setError('Invalid link')
+          setTimeout(() => {
+            setError(messageJson.message)
+            setIsLoading(false)
+          }, 2000)
         }
       } catch (e) {
         setError('Critical error')
@@ -83,20 +82,19 @@ const Message = () => {
     <div className="container message-page">
       <div className="pageWrapper centerComponent centerComponentVertically">
         {isLoading ? <Loader /> : <Header />}
-        {!error && messageData && (
-          <MessageBox
-            message={messageData.message}
-            messageIsDestroyed={messageIsDestroyed}
-            name={messageData.name}
-          />
-        )}
-        {!error && messageData && (
-          <Timer
-            setMessageIsDestroyed={setMessageIsDestroyed}
-            messageData={messageData}
-            messageIsDestroyed={messageIsDestroyed}
-          />
-        )}
+        {!error &&
+          messageData && [
+            <MessageBox
+              message={messageData.message}
+              messageIsDestroyed={messageIsDestroyed}
+              name={messageData.name}
+            />,
+            <Timer
+              setMessageIsDestroyed={setMessageIsDestroyed}
+              messageData={messageData}
+              messageIsDestroyed={messageIsDestroyed}
+            />
+          ]}
         {error && <h3 className="error">{error}</h3>}
         {error === 'Invalid decryption key' && (
           <FormValidateKey
