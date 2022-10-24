@@ -400,6 +400,7 @@ const Form = () => {
                 src={refresh}
                 onClick={() => window.location.reload()}
                 title="Refresh"
+                data-testid="refresh"
               />
             )}
           </div>

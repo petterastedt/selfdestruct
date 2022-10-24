@@ -24,6 +24,7 @@ describe('Create message tests', () => {
         feedbackUrl: () => screen.getByTestId('form-feedback-url'),
         feedbackSubmitting: () => screen.getByText('Creating message..'),
         submitButton: () => screen.getByText('Create message'),
+        refreshButton: () => screen.getByTestId('refresh'),
         textBox: () => screen.getByRole('textbox')
       },
       ...utils
@@ -52,6 +53,7 @@ describe('Create message tests', () => {
       'https://privtext.vercel.app/message/509b6d#'
     )
     expect(elements.submitButton()).toBeDisabled()
+    expect(elements.refreshButton()).toBeInTheDocument()
   })
 
   test('Should show error if message creation fails', async () => {
