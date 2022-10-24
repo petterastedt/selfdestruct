@@ -12,12 +12,12 @@ const handlers = [
         isFirstReq: true,
         name,
         options,
-        secret: 'a03343cc4ac04579757dab8ae7',
+        secret: '509b6d',
         textContent,
         timeLeft: 120000,
         timeOptions: { aliveFor: 120000 },
         updatedAt: '2022-08-09T19:47:53.973Z',
-        url: 'https://privtext.vercel.app/message/a03343cc4ac04579757dab8ae7',
+        url: 'https://privtext.vercel.app/message/509b6d',
         __v: 0,
         _id: '62f2b9e985c5410010bfd910'
       },
@@ -29,11 +29,11 @@ const handlers = [
   }),
   rest.get(
     'http://localhost:5000/api/message/:secret',
-    async (req, res, context) => {
+    async (_, res, context) => {
       const response = {
         item: {
           textContent:
-            'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus, dolorem!',
+            '1fbb9bbbd1829273eb254b9da67ad838:45745a6864435374636d44394531563452424e766157414956626150664843756361654845756c6c7976785a6a716879434838446837586c426e6963487957776c5a6b536e6171704a3532326258654b456971456f6e6d6347785431754937306a333366354f593d',
           timeLeft: 120000,
           options: {
             killOnFirstReq: true,

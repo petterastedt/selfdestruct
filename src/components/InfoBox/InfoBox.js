@@ -101,6 +101,7 @@ const InfoBox = () => (
           <li>AES-256 encrypted message content (NEW)</li>
           <li>Full emoji support</li>
           <li>Auto generated anchorlinks when a url is detected</li>
+          <li>Image support. Image links are shown as images.</li>
         </ul> */}
       </div>
     </div>

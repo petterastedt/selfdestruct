@@ -21,8 +21,12 @@ describe('Open message tests', () => {
       elements: {
         feedbackMessageNotFound: () => screen.getByText('Message not found!'),
         loader: () => screen.getByTestId('loader'),
-        messageBox: () => screen.getByTestId('messageBox'),
-        senderName: () => screen.getByTestId('senderName')
+        formValidateKey: () => screen.getByTestId('form-validate-key'),
+        messageBox: () =>
+          screen.getByText(
+            'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus, dolorem!'
+          ),
+        senderName: () => screen.getByText('John doe')
       },
       ...utils
     }
@@ -31,7 +35,7 @@ describe('Open message tests', () => {
   test('Should open the message if secret matches', async () => {
     const { elements } = setup()
 
-    const messageUrl = '/message/a03343cc4ac04579757dab8ae7'
+    const messageUrl = '/message/26de7e#m5g81xkOvgWfvVEJ'
 
     render(
       <MemoryRouter initialEntries={[messageUrl]}>
@@ -45,25 +49,42 @@ describe('Open message tests', () => {
       timeout: 2500
     })
 
-    expect(elements.messageBox()).toHaveTextContent(
-      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus, dolorem!'
+    expect(elements.messageBox()).toBeInTheDocument()
+
+    expect(elements.senderName()).toBeInTheDocument()
+  })
+
+  test('Should show confirm link screen if encryption key is invalid', async () => {
+    const { elements } = setup()
+
+    const messageUrl = '/message/26de7e#m5g81xkOvgWfvVED'
+
+    render(
+      <MemoryRouter initialEntries={[messageUrl]}>
+        <Message route="message/:secret" />
+      </MemoryRouter>
     )
 
-    expect(elements.senderName()).toHaveTextContent('John doe')
+    expect(elements.loader()).toBeInTheDocument()
+
+    await waitFor(
+      () => expect(elements.formValidateKey()).toBeInTheDocument(),
+      {
+        timeout: 2500
+      }
+    )
   })
 
   test('Should show error if message is not found', async () => {
     const { elements } = setup()
 
     server.use(
-      rest.get(
-        'http://localhost:5000/api/message/:secret',
-        (req, res, context) =>
-          res(context.json({ message: 'Message not found!', success: false }))
+      rest.get('http://localhost:5000/api/message/:secret', (_, res, context) =>
+        res(context.json({ message: 'Message not found!', success: false }))
       )
     )
 
-    const invalidMessageUrl = '/message/a03343cc4ac04579757dab8ae3'
+    const invalidMessageUrl = '/message/509b6d#hCUJ81SBHA88ShA7'
 
     render(
       <MemoryRouter initialEntries={[invalidMessageUrl]}>

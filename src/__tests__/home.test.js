@@ -21,10 +21,7 @@ describe('Create message tests', () => {
       elements: {
         feedbackError: () => screen.getByTestId('form-feedback-error'),
         feedbackSuccess: () => screen.getByTestId('form-feedback-success'),
-        feedbackUrl: () =>
-          screen.getByText(
-            'https://privtext.vercel.app/message/a03343cc4ac04579757dab8ae7'
-          ),
+        feedbackUrl: () => screen.getByTestId('form-feedback-url'),
         feedbackSubmitting: () => screen.getByText('Creating message..'),
         submitButton: () => screen.getByText('Create message'),
         textBox: () => screen.getByRole('textbox')
@@ -51,6 +48,9 @@ describe('Create message tests', () => {
 
     await waitFor(() => expect(elements.feedbackSuccess()).toBeInTheDocument())
     expect(elements.feedbackUrl()).toBeInTheDocument()
+    expect(elements.feedbackUrl()).toHaveTextContent(
+      'https://privtext.vercel.app/message/509b6d#'
+    )
     expect(elements.submitButton()).toBeDisabled()
   })
 
@@ -58,7 +58,7 @@ describe('Create message tests', () => {
     const { elements } = setup()
 
     server.use(
-      rest.post('http://localhost:5000/api/post', (req, res, context) =>
+      rest.post('http://localhost:5000/api/post', (_, res, context) =>
         res(context.json({ success: false, message: 'Database error!' }))
       )
     )
@@ -67,6 +67,14 @@ describe('Create message tests', () => {
       elements.textBox(),
       'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus, dolorem!'
     )
+
+    await userEvent.click(elements.submitButton())
+
+    await waitFor(() => expect(elements.feedbackError()).toBeInTheDocument())
+  })
+
+  test('Should show error if no text is entered', async () => {
+    const { elements } = setup()
 
     await userEvent.click(elements.submitButton())
 

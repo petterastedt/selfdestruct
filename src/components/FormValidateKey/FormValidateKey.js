@@ -20,7 +20,7 @@ const FormValidateKey = ({ setTextContent, encryptedTextContent }) => {
   }
 
   return (
-    <div className="form-validate-key">
+    <div className="form-validate-key" data-testid="form-validate-key">
       <p>
         <strong>Warning!</strong>
         <br />
