@@ -19,7 +19,7 @@
     "@testing-library/user-event": "^14.4.3",
     "msw": "^0.44.2",
     "node-sass": "^7.0.1",
-    "yarn-audit-fix": "^9.3.5"
+    "yarn-audit-fix": "^9.3.6"
   },
   "scripts": {
     "start": "react-scripts start & node-sass --watch src -o src && fg",
