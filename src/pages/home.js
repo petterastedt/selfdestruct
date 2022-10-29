@@ -5,23 +5,23 @@ import Footer from './../components/Footer/Footer'
 import './../main.css'
 
 const Home = () => (
-  <div className="container home-page">
-    <div className="pageWrapper centerComponent centerComponentVertically">
+  <div className="container home-page centerComponent">
+    <div className="pageWrapper centerComponentVertically">
       <Header />
       <Form />
-      <Footer
-        footerMessage={[
-          <div key="footer content">
-            <span className="footer-explaination">
-              How does this work? Find out -->{' '}
-              <a href="/about" aria-label="Find out more about this project">
-                here
-              </a>
-            </span>
-          </div>
-        ]}
-      />
     </div>
+    <Footer
+      footerMessage={[
+        <div key="footer content">
+          <span className="footer-explaination">
+            How does this work? Find out -->{' '}
+            <a href="/about" aria-label="Find out more about this project">
+              here
+            </a>
+          </span>
+        </div>
+      ]}
+    />
   </div>
 )
 

@@ -79,8 +79,8 @@ const Message = () => {
   }
 
   return (
-    <div className="container message-page">
-      <div className="pageWrapper centerComponent centerComponentVertically">
+    <div className="container centerComponent message-page">
+      <div className="pageWrapper centerComponentVertically">
         {isLoading ? <Loader /> : <Header />}
         {!error &&
           messageData && [
@@ -102,37 +102,38 @@ const Message = () => {
             encryptedTextContent={messageData.message}
           />
         )}
+
         <br />
-        <Footer
-          footerMessage={
-            !error && !isLoading
-              ? [
-                  <div key="footer content">
-                    This message is brought to you by&nbsp;
-                    <a
-                      href="/"
-                      aria-label="Back to homepage"
-                      className="link-styled"
-                    >
-                      privtext.me
-                    </a>
-                  </div>
-                ]
-              : [
-                  <div key="footer content">
-                    Back to&nbsp;
-                    <a
-                      href="/"
-                      aria-label="Back to homepage"
-                      className="link-styled"
-                    >
-                      privtext.me
-                    </a>
-                  </div>
-                ]
-          }
-        />
       </div>
+      <Footer
+        footerMessage={
+          !error && !isLoading
+            ? [
+                <div key="footer content">
+                  This message is brought to you by&nbsp;
+                  <a
+                    href="/"
+                    aria-label="Back to homepage"
+                    className="link-styled"
+                  >
+                    privtext.me
+                  </a>
+                </div>
+              ]
+            : [
+                <div key="footer content">
+                  Back to&nbsp;
+                  <a
+                    href="/"
+                    aria-label="Back to homepage"
+                    className="link-styled"
+                  >
+                    privtext.me
+                  </a>
+                </div>
+              ]
+        }
+      />
     </div>
   )
 }

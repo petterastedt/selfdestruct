@@ -37,6 +37,17 @@ body {
   font-size: $font-size-base;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
+}
+
+.container.centerComponent {
+  max-width: $content-max-width;
+}
+
 // TEXT STYLES
 
 h1,
@@ -292,13 +303,9 @@ input[type='radio']:checked:after {
 }
 
 .pageWrapper {
-  max-width: $content-max-width;
-  min-height: calc(100vh - 200px);
   padding-top: $component-spacing-mobile;
-  position: relative;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    min-height: calc(100vh - 150px);
     padding-top: $component-spacing;
   }
 }

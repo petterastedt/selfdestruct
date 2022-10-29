@@ -3,11 +3,7 @@
 }
 
 .footer {
-  max-width: 600px;
-  bottom: -100px;
-  left: 50%;
-  position: absolute;
-  transform: translateX(-50%);
+  max-width: $content-max-width;
   width: 100%;
 
   &-message {
