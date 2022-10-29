@@ -12,10 +12,11 @@
     min-width: 210px;
     padding: 15px;
     position: relative;
-    width: fit-content;
+    width: 100%;
 
     @media (min-width: $breakpoint-mobile-horizontal) {
       padding: 20px;
+      width: fit-content;
     }
 
     &::before {
