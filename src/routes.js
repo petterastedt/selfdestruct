@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 
 import Home from './pages/home'
 import Message from './pages/message'
@@ -11,7 +11,7 @@ const Routes = () => {
       <Route exact path="/" render={() => <Home />} />
       <Route exact path="/about" render={() => <About />} />
       <Route exact path="/message/:secret" render={() => <Message />} />
-      {/* <Route component={Four04} /> */}
+      <Redirect from="*" to="/" />
     </Switch>
   )
 }
