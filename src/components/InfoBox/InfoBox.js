@@ -10,15 +10,16 @@ const InfoBox = () => (
         <p>
           ⚠️ This is a side project where the main goal is for me to learn and
           have fun doing so. I'm not a security expert in any way and can't
-          leave any guarantees regarding the functionality of this website.
+          leave any guarantees regarding the functionality of this website. That
+          being said:
           <br />
           <br />
-          Privtext offers full end-to-end encryption using{' '}
-          <strong>AES-256</strong>. The decryption key is only visible in the
-          unique url so the user is always in control
+          Privtext.me offers strong end-to-end encryption using{' '}
+          <strong>AES-256</strong>.
           <strong>
             . No one, not even someone with database access, can read your
-            messages. A message can only be decrypted using the unique url
+            messages. A message can only be decrypted using the hash inside the
+            unique url and is never shown to anyone but the message creator
           </strong>
           .
           <br />
@@ -30,19 +31,18 @@ const InfoBox = () => (
           <li>
             <strong>Private message</strong>
             <p>
-              Will be stored in the database until someone views the message.
-              Once the message is opened it gets deleted instantly. The receiver
-              can see the message until the timer runs out. The message can't be
-              opened again.
+              Will be stored in the database until someone views the message by
+              opening the shared url. Once the message is opened it gets deleted
+              instantly. The receiver can see the message until the timer runs
+              out. The message can't be opened again.
             </p>
           </li>
           <li>
             <strong>Public message</strong>
             <p>
               Anyone with the url can see the message until the timer runs out.
-              The timer starts when the message is created. The message is only
-              visible for receivers until the timer runs out and can't be opened
-              after that. It will remain in the database for a maximum of 24h
+              The timer is set by the message creator and starts the moment the
+              message is created. It will remain in the database for maximum 24h
               after the timer has run out.
             </p>
           </li>
@@ -50,7 +50,7 @@ const InfoBox = () => (
             <strong>Triggered public message</strong>
             <p>
               Same as public message but the timer starts when the first person
-              opens the message.
+              opens the url.
             </p>
           </li>
         </ul>

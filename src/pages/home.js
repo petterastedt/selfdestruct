@@ -14,7 +14,7 @@ const Home = () => (
       footerMessage={[
         <div key="footer content">
           <span className="footer-explaination">
-            How does this work? Find out -->{' '}
+            Learn more about this project -->{' '}
             <a href="/about" aria-label="Find out more about this project">
               here
             </a>
