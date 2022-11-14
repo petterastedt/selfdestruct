@@ -25,7 +25,7 @@ const InfoBox = () => (
           <br />
         </p>
       </div>
-      Features: * End-to-end encryption * Emoji support * Image support
+      {/* Features: * End-to-end encryption * Emoji support * Image support */}
       <div className="infoBox-security">
         <strong>Message types:</strong>
         <ul>
