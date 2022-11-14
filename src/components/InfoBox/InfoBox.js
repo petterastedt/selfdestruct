@@ -105,9 +105,6 @@ const InfoBox = () => (
           ☕ */}
           {/* or visit my website at <a href="https://www.petterastedt.com" className="link-styled" aria-label="Petter Åstedt portfolio website" target="_blank" rel="noreferrer noopener">https://www.petterastedt.com</a>. */}
         </p>
-        <br />
-        <br />
-        <i>/ Petter</i>
       </div>
     </div>
   </div>
