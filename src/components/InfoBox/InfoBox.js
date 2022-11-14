@@ -55,6 +55,17 @@ const InfoBox = () => (
             </p>
           </li>
         </ul>
+        <div className="infoBox-features">
+          <strong>Features:</strong>
+          <ul>
+            <li>
+              Support for image urls <span class="infoBox-new">(new!)</span>
+            </li>
+            <li>Support for emojis 🥳</li>
+            <li>End-to-end encryption</li>
+            <li>Optimized for mobile</li>
+          </ul>
+        </div>
         <strong>Technical stuff:</strong>
         <br />
         <br />

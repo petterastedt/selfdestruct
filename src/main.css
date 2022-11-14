@@ -511,8 +511,12 @@
 .infoBox-container a:hover {
   color: #e3e3e3; }
 
-.infoBox-about, .infoBox-security {
+.infoBox-about, .infoBox-security, .infoBox-features {
   margin-bottom: 15px; }
+
+.infoBox-new {
+  color: #ffde34;
+  font-weight: 700; }
 
 .infoBox-textRow {
   font-size: 12px;

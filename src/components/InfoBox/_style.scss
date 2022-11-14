@@ -40,8 +40,14 @@
   }
 
   &-about,
-  &-security {
+  &-security,
+  &-features {
     margin-bottom: 15px;
+  }
+
+  &-new {
+    color: $color-emoji-yellow;
+    font-weight: 700;
   }
 
   &-textRow {
