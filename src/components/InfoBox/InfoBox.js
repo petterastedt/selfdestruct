@@ -62,6 +62,9 @@ const InfoBox = () => (
               Support for image urls <span class="infoBox-new">(new!)</span>
             </li>
             <li>Support for emojis 🥳</li>
+            <li>
+              Generates anchor links when urls are detected in the message
+            </li>
             <li>End-to-end encryption</li>
             <li>Optimized for mobile</li>
           </ul>
@@ -105,16 +108,6 @@ const InfoBox = () => (
         <br />
         <br />
         <i>/ Petter</i>
-      </div>
-      <div className="infoBox-features">
-        {/* <h3>Features</h3>
-        <ul>
-          <li>Add sender name (NEW)</li>
-          <li>AES-256 encrypted message content (NEW)</li>
-          <li>Full emoji support</li>
-          <li>Auto generated anchorlinks when a url is detected</li>
-          <li>Image support. Image links are shown as images.</li>
-        </ul> */}
       </div>
     </div>
   </div>
