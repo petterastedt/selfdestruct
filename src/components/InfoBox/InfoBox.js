@@ -9,13 +9,13 @@ const InfoBox = () => (
       <div className="infoBox-about">
         <p>
           ⚠️ This is a side project where the main goal is for me to learn and
-          have fun doing so. I'm not a security expert in any way and can't
+          having fun doing so. I'm not a security expert in any way and can't
           leave any guarantees regarding the functionality of this website. That
           being said:
           <br />
           <br />
           Privtext.me offers strong end-to-end encryption using{' '}
-          <strong>AES-256</strong>.
+          <strong>AES-256</strong>
           <strong>
             . No one, not even someone with database access, can read your
             messages. A message can only be decrypted using the hash inside the
@@ -25,6 +25,7 @@ const InfoBox = () => (
           <br />
         </p>
       </div>
+      Features: * End-to-end encryption * Emoji support * Image support
       <div className="infoBox-security">
         <strong>Message types:</strong>
         <ul>
