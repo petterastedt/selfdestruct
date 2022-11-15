@@ -1,19 +1,18 @@
 import React from 'react'
-import { Switch, Route, Redirect } from 'react-router-dom'
-
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Home from './pages/home'
 import Message from './pages/message'
 import About from './pages/about'
 
-const Routes = () => {
+const AppRoutes = () => {
   return (
-    <Switch>
-      <Route exact path="/" render={() => <Home />} />
-      <Route exact path="/about" render={() => <About />} />
-      <Route exact path="/message/:secret" render={() => <Message />} />
-      <Redirect from="*" to="/" />
-    </Switch>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/message/:secret" element={<Message />} />
+      <Route path="*" element={<Navigate to="/" />} />}
+    </Routes>
   )
 }
 
-export default Routes
+export default AppRoutes

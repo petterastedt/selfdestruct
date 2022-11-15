@@ -2,6 +2,7 @@ import React from 'react'
 import Header from './../components/Header/Header'
 import Form from './../components/Form/Form'
 import Footer from './../components/Footer/Footer'
+import { Link } from 'react-router-dom'
 import './../main.css'
 
 const Home = () => (
@@ -15,9 +16,9 @@ const Home = () => (
         <div key="footer content">
           <span className="footer-explaination">
             Learn more about this project -->{' '}
-            <a href="/about" aria-label="Find out more about this project">
+            <Link to="/about" aria-label="Find out more about this project">
               here
-            </a>
+            </Link>
           </span>
         </div>
       ]}
