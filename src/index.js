@@ -1,11 +1,13 @@
-import React from "react";
-import { BrowserRouter } from "react-router-dom";
-import ReactDOM from "react-dom";
-import Routes from "./routes";
+import React from 'react'
+import AppRoutes from './routes'
+import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
 
-ReactDOM.render(
+const rootElement = document.getElementById('root')
+const root = createRoot(rootElement)
+
+root.render(
   <BrowserRouter>
-    <Routes />
-  </BrowserRouter>,
-  document.getElementById("root")
-);
+    <AppRoutes />
+  </BrowserRouter>
+)

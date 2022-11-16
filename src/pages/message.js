@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Timer from './../components/Timer/Timer'
 import MessageBox from './../components/MessageBox/MessageBox'
 import Header from './../components/Header/Header'
@@ -111,25 +112,25 @@ const Message = () => {
             ? [
                 <div key="footer content">
                   This message is brought to you by&nbsp;
-                  <a
-                    href="/"
+                  <Link
+                    to="/"
                     aria-label="Back to homepage"
                     className="link-styled"
                   >
                     privtext.me
-                  </a>
+                  </Link>
                 </div>
               ]
             : [
                 <div key="footer content">
                   Back to&nbsp;
-                  <a
-                    href="/"
+                  <Link
+                    to="/"
                     aria-label="Back to homepage"
                     className="link-styled"
                   >
                     privtext.me
-                  </a>
+                  </Link>
                 </div>
               ]
         }
