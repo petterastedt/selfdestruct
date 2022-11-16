@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import Home from './pages/home'
 import Message from './pages/message'
 import About from './pages/about'
+import './main.css'
 
 const AppRoutes = () => {
   return (

@@ -59,7 +59,7 @@ const InfoBox = () => (
           <strong>Features:</strong>
           <ul>
             <li>
-              Support for image urls <span class="infoBox-new">(new!)</span>
+              Support for image urls <span className="infoBox-new">(new!)</span>
             </li>
             <li>Support for emojis 🥳</li>
             <li>
