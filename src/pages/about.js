@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import './../main.css'
 
 const About = () => (
-  <div className="container centerComponent about-page">
+  <>
     <div className="pageWrapper centerComponentVertically">
       <Header />
       <InfoBox />
@@ -26,7 +26,7 @@ const About = () => (
         </div>
       ]}
     />
-  </div>
+  </>
 )
 
 export default About

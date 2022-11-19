@@ -5,8 +5,8 @@ import Footer from './../components/Footer/Footer'
 import { Link } from 'react-router-dom'
 
 const Home = () => (
-  <div className="container home-page centerComponent">
-    <div className="pageWrapper centerComponentVertically">
+  <>
+    <div className="home-page pageWrapper centerComponentVertically">
       <Header />
       <Form />
     </div>
@@ -22,7 +22,7 @@ const Home = () => (
         </div>
       ]}
     />
-  </div>
+  </>
 )
 
 export default Home

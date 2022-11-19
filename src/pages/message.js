@@ -80,7 +80,7 @@ const Message = () => {
   }
 
   return (
-    <div className="container centerComponent message-page">
+    <>
       <div className="pageWrapper centerComponentVertically">
         {isLoading ? <Loader /> : <Header />}
         {!error &&
@@ -135,7 +135,7 @@ const Message = () => {
               ]
         }
       />
-    </div>
+    </>
   )
 }
 
