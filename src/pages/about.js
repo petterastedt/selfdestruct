@@ -12,8 +12,8 @@ const About = () => (
       <InfoBox />
     </div>
     <Footer
-      footerMessage={[
-        <div key="footer content">
+      footerMessage={
+        <p>
           Back to{' '}
           <Link
             to="/"
@@ -23,8 +23,8 @@ const About = () => (
           >
             privtext.me
           </Link>
-        </div>
-      ]}
+        </p>
+      }
     />
   </>
 )

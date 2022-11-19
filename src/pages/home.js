@@ -11,16 +11,14 @@ const Home = () => (
       <Form />
     </div>
     <Footer
-      footerMessage={[
-        <div key="footer content">
-          <span className="footer-explaination">
-            Learn more about this project -->{' '}
-            <Link to="/about" aria-label="Find out more about this project">
-              here
-            </Link>
-          </span>
-        </div>
-      ]}
+      footerMessage={
+        <span className="footer-explaination">
+          Learn more about this project -->{' '}
+          <Link to="/about" aria-label="Find out more about this project">
+            here
+          </Link>
+        </span>
+      }
     />
   </>
 )

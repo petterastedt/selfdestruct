@@ -110,7 +110,7 @@ const Message = () => {
         footerMessage={
           !error && !isLoading
             ? [
-                <div key="footer content">
+                <p>
                   This message is brought to you by&nbsp;
                   <Link
                     to="/"
@@ -119,10 +119,10 @@ const Message = () => {
                   >
                     privtext.me
                   </Link>
-                </div>
+                </p>
               ]
             : [
-                <div key="footer content">
+                <p>
                   Back to&nbsp;
                   <Link
                     to="/"
@@ -131,7 +131,7 @@ const Message = () => {
                   >
                     privtext.me
                   </Link>
-                </div>
+                </p>
               ]
         }
       />
