@@ -1,8 +1,16 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const Footer = ({ footerMessage }) => (
+const Footer = ({ footerText, footerUrl, footerUrlText }) => (
   <footer className="footer">
-    <div className="footer-message">{footerMessage}</div>
+    {footerText || 'Back to '}
+    <Link
+      to={footerUrl || '/'}
+      aria-label={`${footerText} ${footerUrlText}`}
+      className="link-styled"
+    >
+      {footerUrlText || 'privtext.me'}
+    </Link>
   </footer>
 )
 

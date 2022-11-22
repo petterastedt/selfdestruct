@@ -11,14 +11,9 @@ const Home = () => (
       <Form />
     </div>
     <Footer
-      footerMessage={
-        <span className="footer-explaination">
-          Learn more about this project -->{' '}
-          <Link to="/about" aria-label="Find out more about this project">
-            here
-          </Link>
-        </span>
-      }
+      footerText="Learn more about this project --> "
+      footerUrl="/about"
+      footerUrlText="here"
     />
   </>
 )

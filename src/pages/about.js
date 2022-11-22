@@ -11,21 +11,7 @@ const About = () => (
       <Header />
       <InfoBox />
     </div>
-    <Footer
-      footerMessage={
-        <p>
-          Back to{' '}
-          <Link
-            to="/"
-            aria-label="Back to homepage"
-            alt="Back to homepage"
-            className="link-styled"
-          >
-            privtext.me
-          </Link>
-        </p>
-      }
-    />
+    <Footer />
   </>
 )
 

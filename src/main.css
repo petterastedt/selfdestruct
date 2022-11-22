@@ -410,32 +410,21 @@
   flex-direction: column; }
 
 .footer {
+  font-size: 12px;
+  margin: 30px 0;
   max-width: 600px;
+  text-align: center;
   width: 100%; }
 
-.footer-message {
-  display: flex;
-  font-size: 12px;
-  margin: 20px 0;
-  text-align: center; }
-
-@media (min-width: 480px) {
-  .footer-message {
-    margin: 20px 0; } }
-
-@media (min-width: 1440px) {
-  .footer-message {
-    margin: 30px 0; } }
-
-.footer-message a {
+.footer a {
   color: #868889;
   font-weight: 800;
   transition: color 0.3s; }
 
-.footer-message a:hover {
+.footer a:hover {
   color: #e3e3e3; }
 
-.footer-message * {
+.footer * {
   width: 100%; }
 
 .header {

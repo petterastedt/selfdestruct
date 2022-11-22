@@ -101,32 +101,8 @@ const Message = () => {
         <br />
       </div>
       <Footer
-        footerMessage={
-          !error && !isLoading
-            ? [
-                <p key="footer-message-2">
-                  This message is brought to you by&nbsp;
-                  <Link
-                    to="/"
-                    aria-label="Back to homepage"
-                    className="link-styled"
-                  >
-                    privtext.me
-                  </Link>
-                </p>
-              ]
-            : [
-                <p key="footer-message-2">
-                  Back to&nbsp;
-                  <Link
-                    to="/"
-                    aria-label="Back to homepage"
-                    className="link-styled"
-                  >
-                    privtext.me
-                  </Link>
-                </p>
-              ]
+        footerText={
+          !error && !isLoading && 'This message is brought to you by '
         }
       />
     </>
