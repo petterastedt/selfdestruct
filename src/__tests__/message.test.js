@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import { render, screen, waitFor } from '@testing-library/react'
 import React from 'react'
-import { BrowserRouter, MemoryRouter } from 'react-router-dom'
+import { MemoryRouter } from 'react-router-dom'
 import Message from '../pages/message.js'
 import { setupServer } from 'msw/node'
 import { rest } from 'msw'
@@ -14,13 +14,17 @@ afterAll(() => server.close())
 afterEach(() => server.resetHandlers())
 
 describe('Open message tests', () => {
-  const setup = () => {
-    const utils = render(<Message />, { wrapper: BrowserRouter })
+  const setup = (messageUrl) => {
+    const utils = render(
+      <MemoryRouter initialEntries={[messageUrl]}>
+        <Message route="message/:secret" />
+      </MemoryRouter>
+    )
 
     return {
       elements: {
         feedbackMessageNotFound: () => screen.getByText('Message not found!'),
-        loader: () => screen.getByTestId('loader'),
+        loader: () => screen.getByText('Loading'),
         formValidateKey: () => screen.getByTestId('form-validate-key'),
         messageBox: () =>
           screen.getByText(
@@ -33,15 +37,8 @@ describe('Open message tests', () => {
   }
 
   test('Should open the message if secret matches', async () => {
-    const { elements } = setup()
-
     const messageUrl = '/message/26de7e#m5g81xkOvgWfvVEJ'
-
-    render(
-      <MemoryRouter initialEntries={[messageUrl]}>
-        <Message route="message/:secret" />
-      </MemoryRouter>
-    )
+    const { elements } = setup(messageUrl)
 
     expect(elements.loader()).toBeInTheDocument()
 
@@ -55,15 +52,8 @@ describe('Open message tests', () => {
   })
 
   test('Should show confirm link screen if encryption key is invalid', async () => {
-    const { elements } = setup()
-
     const messageUrl = '/message/26de7e#m5g81xkOvgWfvVED'
-
-    render(
-      <MemoryRouter initialEntries={[messageUrl]}>
-        <Message route="message/:secret" />
-      </MemoryRouter>
-    )
+    const { elements } = setup(messageUrl)
 
     expect(elements.loader()).toBeInTheDocument()
 
@@ -76,8 +66,6 @@ describe('Open message tests', () => {
   })
 
   test('Should show error if message is not found', async () => {
-    const { elements } = setup()
-
     server.use(
       rest.get('http://localhost:5000/api/message/:secret', (_, res, context) =>
         res(context.json({ message: 'Message not found!', success: false }))
@@ -86,11 +74,7 @@ describe('Open message tests', () => {
 
     const invalidMessageUrl = '/message/509b6d#hCUJ81SBHA88ShA7'
 
-    render(
-      <MemoryRouter initialEntries={[invalidMessageUrl]}>
-        <Message route="message/:secret" />
-      </MemoryRouter>
-    )
+    const { elements } = setup(invalidMessageUrl)
 
     expect(elements.loader()).toBeInTheDocument()
 

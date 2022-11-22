@@ -6,14 +6,14 @@ import { Link } from 'react-router-dom'
 import './../main.css'
 
 const About = () => (
-  <div className="container centerComponent about-page">
+  <>
     <div className="pageWrapper centerComponentVertically">
       <Header />
       <InfoBox />
     </div>
     <Footer
-      footerMessage={[
-        <div key="footer content">
+      footerMessage={
+        <p>
           Back to{' '}
           <Link
             to="/"
@@ -23,10 +23,10 @@ const About = () => (
           >
             privtext.me
           </Link>
-        </div>
-      ]}
+        </p>
+      }
     />
-  </div>
+  </>
 )
 
 export default About

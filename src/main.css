@@ -106,9 +106,6 @@
   padding-left: 5px; }
 
 .form {
-  max-width: 100%; }
-
-.form-container {
   max-width: 600px; }
 
 .form-options {
@@ -599,7 +596,8 @@
 .form-validate-key input[type='text'] {
   border: 0;
   box-shadow: 3px 3px 8px 8px rgba(0, 0, 0, 0.04), 10px 20px 40px 0 rgba(0, 0, 0, 0.2);
-  padding: 0 20px; }
+  padding: 0 20px;
+  width: calc(100% - 40px); }
 
 .form-validate-key input[type='text']:focus, .form-validate-key input[type='text']:hover {
   background-color: #2f2e2e;
@@ -799,7 +797,7 @@ input[type='radio']:checked:after {
 .centerComponent {
   margin: 0 auto;
   max-width: 1440px;
-  padding: 0 20px; }
+  padding: 0 15px; }
 
 @media (min-width: 480px) {
   .centerComponent {

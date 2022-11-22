@@ -7,12 +7,14 @@ import './main.css'
 
 const AppRoutes = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/message/:secret" element={<Message />} />
-      <Route path="*" element={<Navigate to="/" />} />}
-    </Routes>
+    <div className="container centerComponent">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/message/:secret" element={<Message />} />
+        <Route path="*" element={<Navigate to="/" />} />}
+      </Routes>
+    </div>
   )
 }
 

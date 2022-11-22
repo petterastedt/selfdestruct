@@ -2,7 +2,7 @@ import React from 'react'
 import logo from './../../assets/img/logo.png'
 
 const Loader = () => (
-  <div className="loader" data-testid="loader">
+  <div className="loader">
     <img
       alt="privtext logo"
       aria-label="privtext logo"

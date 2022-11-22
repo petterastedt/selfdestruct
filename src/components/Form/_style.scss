@@ -1,9 +1,5 @@
 .form {
-  max-width: 100%;
-
-  &-container {
-    max-width: $content-max-width;
-  }
+  max-width: $content-max-width;
 
   &-options {
     display: flex;

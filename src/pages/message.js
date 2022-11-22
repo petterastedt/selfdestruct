@@ -8,19 +8,19 @@ import FormValidateKey from './../components/FormValidateKey/FormValidateKey'
 import Footer from './../components/Footer/Footer'
 import Loader from './../components/Loader/Loader'
 import crypto from './../crypto'
+import endpoints from './../endpoints'
 
 const Message = () => {
   const [messageIsDestroyed, setMessageIsDestroyed] = useState(false)
   const [error, setError] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const [messageData, setMessageData] = useState(null)
   const { pathname, hash } = useLocation()
+  const secret = pathname.split('/').pop()
+  const key = hash.slice(1)
 
   useEffect(() => {
     ;(async () => {
-      const secret = pathname.split('/').pop()
-      const key = hash.slice(1)
-
       setMessageData(null)
       setError(false)
 
@@ -29,15 +29,9 @@ const Message = () => {
         return
       }
 
-      setIsLoading(true)
-
       try {
-        const url =
-          process.env.NODE_ENV === 'production'
-            ? '/api/message'
-            : 'http://localhost:5000/api/message'
+        const message = await fetch(`${endpoints.getMessage}/${secret}`)
 
-        const message = await fetch(`${url}/${secret}`)
         const messageJson = await message.json()
 
         if (messageJson.success) {
@@ -72,7 +66,7 @@ const Message = () => {
         console.error(e)
       }
     })()
-  }, [hash, pathname])
+  }, [key, secret])
 
   const setTextContent = (decrytedMessage) => {
     setMessageData({ ...messageData, message: decrytedMessage })
@@ -80,22 +74,23 @@ const Message = () => {
   }
 
   return (
-    <div className="container centerComponent message-page">
+    <>
       <div className="pageWrapper centerComponentVertically">
         {isLoading ? <Loader /> : <Header />}
-        {!error &&
-          messageData && [
+        {!error && messageData && (
+          <>
             <MessageBox
               message={messageData.message}
               messageIsDestroyed={messageIsDestroyed}
               name={messageData.name}
-            />,
+            />
             <Timer
               setMessageIsDestroyed={setMessageIsDestroyed}
               messageData={messageData}
               messageIsDestroyed={messageIsDestroyed}
             />
-          ]}
+          </>
+        )}
         {error && <h3 className="error">{error}</h3>}
         {error === 'Invalid decryption key' && (
           <FormValidateKey
@@ -103,14 +98,13 @@ const Message = () => {
             encryptedTextContent={messageData.message}
           />
         )}
-
         <br />
       </div>
       <Footer
         footerMessage={
           !error && !isLoading
             ? [
-                <div key="footer content">
+                <p key="footer-message-2">
                   This message is brought to you by&nbsp;
                   <Link
                     to="/"
@@ -119,10 +113,10 @@ const Message = () => {
                   >
                     privtext.me
                   </Link>
-                </div>
+                </p>
               ]
             : [
-                <div key="footer content">
+                <p key="footer-message-2">
                   Back to&nbsp;
                   <Link
                     to="/"
@@ -131,11 +125,11 @@ const Message = () => {
                   >
                     privtext.me
                   </Link>
-                </div>
+                </p>
               ]
         }
       />
-    </div>
+    </>
   )
 }
 

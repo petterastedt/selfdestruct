@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom'
 import { render, screen, waitFor } from '@testing-library/react'
+import { MemoryRouter } from 'react-router-dom'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
 import Home from '../pages/home.js'
@@ -15,7 +16,7 @@ afterEach(() => server.resetHandlers())
 
 describe('Create message tests', () => {
   const setup = () => {
-    const utils = render(<Home />)
+    const utils = render(<Home />, { wrapper: MemoryRouter })
 
     return {
       elements: {
