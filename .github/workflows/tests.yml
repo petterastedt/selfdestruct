@@ -1,4 +1,4 @@
-name: Tests
+name: Unit tests node version
 
 on: [pull_request]
 
@@ -16,7 +16,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: install
+      - name: Install
         run: npm install
-      - name: Unit tests using node version
+      - name: Run tests
         run: npm test
