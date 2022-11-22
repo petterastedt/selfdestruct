@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import checkMark from './../../assets/img/check-mark.svg'
 import refresh from './../../assets/img/refresh.svg'
-
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import crypto from './../../crypto'
+import endpoints from './../../endpoints'
 
 const Form = () => {
   const [error, setError] = useState('')
@@ -29,6 +29,7 @@ const Form = () => {
       startImmediately: false
     }
   })
+  const textInputRef = useRef(null)
 
   const handleOnSubmit = async (e) => {
     e.preventDefault()
@@ -37,24 +38,21 @@ const Form = () => {
       setIsSumbitting(true)
       const encrypted = crypto.encrypt(inputData.textContent)
 
-      const url =
-        process.env.NODE_ENV === 'production'
-          ? '/api/post'
-          : 'http://localhost:5000/api/post'
+      const messageBody = JSON.stringify({
+        ...inputData,
+        textContent: encrypted.message
+      })
 
-      const postMessage = await fetch(url, {
+      const createMessage = await fetch(endpoints.createMessage, {
         method: 'POST',
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          ...inputData,
-          textContent: encrypted.message
-        })
+        body: messageBody
       })
 
-      const response = await postMessage.json()
+      const response = await createMessage.json()
 
       if (response.success) {
         setUrl(`${response.item.url}#${encrypted.key}`)
@@ -88,7 +86,7 @@ const Form = () => {
   }
 
   const resetForm = () => {
-    document.querySelector('.input-textContent').innerHTML = ''
+    textInputRef.current.innerHTML = ''
 
     setInputData({
       ...inputData,
@@ -132,6 +130,7 @@ const Form = () => {
           <div className="form-inputWrapper">
             <div className="input-textContentWrapper">
               <span
+                ref={textInputRef}
                 contentEditable={true}
                 className="input-textContent"
                 type="text"

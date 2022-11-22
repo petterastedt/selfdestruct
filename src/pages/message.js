@@ -8,19 +8,19 @@ import FormValidateKey from './../components/FormValidateKey/FormValidateKey'
 import Footer from './../components/Footer/Footer'
 import Loader from './../components/Loader/Loader'
 import crypto from './../crypto'
+import endpoints from './../endpoints'
 
 const Message = () => {
   const [messageIsDestroyed, setMessageIsDestroyed] = useState(false)
   const [error, setError] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const [messageData, setMessageData] = useState(null)
   const { pathname, hash } = useLocation()
+  const secret = pathname.split('/').pop()
+  const key = hash.slice(1)
 
   useEffect(() => {
     ;(async () => {
-      const secret = pathname.split('/').pop()
-      const key = hash.slice(1)
-
       setMessageData(null)
       setError(false)
 
@@ -29,15 +29,9 @@ const Message = () => {
         return
       }
 
-      setIsLoading(true)
-
       try {
-        const url =
-          process.env.NODE_ENV === 'production'
-            ? '/api/message'
-            : 'http://localhost:5000/api/message'
+        const message = await fetch(`${endpoints.getMessage}/${secret}`)
 
-        const message = await fetch(`${url}/${secret}`)
         const messageJson = await message.json()
 
         if (messageJson.success) {
@@ -72,7 +66,7 @@ const Message = () => {
         console.error(e)
       }
     })()
-  }, [hash, pathname])
+  }, [key, secret])
 
   const setTextContent = (decrytedMessage) => {
     setMessageData({ ...messageData, message: decrytedMessage })
@@ -103,14 +97,13 @@ const Message = () => {
             encryptedTextContent={messageData.message}
           />
         )}
-
         <br />
       </div>
       <Footer
         footerMessage={
           !error && !isLoading
             ? [
-                <p>
+                <p key="footer-message">
                   This message is brought to you by&nbsp;
                   <Link
                     to="/"
@@ -122,7 +115,7 @@ const Message = () => {
                 </p>
               ]
             : [
-                <p>
+                <p key="footer-message-2">
                   Back to&nbsp;
                   <Link
                     to="/"
