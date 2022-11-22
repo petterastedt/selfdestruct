@@ -55,7 +55,7 @@ const Form = () => {
       const response = await createMessage.json()
 
       if (response.success) {
-        setUrl(`${response.item.url}#${encrypted.key}`)
+        setUrl(`${response.item.url.replace('www.', '')}#${encrypted.key}`)
         setError('')
         setDisableCreateMessage(true)
         resetForm()
