@@ -77,19 +77,20 @@ const Message = () => {
     <>
       <div className="pageWrapper centerComponentVertically">
         {isLoading ? <Loader /> : <Header />}
-        {!error &&
-          messageData && [
+        {!error && messageData && (
+          <>
             <MessageBox
               message={messageData.message}
               messageIsDestroyed={messageIsDestroyed}
               name={messageData.name}
-            />,
+            />
             <Timer
               setMessageIsDestroyed={setMessageIsDestroyed}
               messageData={messageData}
               messageIsDestroyed={messageIsDestroyed}
             />
-          ]}
+          </>
+        )}
         {error && <h3 className="error">{error}</h3>}
         {error === 'Invalid decryption key' && (
           <FormValidateKey
@@ -103,7 +104,7 @@ const Message = () => {
         footerMessage={
           !error && !isLoading
             ? [
-                <p key="footer-message">
+                <p key="footer-message-2">
                   This message is brought to you by&nbsp;
                   <Link
                     to="/"
