@@ -1,4 +1,4 @@
-name: Unit tests node version 14.x
+name: Unit tests
 
 on: [pull_request]
 
