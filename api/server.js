@@ -9,7 +9,7 @@ const port = process.env.PORT || 8080
 // DATABASE SETUP
 const initDatabaseConnection = async () => {
   try {
-    const connect = await mongoose.connect(process.env.DB_URL, {
+    const connect = await mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true
     })
