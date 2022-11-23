@@ -17,9 +17,9 @@ const exceptionHandler = (fn) => (req, res, next) => {
 }
 
 // CLEANUP ROUTE
-router.get(
+router.delete(
   `/${process.env.CLEANUP_URL}`,
-  exceptionHandler(async (req, res) => {
+  exceptionHandler(async (_req, res) => {
     messageController.cleanupExpired()
     res.sendStatus(200)
   })
