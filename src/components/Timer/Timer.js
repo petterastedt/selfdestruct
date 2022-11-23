@@ -8,8 +8,8 @@ const Timer = ({ setMessageIsDestroyed, messageIsDestroyed, messageData }) => {
     useState(-1)
   const [time, setTime] = useState(new Date())
   const [countdown, setCountdown] = useState({
-    min: '00',
-    sec: '00'
+    min: '--',
+    sec: '--'
   })
 
   useEffect(() => setTime(new Date()), [messageData])
@@ -19,8 +19,8 @@ const Timer = ({ setMessageIsDestroyed, messageIsDestroyed, messageData }) => {
       if (secondsRemainingGlobal < 1 || secondsRemainingGlobalNegative > 1) {
         setMessageIsDestroyed(true)
         setCountdown({
-          sec: '00',
-          min: '00'
+          sec: '--',
+          min: '--'
         })
       } else {
         const timeout = setTimeout(() => {
@@ -49,20 +49,18 @@ const Timer = ({ setMessageIsDestroyed, messageIsDestroyed, messageData }) => {
 
   return (
     <div className="timer">
-      <div className="timer-wrapper">
-        <span className="timer-message">
-          {messageData.isPrivateMessage
-            ? "This message can't be opened again."
-            : 'Anyone with the link can see this message.'}
-        </span>
-        <span>
-          It will self-destruct in:
-          <strong>
-            {' '}
-            {countdown.min}:{countdown.sec}
-          </strong>
-        </span>
-      </div>
+      <span className="timer-message">
+        {messageData.isPrivateMessage
+          ? "This message can't be opened again."
+          : 'Anyone with the link can see this message.'}
+      </span>
+      <span>
+        It will self-destruct in:
+        <strong>
+          {' '}
+          {countdown.min}:{countdown.sec}
+        </strong>
+      </span>
     </div>
   )
 }
