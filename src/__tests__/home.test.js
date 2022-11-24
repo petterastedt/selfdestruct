@@ -16,7 +16,11 @@ afterEach(() => server.resetHandlers())
 
 describe('Create message tests', () => {
   const setup = () => {
-    const utils = render(<Home />, { wrapper: MemoryRouter })
+    const utils = render(
+      <MemoryRouter>
+        <Home />
+      </MemoryRouter>
+    )
 
     return {
       elements: {
@@ -25,8 +29,8 @@ describe('Create message tests', () => {
         feedbackUrl: () => screen.getByTestId('form-feedback-url'),
         feedbackSubmitting: () => screen.getByText('Creating message..'),
         submitButton: () => screen.getByText('Create message'),
-        refreshButton: () => screen.getByTestId('refresh'),
-        textBox: () => screen.getByRole('textbox')
+        refreshButton: () => screen.getByAltText('Create another message'),
+        textBox: () => screen.getByLabelText('Message textbox')
       },
       ...utils
     }
