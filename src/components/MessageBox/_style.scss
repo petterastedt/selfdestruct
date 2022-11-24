@@ -30,6 +30,16 @@
       position: absolute;
       width: 0;
     }
+
+    &--isDestroyed {
+      .messageBox-content {
+        opacity: 0;
+      }
+
+      .messageBox-messageDestroyed {
+        opacity: 1;
+      }
+    }
   }
 
   &-textRow {
@@ -84,10 +94,6 @@
     transform: translate(-50%, -50%);
     transition: opacity 0.3s;
     transition-delay: 2s;
-
-    &--isDestroyed {
-      opacity: 1;
-    }
 
     &-checkmark {
       height: 15px;

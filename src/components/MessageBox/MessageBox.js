@@ -14,16 +14,15 @@ const MessageBox = ({ message, messageIsDestroyed, name }) => (
         width="10"
         height="10"
       />
-      <strong data-testid="senderName">{name ? name : 'Anonymous'}</strong>
-      &nbsp;shared a secret message with you:
+      <strong data-testid="senderName">{name || 'Anonymous'}</strong> shared a
+      secret message with you:
     </div>
-    <div className="messageBox-container">
-      <p
-        className={`messageBox-content ${
-          messageIsDestroyed && 'messageBox-content--isDestroyed'
-        }`}
-        data-testid="messageBox"
-      >
+    <div
+      className={`messageBox-container ${
+        messageIsDestroyed && 'messageBox-container--isDestroyed'
+      }`}
+    >
+      <p className="messageBox-content" data-testid="messageBox">
         <Anchorme
           linkComponent={CustomLink}
           target="_blank"
@@ -33,11 +32,7 @@ const MessageBox = ({ message, messageIsDestroyed, name }) => (
           {message}
         </Anchorme>
       </p>
-      <div
-        className={`messageBox-messageDestroyed ${
-          messageIsDestroyed && 'messageBox-messageDestroyed--isDestroyed'
-        }`}
-      >
+      <div className="messageBox-messageDestroyed">
         <div className="messageBox-messageDestroyed-wrapper">
           <img
             className="messageBox-messageDestroyed-checkmark"
