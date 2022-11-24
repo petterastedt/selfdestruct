@@ -7,14 +7,20 @@ import checkMark from './../../assets/img/check-mark.svg'
 const MessageBox = ({ message, messageIsDestroyed, name }) => (
   <div className="messageBox">
     <div className="messageBox-textRow">
-      <img className="messageBox-avatar" src={avatar} alt="avatar" />
+      <img
+        className="messageBox-avatar"
+        src={avatar}
+        alt="avatar"
+        width="10"
+        height="10"
+      />
       <strong data-testid="senderName">{name ? name : 'Anonymous'}</strong>
       &nbsp;shared a secret message with you:
     </div>
     <div className="messageBox-container">
       <p
         className={`messageBox-content ${
-          messageIsDestroyed ? 'messageBox-content--isDestroyed' : ''
+          messageIsDestroyed && 'messageBox-content--isDestroyed'
         }`}
         data-testid="messageBox"
       >
@@ -29,7 +35,7 @@ const MessageBox = ({ message, messageIsDestroyed, name }) => (
       </p>
       <div
         className={`messageBox-messageDestroyed ${
-          messageIsDestroyed ? 'messageBox-messageDestroyed--isDestroyed' : ''
+          messageIsDestroyed && 'messageBox-messageDestroyed--isDestroyed'
         }`}
       >
         <div className="messageBox-messageDestroyed-wrapper">
@@ -37,6 +43,8 @@ const MessageBox = ({ message, messageIsDestroyed, name }) => (
             className="messageBox-messageDestroyed-checkmark"
             src={checkMark}
             alt="checkmark"
+            width="15"
+            height="15"
           />
           <span className="message">Message deleted</span>
         </div>

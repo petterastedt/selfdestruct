@@ -8,7 +8,7 @@ const InfoBox = () => (
     <div className="infoBox-container">
       <div className="infoBox-about">
         <p>
-          ⚠️ This is a side project where the main goal is for me to learn and
+          This is a side project where the main goal is for me to learn and
           having fun doing so. I'm not a security expert in any way and can't
           leave any guarantees regarding the functionality of this website. That
           being said:
