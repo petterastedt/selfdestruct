@@ -1,14 +1,9 @@
-.messageBox {
-  max-width: 600px;
-  width: 100%; }
-
 .messageBox-container {
   background-color: #2f2e2e;
   border-radius: 10px;
   box-shadow: 3px 3px 8px 8px rgba(0, 0, 0, 0.04), 10px 20px 40px 0 rgba(0, 0, 0, 0.2);
   opacity: 1;
   max-width: calc(100% - 40px);
-  min-width: 210px;
   padding: 15px;
   position: relative;
   width: 100%; }
@@ -105,9 +100,6 @@
   .timer {
     width: 100%; } }
 
-.form {
-  max-width: 600px; }
-
 .form-options {
   display: flex;
   flex-direction: column;
@@ -199,7 +191,6 @@
   box-shadow: 3px 3px 8px 8px rgba(0, 0, 0, 0.04), 0 20px 40px 0 rgba(0, 0, 0, 0.2);
   font-size: 12px;
   line-height: 20px;
-  max-width: 600px;
   min-height: 60px;
   overflow: hidden;
   padding: 20px 20px 40px;
@@ -413,7 +404,6 @@
 .footer {
   font-size: 12px;
   margin: 30px 0 40px;
-  max-width: 600px;
   text-align: center;
   width: 100%; }
 
@@ -464,14 +454,11 @@
   .header h2 {
     max-width: 250px; } }
 
-.infoBox {
-  max-width: 600px;
-  width: 100%; }
-
 .infoBox-container {
   background-color: #2f2e2e;
   box-shadow: 3px 3px 8px 8px rgba(0, 0, 0, 0.04), 10px 20px 40px 0 rgba(0, 0, 0, 0.2);
   font-size: 12px;
+  margin-top: 15px;
   max-width: 100%;
   padding: 15px;
   position: relative; }
@@ -509,7 +496,6 @@
   font-size: 12px;
   font-style: italic;
   line-height: 1.35;
-  margin-bottom: 15px;
   padding-left: 10px; }
 
 .infoBox-textRow a {
@@ -787,7 +773,6 @@ input[type='radio']:checked:after {
 
 .centerComponent {
   margin: 0 auto;
-  max-width: 1440px;
   padding: 0 15px; }
 
 @media (min-width: 480px) {

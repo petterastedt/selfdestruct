@@ -1,7 +1,4 @@
 .messageBox {
-  max-width: $content-max-width;
-  width: 100%;
-
   &-container {
     background-color: $color-background-light;
     border-radius: 10px;
@@ -9,7 +6,6 @@
       10px 20px 40px 0 rgba(0, 0, 0, 0.2);
     opacity: 1;
     max-width: calc(100% - 40px);
-    min-width: 210px;
     padding: 15px;
     position: relative;
     width: 100%;

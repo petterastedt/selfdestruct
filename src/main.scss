@@ -213,7 +213,6 @@ input[type='radio']:checked:after {
 
 .centerComponent {
   margin: 0 auto;
-  max-width: $container-max-width;
   padding: 0 $gutter-mobile;
 
   @media (min-width: $breakpoint-mobile-horizontal) {

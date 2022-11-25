@@ -1,12 +1,10 @@
 .infoBox {
-  max-width: $content-max-width;
-  width: 100%;
-
   &-container {
     background-color: $color-background-light;
     box-shadow: 3px 3px 8px 8px rgba(0, 0, 0, 0.04),
       10px 20px 40px 0 rgba(0, 0, 0, 0.2);
     font-size: $font-size-s;
+    margin-top: 15px;
     max-width: 100%;
     padding: 15px;
     position: relative;
@@ -54,7 +52,6 @@
     font-size: 12px;
     font-style: italic;
     line-height: 1.35;
-    margin-bottom: 15px;
     padding-left: 10px;
 
     a {

@@ -2,9 +2,7 @@ import React from 'react'
 
 const InfoBox = () => (
   <div className="infoBox">
-    <div className="infoBox-textRow">
-      <span>About privtext.me</span>
-    </div>
+    <span className="infoBox-textRow">About privtext.me</span>
     <div className="infoBox-container">
       <div className="infoBox-about">
         <p>
