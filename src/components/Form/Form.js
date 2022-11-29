@@ -72,14 +72,27 @@ const Form = () => {
   }
 
   const onTypeChange = (e) => {
-    setSelectedType(e.target.value)
+    const selectedMessageType = e.target.value
+    setSelectedType(selectedMessageType)
 
     setInputData({
       ...inputData,
       options: {
-        killOnFirstReq: e.target.value === 'killOnFirstReq',
-        startTimerOnFirstReq: e.target.value === 'startTimerOnFirstReq',
-        startImmediately: e.target.value === 'startImmediately'
+        killOnFirstReq: selectedMessageType === 'killOnFirstReq',
+        startTimerOnFirstReq: selectedMessageType === 'startTimerOnFirstReq',
+        startImmediately: selectedMessageType === 'startImmediately'
+      }
+    })
+  }
+
+  const onTimeChange = (e) => {
+    const timeUnit = e.target.getAttribute('name').slice(-3)
+
+    setInputData({
+      ...inputData,
+      aliveFor: {
+        ...inputData.aliveFor,
+        [timeUnit]: Number(e.target.value)
       }
     })
   }
@@ -224,15 +237,7 @@ const Form = () => {
               name="input-timeSelect-hrs"
               className="input-timeSelect hours"
               defaultValue={inputData.aliveFor.hrs}
-              onChange={(e) =>
-                setInputData({
-                  ...inputData,
-                  aliveFor: {
-                    ...inputData.aliveFor,
-                    hrs: Number(e.target.value)
-                  }
-                })
-              }
+              onChange={(e) => onTimeChange(e)}
             >
               {[...Array(24)].map((_, i) => (
                 <option key={`hours-${i}`} value={i}>
@@ -245,15 +250,7 @@ const Form = () => {
               name="input-timeSelect-min"
               className="input-timeSelect"
               defaultValue={inputData.aliveFor.min}
-              onChange={(e) =>
-                setInputData({
-                  ...inputData,
-                  aliveFor: {
-                    ...inputData.aliveFor,
-                    min: Number(e.target.value)
-                  }
-                })
-              }
+              onChange={(e) => onTimeChange(e)}
             >
               {[...Array(60)].map((_, i) => (
                 <option key={`minutes-${i}`} value={i}>
@@ -266,15 +263,7 @@ const Form = () => {
               name="input-timeSelect-sec"
               className="input-timeSelect"
               defaultValue={inputData.aliveFor.sec}
-              onChange={(e) =>
-                setInputData({
-                  ...inputData,
-                  aliveFor: {
-                    ...inputData.aliveFor,
-                    sec: Number(e.target.value)
-                  }
-                })
-              }
+              onChange={(e) => onTimeChange(e)}
             >
               {[...Array(60)].map((_, i) => (
                 <option key={`seconds-${i}`} value={i}>
