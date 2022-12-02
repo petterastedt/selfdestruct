@@ -1,3 +1,5 @@
+@use './../../assets/styles/variables' as *;
+
 .timer {
   font-size: $font-size-s;
   font-style: italic;

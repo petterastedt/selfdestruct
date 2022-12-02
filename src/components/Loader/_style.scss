@@ -1,3 +1,5 @@
+@use './../../assets/styles/variables' as *;
+
 .loader {
   align-items: center;
   animation: fadeIn 0.5s forwards;
