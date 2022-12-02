@@ -1,13 +1,5 @@
 @use 'assets/styles/variables' as *;
-@use './components/MessageBox/style' as MessageBox;
-@use './components/Timer/style' as Timer;
-@use './components/Form/style' as Form;
-@use './components/Footer/style' as Footer;
-@use './components/Header/style' as Header;
-@use './components/InfoBox/style' as InfoBox;
-@use './components/Loader/style' as Loader;
-@use './components/CustomLink/style' as CustomLink;
-@use './components/FormValidateKey/style' as FormValidate;
+@use 'assets/styles/components';
 
 @font-face {
   font-family: 'Consolas';
