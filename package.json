@@ -18,11 +18,11 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
     "msw": "^0.49.0",
-    "node-sass": "^7.0.1",
+    "sass": "^1.56.1",
     "yarn-audit-fix": "^9.3.6"
   },
   "scripts": {
-    "start": "react-scripts start & node-sass --watch src -o src && fg",
+    "start": "react-scripts start & sass -w src/main.scss src/main.css --style=compressed && fg",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

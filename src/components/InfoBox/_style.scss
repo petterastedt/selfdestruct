@@ -1,3 +1,5 @@
+@use './../../assets/styles/variables' as *;
+
 .infoBox {
   &-container {
     background-color: $color-background-light;
