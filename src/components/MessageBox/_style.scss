@@ -1,3 +1,5 @@
+@use './../../assets/styles/variables' as *;
+
 .messageBox {
   &-container {
     background-color: $color-background-light;

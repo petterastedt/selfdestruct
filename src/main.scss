@@ -1,13 +1,13 @@
-@import './assets/styles/variables';
-@import './components/MessageBox/style';
-@import './components/Timer/style';
-@import './components/Form/style';
-@import './components/Footer/style';
-@import './components/Header/style';
-@import './components/InfoBox/style';
-@import './components/Loader/style';
-@import './components/CustomLink/style';
-@import './components/FormValidateKey/style';
+@use 'assets/styles/variables' as *;
+@use './components/MessageBox/style' as MessageBox;
+@use './components/Timer/style' as Timer;
+@use './components/Form/style' as Form;
+@use './components/Footer/style' as Footer;
+@use './components/Header/style' as Header;
+@use './components/InfoBox/style' as InfoBox;
+@use './components/Loader/style' as Loader;
+@use './components/CustomLink/style' as CustomLink;
+@use './components/FormValidateKey/style' as FormValidate;
 
 @font-face {
   font-family: 'Consolas';
