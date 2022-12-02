@@ -13,7 +13,7 @@
 
     @media (min-width: $breakpoint-tablet) {
       flex-direction: row;
-      height: 90px;
+      height: 95px;
       padding: 30px 15px;
     }
 
@@ -82,7 +82,7 @@
   }
 
   label {
-    margin-left: 5px;
+    margin-left: 7px;
   }
 
   .input {
@@ -299,21 +299,12 @@
     cursor: pointer;
     max-height: 8px;
 
-    &-wrapper {
-      display: flex;
-      flex-direction: column;
-
-      label {
-        margin-bottom: 0;
-      }
-    }
-
     &-item {
       display: flex;
       margin-bottom: 12px;
 
       @media (min-width: $breakpoint-tablet) {
-        margin-bottom: 7px;
+        margin-bottom: 8px;
       }
 
       &:last-child {

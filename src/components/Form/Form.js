@@ -31,9 +31,7 @@ const Form = () => {
   })
   const textInputRef = useRef(null)
 
-  const handleOnSubmit = async (e) => {
-    e.preventDefault()
-
+  const handleSubmit = async () => {
     try {
       setUrl('')
       setIsSumbitting(true)
@@ -63,6 +61,7 @@ const Form = () => {
       } else {
         setError(response.message)
       }
+
       setIsSumbitting(false)
     } catch (error) {
       setError('Something went wrong when creating your message')
@@ -71,7 +70,7 @@ const Form = () => {
     }
   }
 
-  const onTypeChange = (e) => {
+  const handleTypeChange = (e) => {
     const selectedMessageType = e.target.value
     setSelectedType(selectedMessageType)
 
@@ -85,7 +84,7 @@ const Form = () => {
     })
   }
 
-  const onTimeChange = (e) => {
+  const handleTimeChange = (e) => {
     const timeUnit = e.target.getAttribute('name').slice(-3)
 
     setInputData({
@@ -95,6 +94,15 @@ const Form = () => {
         [timeUnit]: Number(e.target.value)
       }
     })
+  }
+
+  const handleTextInput = (e) => {
+    setInputData({
+      ...inputData,
+      textContent: e.currentTarget.textContent
+    })
+    setError('')
+    setCharsLeft(3000 - e.currentTarget.textContent.length)
   }
 
   const resetForm = () => {
@@ -131,7 +139,7 @@ const Form = () => {
         e.preventDefault()
 
         if (textFieldIsValid()) {
-          handleOnSubmit(e)
+          handleSubmit(e)
         }
       }}
     >
@@ -153,21 +161,9 @@ const Form = () => {
               const text = e.clipboardData.getData('text/plain')
               document.execCommand('insertHTML', false, text)
 
-              setInputData({
-                ...inputData,
-                textContent: e.currentTarget.textContent
-              })
-              setError('')
-              setCharsLeft(3000 - e.currentTarget.textContent.length)
+              handleTextInput(e)
             }}
-            onInput={(e) => {
-              setInputData({
-                ...inputData,
-                textContent: e.currentTarget.textContent
-              })
-              setError('')
-              setCharsLeft(3000 - e.currentTarget.textContent.length)
-            }}
+            onInput={(e) => handleTextInput(e)}
           ></span>
           <span className="input-charsleft">{charsLeft} / 3000</span>
         </div>
@@ -237,7 +233,7 @@ const Form = () => {
               name="input-timeSelect-hrs"
               className="input-timeSelect hours"
               defaultValue={inputData.aliveFor.hrs}
-              onChange={(e) => onTimeChange(e)}
+              onChange={(e) => handleTimeChange(e)}
             >
               {[...Array(24)].map((_, i) => (
                 <option key={`hours-${i}`} value={i}>
@@ -250,7 +246,7 @@ const Form = () => {
               name="input-timeSelect-min"
               className="input-timeSelect"
               defaultValue={inputData.aliveFor.min}
-              onChange={(e) => onTimeChange(e)}
+              onChange={(e) => handleTimeChange(e)}
             >
               {[...Array(60)].map((_, i) => (
                 <option key={`minutes-${i}`} value={i}>
@@ -263,7 +259,7 @@ const Form = () => {
               name="input-timeSelect-sec"
               className="input-timeSelect"
               defaultValue={inputData.aliveFor.sec}
-              onChange={(e) => onTimeChange(e)}
+              onChange={(e) => handleTimeChange(e)}
             >
               {[...Array(60)].map((_, i) => (
                 <option key={`seconds-${i}`} value={i}>
@@ -279,53 +275,51 @@ const Form = () => {
             Message type:
           </label>
 
-          <div className="form-radio-wrapper">
-            <div className="form-radio-item">
-              <input
-                type="radio"
-                className="form-radio"
-                id="form-radio-secret"
-                name="secret message"
-                value="killOnFirstReq"
-                checked={selectedType === 'killOnFirstReq'}
-                onChange={(e) => onTypeChange(e)}
-              />
-              <label htmlFor="form-radio-secret">
-                Private Message (can be opened once, and only once)
-              </label>
-            </div>
+          <div className="form-radio-item">
+            <input
+              type="radio"
+              className="form-radio"
+              id="form-radio-secret"
+              name="secret message"
+              value="killOnFirstReq"
+              checked={selectedType === 'killOnFirstReq'}
+              onChange={(e) => handleTypeChange(e)}
+            />
+            <label htmlFor="form-radio-secret">
+              Private Message (can be opened once, and only once)
+            </label>
+          </div>
 
-            <div className="form-radio-item">
-              <input
-                type="radio"
-                className="form-radio"
-                id="form-radio-countdown"
-                name="Public message"
-                value="startImmediately"
-                checked={selectedType === 'startImmediately'}
-                onChange={(e) => onTypeChange(e)}
-              />
-              <label htmlFor="form-radio-countdown">
-                Public Message (visible to anyone with the unique url, timer
-                starts immediately)
-              </label>
-            </div>
+          <div className="form-radio-item">
+            <input
+              type="radio"
+              className="form-radio"
+              id="form-radio-countdown"
+              name="Public message"
+              value="startImmediately"
+              checked={selectedType === 'startImmediately'}
+              onChange={(e) => handleTypeChange(e)}
+            />
+            <label htmlFor="form-radio-countdown">
+              Public Message (visible to anyone with the unique url, timer
+              starts immediately)
+            </label>
+          </div>
 
-            <div className="form-radio-item">
-              <input
-                type="radio"
-                className="form-radio"
-                id="form-radio-triggered"
-                name="Triggered Message"
-                value="startTimerOnFirstReq"
-                checked={selectedType === 'startTimerOnFirstReq'}
-                onChange={(e) => onTypeChange(e)}
-              />
-              <label htmlFor="form-radio-triggered">
-                Triggered Public Message (visible to anyone with the unique url,
-                timer starts when the first person opens the message)
-              </label>
-            </div>
+          <div className="form-radio-item">
+            <input
+              type="radio"
+              className="form-radio"
+              id="form-radio-triggered"
+              name="Triggered Message"
+              value="startTimerOnFirstReq"
+              checked={selectedType === 'startTimerOnFirstReq'}
+              onChange={(e) => handleTypeChange(e)}
+            />
+            <label htmlFor="form-radio-triggered">
+              Triggered Public Message (visible to anyone with the unique url,
+              timer starts when the first person opens the message)
+            </label>
           </div>
         </div>
       </div>
