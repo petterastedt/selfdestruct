@@ -35,7 +35,7 @@ const createMessageObject = (req) => {
     aliveFor.sec
   )
 
-  const url = `${req.get('origin')}/message/${secret}`
+  const url = `${req.get('origin').replace('www.', '')}/message/${secret}`
 
   let destroyAt
 
@@ -44,8 +44,6 @@ const createMessageObject = (req) => {
   }
 
   return {
-    isActive: true,
-    isFirstReq: true,
     name,
     secret,
     url,

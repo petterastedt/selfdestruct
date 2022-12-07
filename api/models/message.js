@@ -2,8 +2,8 @@ const mongoose = require('mongoose')
 
 const schema = new mongoose.Schema(
   {
-    isActive: { type: Boolean, required: true },
-    isFirstReq: { type: Boolean, required: true },
+    isActive: { type: Boolean, required: true, default: true },
+    isFirstReq: { type: Boolean, required: true, default: true },
     name: { type: String, required: false },
     secret: { type: String, required: true },
     textContent: { type: String, required: true },

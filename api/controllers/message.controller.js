@@ -3,16 +3,16 @@ const utils = require('../utils/utils')
 
 // HANDLE RESPONSES
 const responseHandler = (res, error, item, errorMsg, successMsg, notFound) => {
-  const errorString = errorMsg ? errorMsg : 'Database Error!'
-  const successString = successMsg ? successMsg : 'Success!'
-  const notFoundString = notFound ? notFound : 'Message not found!'
+  const errorString = errorMsg || 'Database Error!'
+  const successString = successMsg || 'Success!'
+  const notFoundString = notFound || 'Message not found!'
 
   if (error) {
     res.json({
       message: errorString,
       success: false
     })
-  } else if (!item || item.length === 0 || !item.isActive) {
+  } else if (!item?.isActive || item.length === 0) {
     res.json({
       message: notFoundString,
       success: false
@@ -65,50 +65,50 @@ const setInactiveItem = (secret) => {
 // SHOW MESSAGE
 const showMessage = (secret, res) => {
   Message.findOne({ secret: secret }, (error, item) => {
-    if (!error && item?.isActive) {
-      let {
+    if (error || !item?.isActive) {
+      responseHandler(res, error)
+    }
+
+    let {
+      isActive,
+      isFirstReq,
+      name,
+      options,
+      textContent,
+      timeOptions,
+      secret
+    } = item
+
+    // START IMMEDIATELY OR START ON FIRST REQUEST, NOT FIRST REQUEST
+    if (
+      options.startImmediately ||
+      (options.startTimerOnFirstReq && !isFirstReq)
+    ) {
+      const timeLeft = utils.getTimeLeft(timeOptions.destroyAt)
+
+      if (timeLeft < 1) {
+        setInactiveItem(secret)
+        isActive = false
+      }
+
+      const responseData = {
         isActive,
-        isFirstReq,
         name,
         options,
         textContent,
-        timeOptions,
-        secret
-      } = item
-
-      // START IMMEDIATELY OR START ON FIRST REQUEST, NOT FIRST REQUEST
-      if (
-        options.startImmediately ||
-        (options.startTimerOnFirstReq && !isFirstReq)
-      ) {
-        const timeLeft = utils.getTimeLeft(timeOptions.destroyAt)
-
-        if (timeLeft < 1) {
-          setInactiveItem(secret)
-          isActive = false
-        }
-
-        const responseData = {
-          isActive,
-          name,
-          options,
-          textContent,
-          timeLeft
-        }
-
-        responseHandler(res, error, responseData)
-
-        // START ON FIRST REQUEST, IS FIRST REQUEST
-      } else if (options.startTimerOnFirstReq && isFirstReq) {
-        const destroyAt = utils.getDestroyTime(timeOptions.aliveFor)
-        updateItem(secret, destroyAt, timeOptions.aliveFor, res)
-
-        // KILL ON FIRST REQUEST (SECRET MESSAGE)
-      } else if (options.killOnFirstReq) {
-        deleteItem(secret, res)
+        timeLeft
       }
-    } else {
-      responseHandler(res, error)
+
+      responseHandler(res, error, responseData)
+
+      // START ON FIRST REQUEST, IS FIRST REQUEST
+    } else if (options.startTimerOnFirstReq && isFirstReq) {
+      const destroyAt = utils.getDestroyTime(timeOptions.aliveFor)
+      updateItem(secret, destroyAt, timeOptions.aliveFor, res)
+
+      // KILL ON FIRST REQUEST (SECRET MESSAGE)
+    } else if (options.killOnFirstReq) {
+      deleteItem(secret, res)
     }
   })
 }
@@ -116,7 +116,7 @@ const showMessage = (secret, res) => {
 // CREATE MESSAGE
 const createMessage = async (message, res) =>
   Message.create(message, (error, item) => {
-    const { isActive, url } = item
+    const { url, isActive } = item
 
     const responseData = {
       isActive,
