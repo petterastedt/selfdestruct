@@ -21,7 +21,7 @@ const Message = () => {
   useEffect(() => {
     ;(async () => {
       setMessageData(null)
-      setError(false)
+      setError('')
 
       if (secret.length !== 6 || key.length !== 16) {
         setError('Invalid link')
@@ -30,35 +30,34 @@ const Message = () => {
 
       try {
         const message = await fetch(`${endpoints.getMessage}/${secret}`)
-
         const messageJson = await message.json()
 
-        if (messageJson.success) {
-          const { textContent, timeLeft, options, name } = messageJson.item
-          const decryptedTextContent = crypto.decrypt(textContent, key)
-
-          const data = {
-            name,
-            message: decryptedTextContent ? decryptedTextContent : textContent,
-            timeLeft,
-            isPrivateMessage: options.killOnFirstReq
-          }
-
-          setTimeout(() => {
-            setMessageData(data)
-
-            if (!decryptedTextContent) {
-              setError('Invalid decryption key')
-            }
-
-            setIsLoading(false)
-          }, 2000)
-        } else {
-          setTimeout(() => {
+        if (!messageJson.success) {
+          return setTimeout(() => {
             setError(messageJson.message)
             setIsLoading(false)
           }, 2000)
         }
+
+        const { textContent, timeLeft, options, name } = messageJson.item
+        const decryptedTextContent = crypto.decrypt(textContent, key)
+
+        const data = {
+          name,
+          message: decryptedTextContent || textContent,
+          timeLeft,
+          isPrivateMessage: options.killOnFirstReq
+        }
+
+        setTimeout(() => {
+          setMessageData(data)
+
+          if (!decryptedTextContent) {
+            setError('Invalid decryption key')
+          }
+
+          setIsLoading(false)
+        }, 2000)
       } catch (e) {
         setError('Critical error')
         setIsLoading(false)

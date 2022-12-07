@@ -53,16 +53,16 @@ const Form = () => {
 
       const response = await createMessage.json()
 
-      if (response.success) {
-        setUrl(`${response.item.url}#${encrypted.key}`)
-        setError('')
-        setDisableCreateMessage(true)
-        resetForm()
-      } else {
-        setError(response.message)
+      setIsSumbitting(false)
+
+      if (!response.success) {
+        return setError(response.message)
       }
 
-      setIsSumbitting(false)
+      setUrl(`${response.item.url}#${encrypted.key}`)
+      setError('')
+      setDisableCreateMessage(true)
+      resetForm()
     } catch (error) {
       setError('Something went wrong when creating your message')
       setIsSumbitting(false)
