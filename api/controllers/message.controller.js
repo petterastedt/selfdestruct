@@ -66,7 +66,7 @@ const setInactiveItem = (secret) => {
 const showMessage = (secret, res) => {
   Message.findOne({ secret: secret }, (error, item) => {
     if (error || !item?.isActive) {
-      responseHandler(res, error)
+      return responseHandler(res, error)
     }
 
     let {
@@ -99,7 +99,7 @@ const showMessage = (secret, res) => {
         timeLeft
       }
 
-      responseHandler(res, error, responseData)
+      return responseHandler(res, error, responseData)
 
       // START ON FIRST REQUEST, IS FIRST REQUEST
     } else if (options.startTimerOnFirstReq && isFirstReq) {
@@ -123,7 +123,7 @@ const createMessage = async (message, res) =>
       url
     }
 
-    responseHandler(res, error, responseData)
+    return responseHandler(res, error, responseData)
   })
 
 // DELETE ITEM
@@ -149,14 +149,13 @@ const updateItem = (secret, destroyAt, aliveFor, res) => {
       }
     },
     { new: true },
-    (error, item) => {
+    (error, item) =>
       responseHandler(
         res,
         error,
         utils.stripItem(item),
         'Something went wrong! The message timer was not triggered, try again later.'
       )
-    }
   )
 }
 
