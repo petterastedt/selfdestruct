@@ -1,11 +1,11 @@
-const isProcution = process.env.NODE_ENV === 'production'
+const isProcdution = process.env.NODE_ENV === 'production'
 
 const endpoints = {
   createMessage: `${
-    isProcution ? '/api/post' : 'http://localhost:5000/api/post'
+    isProcdution ? '/api/post' : 'http://localhost:5000/api/post'
   }`,
   getMessage: `${
-    isProcution ? '/api/message' : 'http://localhost:5000/api/message'
+    isProcdution ? '/api/message' : 'http://localhost:5000/api/message'
   }`
 }
 
