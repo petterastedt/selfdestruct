@@ -26,7 +26,6 @@ const convertToMillisec = (hours, minutes, seconds) =>
 // CREATE MESSAGE OBJECT
 const createMessageObject = (req) => {
   const { textContent, name, aliveFor, options } = req.body
-  const { startImmediately, startTimerOnFirstReq, killOnFirstReq } = options
   const secret = crypto.randomBytes(3).toString('hex')
 
   const timeInMillisec = convertToMillisec(
@@ -49,11 +48,7 @@ const createMessageObject = (req) => {
     url,
     textContent,
     timeLeft: timeInMillisec,
-    options: {
-      killOnFirstReq,
-      startTimerOnFirstReq,
-      startImmediately
-    },
+    options,
     timeOptions: {
       destroyAt,
       aliveFor: timeInMillisec

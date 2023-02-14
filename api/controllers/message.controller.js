@@ -74,17 +74,20 @@ const showMessage = (secret, res) => {
       isFirstReq,
       name,
       options,
+      options: { startImmediately, startTimerOnFirstReq, killOnFirstReq },
+      timeOptions: { destroyAt, aliveFor },
       textContent,
-      timeOptions,
       secret
     } = item
 
+    // KILL ON FIRST REQUEST (SECRET MESSAGE)
+    if (killOnFirstReq) {
+      return deleteItem(secret, res)
+    }
+
     // START IMMEDIATELY OR START ON FIRST REQUEST, NOT FIRST REQUEST
-    if (
-      options.startImmediately ||
-      (options.startTimerOnFirstReq && !isFirstReq)
-    ) {
-      const timeLeft = utils.getTimeLeft(timeOptions.destroyAt)
+    else if (startImmediately || (startTimerOnFirstReq && !isFirstReq)) {
+      const timeLeft = utils.getTimeLeft(destroyAt)
 
       if (timeLeft < 1) {
         setInactiveItem(secret)
@@ -102,13 +105,9 @@ const showMessage = (secret, res) => {
       return responseHandler(res, error, responseData)
 
       // START ON FIRST REQUEST, IS FIRST REQUEST
-    } else if (options.startTimerOnFirstReq && isFirstReq) {
-      const destroyAt = utils.getDestroyTime(timeOptions.aliveFor)
-      updateItem(secret, destroyAt, timeOptions.aliveFor, res)
-
-      // KILL ON FIRST REQUEST (SECRET MESSAGE)
-    } else if (options.killOnFirstReq) {
-      deleteItem(secret, res)
+    } else if (startTimerOnFirstReq && isFirstReq) {
+      const destroyAt = utils.getDestroyTime(aliveFor)
+      return updateItem(secret, destroyAt, aliveFor, res)
     }
   })
 }

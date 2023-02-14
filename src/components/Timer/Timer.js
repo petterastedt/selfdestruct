@@ -15,35 +15,37 @@ const Timer = ({ setMessageIsDestroyed, messageIsDestroyed, messageData }) => {
   useEffect(() => setTime(new Date()), [messageData])
 
   useEffect(() => {
-    if (!messageIsDestroyed) {
-      if (secondsRemainingGlobal < 1 || secondsRemainingGlobalNegative > 1) {
-        setMessageIsDestroyed(true)
+    if (messageIsDestroyed) {
+      return
+    }
+
+    if (secondsRemainingGlobal < 1 || secondsRemainingGlobalNegative > 1) {
+      setMessageIsDestroyed(true)
+      setCountdown({
+        sec: '--',
+        min: '--'
+      })
+    } else {
+      const timeout = setTimeout(() => {
+        const elapsedTime = Date.now() - time - messageData.timeLeft
+        const secondsRemaining = Math.round(Math.abs(elapsedTime / 1000))
+        const secondsRemainingNegative = Math.round(elapsedTime / 1000)
+
+        let minutes = Math.floor(secondsRemaining / 60)
+        let seconds = secondsRemaining - minutes * 60
+        minutes = minutes < 10 ? '0' + minutes : minutes
+        seconds = seconds < 10 ? '0' + seconds : seconds
+
+        setSecondsRemainingGlobal(secondsRemaining)
+        setSecondsRemainingGlobalNegative(secondsRemainingNegative)
+
         setCountdown({
-          sec: '--',
-          min: '--'
+          sec: seconds,
+          min: minutes
         })
-      } else {
-        const timeout = setTimeout(() => {
-          const elapsedTime = Date.now() - time - messageData.timeLeft
-          const secondsRemaining = Math.round(Math.abs(elapsedTime / 1000))
-          const secondsRemainingNegative = Math.round(elapsedTime / 1000)
+      }, 1000)
 
-          let minutes = Math.floor(secondsRemaining / 60)
-          let seconds = secondsRemaining - minutes * 60
-          minutes = minutes < 10 ? '0' + minutes : minutes
-          seconds = seconds < 10 ? '0' + seconds : seconds
-
-          setSecondsRemainingGlobal(secondsRemaining)
-          setSecondsRemainingGlobalNegative(secondsRemainingNegative)
-
-          setCountdown({
-            sec: seconds,
-            min: minutes
-          })
-        }, 1000)
-
-        return () => clearTimeout(timeout)
-      }
+      return () => clearTimeout(timeout)
     }
   })
 
