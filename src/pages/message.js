@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import Timer from './../components/Timer/Timer'
 import MessageBox from './../components/MessageBox/MessageBox'
 import Header from './../components/Header/Header'
@@ -14,8 +14,8 @@ const Message = () => {
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(true)
   const [messageData, setMessageData] = useState(null)
-  const { pathname, hash } = useLocation()
-  const secret = pathname.split('/').pop()
+  const { hash } = useLocation()
+  const { secret } = useParams()
   const key = hash.slice(1)
 
   useEffect(() => {
@@ -55,13 +55,12 @@ const Message = () => {
           if (!decryptedTextContent) {
             setError('Invalid decryption key')
           }
-
-          setIsLoading(false)
         }, 2000)
       } catch (e) {
         setError('Critical error')
-        setIsLoading(false)
         console.error(e)
+      } finally {
+        setIsLoading(false)
       }
     })()
   }, [key, secret])

@@ -29,13 +29,9 @@ const decrypt = (message, key) => {
 
   const encryptedString = decryptString(message, key)
 
-  let invalidCharacters = []
-
-  for (let i = 0; i < encryptedString.length; i++) {
-    if (encryptedString[i] === encryptedString[i].match(regExAlgo)[0]) {
-      invalidCharacters.push(encryptedString[i])
-    }
-  }
+  const invalidCharacters = encryptedString
+    .split('')
+    .filter((char) => char === char.match(regExAlgo)[0])
 
   if (invalidCharacters.length) {
     return false

@@ -10,7 +10,7 @@ const Form = () => {
   const [url, setUrl] = useState('')
   const [urlCopied, setUrlCopied] = useState(false)
   const [optionsAreExpanded, setOptionsAreHidden] = useState(true)
-  const [isSubmitting, setIsSumbitting] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [selectedType, setSelectedType] = useState('killOnFirstReq')
   const [disableCreateMessage, setDisableCreateMessage] = useState(false)
   const [isAnonMessage, setIsAnonMessage] = useState(true)
@@ -34,39 +34,36 @@ const Form = () => {
   const handleSubmit = async () => {
     try {
       setUrl('')
-      setIsSumbitting(true)
-      const encrypted = crypto.encrypt(inputData.textContent)
+      setIsSubmitting(true)
 
-      const messageBody = JSON.stringify({
-        ...inputData,
-        textContent: encrypted.message
-      })
-
-      const createMessage = await fetch(endpoints.createMessage, {
+      const encryptedMessage = crypto.encrypt(inputData.textContent)
+      const message = { ...inputData, textContent: encryptedMessage.message }
+      const options = {
         method: 'POST',
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json'
         },
-        body: messageBody
-      })
-
+        body: JSON.stringify(message)
+      }
+      const createMessage = await fetch(endpoints.createMessage, options)
       const response = await createMessage.json()
 
-      setIsSumbitting(false)
+      setIsSubmitting(false)
 
       if (!response.success) {
         return setError(response.message)
       }
 
-      setUrl(`${response.item.url}#${encrypted.key}`)
+      const url = `${response.item.url}#${encryptedMessage.key}`
+      setUrl(url)
       setError('')
       setDisableCreateMessage(true)
       resetForm()
     } catch (error) {
-      setError('Something went wrong when creating your message')
-      setIsSumbitting(false)
       console.error(error)
+      setError('Something went wrong when creating your message')
+      setIsSubmitting(false)
     }
   }
 

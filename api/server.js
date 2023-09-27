@@ -28,7 +28,7 @@ const server = express()
 server.use(bodyParser.json())
 server.use(bodyParser.urlencoded({ extended: true }))
 
-server.use((req, res, next) => {
+server.use((_req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*')
   res.header(
     'Access-Control-Allow-Headers',
@@ -40,7 +40,7 @@ server.use((req, res, next) => {
 
 server.use('/api', api)
 
-server.get('/', (req, res) => res.send('API online, all good! ✌️'))
+server.get('/', (_req, res) => res.send('API online, all good! ✌️'))
 
 initDatabaseConnection()
 

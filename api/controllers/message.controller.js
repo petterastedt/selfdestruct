@@ -2,28 +2,26 @@ const Message = require('./../models/message')
 const utils = require('../utils/utils')
 
 // HANDLE RESPONSES
-const responseHandler = (res, error, item, errorMsg, successMsg, notFound) => {
-  const errorString = errorMsg || 'Database Error!'
-  const successString = successMsg || 'Success!'
-  const notFoundString = notFound || 'Message not found!'
-
+const responseHandler = (res, error, item, customResponseMesage) => {
   if (error) {
-    res.json({
-      message: errorString,
+    return res.status(500).json({
+      message: customResponseMesage || 'Database Error!',
       success: false
-    })
-  } else if (!item?.isActive || item.length === 0) {
-    res.json({
-      message: notFoundString,
-      success: false
-    })
-  } else {
-    res.json({
-      item,
-      message: successString,
-      success: true
     })
   }
+
+  if (!item?.isActive || item.length === 0) {
+    return res.status(404).json({
+      message: customResponseMesage || 'Message not found!',
+      success: false
+    })
+  }
+
+  return res.status(200).json({
+    item,
+    message: customResponseMesage || 'Success!',
+    success: true
+  })
 }
 
 // DELETE EXPIRED AND INACTIVE MESSAGES
